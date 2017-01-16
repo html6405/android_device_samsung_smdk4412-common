@@ -89,8 +89,6 @@ BOARD_USES_PROPRIETARY_HWC := true
 # Enable WEBGL in WebKit
 ENABLE_WEBGL := true
 
-WITH_CM_CHARGER := false
-
 # HDMI
 BOARD_USES_HDMI := true
 BOARD_USES_SAMSUNG_HDMI := true
