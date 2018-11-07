@@ -23,6 +23,9 @@ DEVICE_PACKAGE_OVERLAYS := \
 # Vendor properties
 -include $(LOCAL_PATH)/vendor_prop.mk
 
+# RRO (Runtime Resource Overlay)
+PRODUCT_ENFORCE_RRO_TARGETS += *
+
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 
 # Component overrides
