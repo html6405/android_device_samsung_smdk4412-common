@@ -23,6 +23,10 @@ DEVICE_PACKAGE_OVERLAYS := $(COMMON_PATH)/overlay
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 
+# Component overrides
+PRODUCT_COPY_FILES += \
+    $(COMMON_PATH)/configs/component-overrides.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sysconfig/component-overrides.xml
+
 # Init files
 PRODUCT_COPY_FILES := \
     $(LOCAL_PATH)/rootdir/init.smdk4x12.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.smdk4x12.rc \
