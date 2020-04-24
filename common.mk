@@ -297,6 +297,7 @@ PRODUCT_PACKAGES += \
     libwpa_client \
     hostapd \
     dhcpcd.conf \
+    WifiOverlay \
     wpa_supplicant \
     wpa_supplicant.conf
 
