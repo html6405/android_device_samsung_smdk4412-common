@@ -16,6 +16,13 @@
 
 # This variable is set first, so it can be overridden
 # by BoardConfigVendor.mk
+
+#RECOVERY_VARIANT := twrp
+#TW_THEME := landscape_mdpi
+#WITH_TWRP := true
+#WITH_BUSYBOX := true
+#WITH_SU := true
+
 USE_CAMERA_STUB := false
 BOARD_USES_GENERIC_AUDIO := false
 
@@ -98,7 +105,7 @@ BOARD_CAMERA_MSG_MGMT := true
 # OMX
 BOARD_USE_SAMSUNG_COLORFORMAT := true
 BOARD_NONBLOCK_MODE_PROCESS := true
-BOARD_USE_STOREMETADATA := true
+BOARD_USE_STOREMETADATA := false
 BOARD_USE_METADATABUFFERTYPE := true
 BOARD_USES_MFC_FPS := true
 BOARD_USE_S3D_SUPPORT := true

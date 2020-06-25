@@ -38,6 +38,12 @@ LOCAL_C_INCLUDES := \
 LOCAL_SHARED_LIBRARIES := libutils libcutils liblog libcamera_client libhardware
 LOCAL_PRELINK_MODULE := false
 
+ifneq ($(filter n8000 n8013 n8020,$(TARGET_DEVICE)),)
+	LOCAL_CFLAGS += -DEXYNOS_ISX012
+else
+	LOCAL_CFLAGS += -DEXYNOS_S5C73M3
+endif
+
 ifeq ($(TARGET_SOC),exynos4x12)
 	LOCAL_SHARED_LIBRARIES += libhwjpeg
 	LOCAL_CFLAGS += -DEXYNOS_JPEG_HW

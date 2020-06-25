@@ -42,11 +42,12 @@ public class TouchscreenGestures {
 
     // Id, name, keycode
     private static final TouchscreenGesture[] GESTURES = {
-        new TouchscreenGesture(0, "Swipe up stylus", 0x2f1),
-        new TouchscreenGesture(1, "Swipe down stylus", 0x2f2),
-        new TouchscreenGesture(2, "Swipe left stylus", 0x2f3),
-        new TouchscreenGesture(3, "Swipe right stylus", 0x2f4),
-        new TouchscreenGesture(4, "Long press stylus", 0x2f5),
+            new TouchscreenGesture(0, "Swipe up stylus", 0x2f1),
+            new TouchscreenGesture(1, "Swipe down stylus", 0x2f2),
+            new TouchscreenGesture(2, "Swipe left stylus", 0x2f3),
+            new TouchscreenGesture(3, "Swipe right stylus", 0x2f4),
+            new TouchscreenGesture(4, "Long press stylus", 0x2f5),
+            new TouchscreenGesture(5, "Short press stylus", 0x2f6),
     };
 
     /**

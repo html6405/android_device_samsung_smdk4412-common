@@ -1,0 +1,7 @@
+#!/system/bin/sh
+#
+# kill libinertial-anchor-jni.so
+#
+
+rm /data/user_de/0/com.google.android.gms/app_extracted_libs/armeabi-v7a/libinertial-anchor-jni.so
+killall com.google.android.gms.persistent

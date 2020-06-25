@@ -25,7 +25,9 @@
 #include <linux/videodev2_exynos_media.h>
 #include <linux/fimc.h>
 
+#ifdef EXYNOS_S5C73M3
 #include <linux/s5c73m3.h>
+#endif
 
 #ifdef EXYNOS_JPEG_HW
 #include <jpeg_hal.h>
@@ -43,7 +45,12 @@
 #define EXYNOS_CAMERA_CAPTURE_BUFFERS_COUNT	6
 #define EXYNOS_CAMERA_PREVIEW_BUFFERS_COUNT	6
 #define EXYNOS_CAMERA_RECORDING_BUFFERS_COUNT	6
+
+#ifdef EXYNOS_ISX012
+#define EXYNOS_CAMERA_GRALLOC_BUFFERS_COUNT	6
+#else
 #define EXYNOS_CAMERA_GRALLOC_BUFFERS_COUNT	3
+#endif
 
 #define EXYNOS_CAMERA_PICTURE_OUTPUT_FORMAT	V4L2_PIX_FMT_YUYV
 

@@ -28,6 +28,10 @@ BOARD_HAS_NO_REAL_SDCARD := true
 HAVE_SELINUX := true
 TW_NO_REBOOT_BOOTLOADER := true
 TW_HAS_DOWNLOAD_MODE := true
+ifeq ($ (PRODUCT_CHARACTERISTICS), tablet)
+TW_THEME := landscape_mdpi
+else
 TW_THEME := portrait_hdpi
+endif
 RECOVERY_GRAPHICS_USE_LINELENGTH := true
 TW_EXCLUDE_SUPERSU := true

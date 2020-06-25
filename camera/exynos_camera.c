@@ -50,27 +50,41 @@ struct exynos_camera_mbus_resolution exynos_camera_mbus_resolutions_s5k6a3_smdk4
 	{ 1280, 720,	1344, 756 },
 	// 4:3 ratio
 	{ 1280, 960,	1392, 1044 },
-	{ 960, 720,	1392, 1044 },
-	{ 640, 480,	1392, 1044 },
-	{ 320, 240,	1392, 1044 },
+	{ 960, 720,		1392, 1044 },
+	{ 640, 480,		1392, 1044 },
+	{ 320, 240,		1392, 1044 },
 	// 1:1 ratio
 	{ 1392, 1392,	1392, 1392 },
-	{ 704, 704,	1392, 1392 },
-	{ 320, 320,	1392, 1392 },
+	{ 704, 704,		1392, 1392 },
+	{ 320, 320,		1392, 1392 },
 };
 
+#ifdef EXYNOS_S5C73M3
 struct exynos_camera_videosnapshot_resolution exynos_camera_videosnapshot_resolutions_s5c73m3[] = {
 	//Capture Size - Snapshot Size
 	{ 1920, 1080,	3264, 1836 },
 	{ 1280, 720,	3264, 1836 },
-	{ 720, 480,	3264, 2176 },
-	{ 640, 480,	3264, 2488 },
-	{ 352, 288,	3264, 2488 },
-	{ 320, 240,	3264, 2488 },
-	{ 176, 144,	3264, 2488 },
+	{ 720, 480,		3264, 2176 },
+	{ 640, 480,		3264, 2488 },
+	{ 352, 288,		3264, 2488 },
+	{ 320, 240,		3264, 2488 },
+	{ 176, 144,		3264, 2488 },
 };
+#endif
+
+#ifdef EXYNOS_ISX012
+struct exynos_camera_videosnapshot_resolution exynos_camera_videosnapshot_resolutions_isx012[] = {
+	//Capture Size - Snapshot Size
+	{ 1920, 1080,	2560, 1920 },
+	{ 1280, 720,	2560, 1920 },
+	{ 1024, 768, 	2560, 1920 },
+	{ 640, 480,		2560, 1920 },
+	{ 320, 240,		2560, 1920 },
+};
+#endif
 
 struct exynos_camera_preset exynos_camera_presets_smdk4x12[] = {
+#ifdef EXYNOS_S5C73M3
 	{
 		.name = "S5C73M3",
 		.facing = CAMERA_FACING_BACK,
@@ -88,7 +102,7 @@ struct exynos_camera_preset exynos_camera_presets_smdk4x12[] = {
 		.params = {
 			.preview_size_values = "960x720,1280x720,640x480,352x288,320x240",
 			.preview_size = "960x720",
-                        .preview_video_size = "1280x720",
+			.preview_video_size = "1280x720",
 			.preview_format_values = "yuv420sp,rgb565",
 			.preview_format = "yuv420sp",
 			.preview_frame_rate_values = "30,20,15",
@@ -165,10 +179,112 @@ struct exynos_camera_preset exynos_camera_presets_smdk4x12[] = {
 		.videosnapshot_resolutions = (struct exynos_camera_videosnapshot_resolution *) &exynos_camera_videosnapshot_resolutions_s5c73m3,
 		.videosnapshot_resolutions_count = 7,
 	},
+#endif
+
+#ifdef EXYNOS_ISX012
+	{
+		.name = "ISX012",
+		.facing = CAMERA_FACING_BACK,
+		.orientation = 0,
+		.rotation = 0,
+		.hflip = 0,
+		.vflip = 0,
+		.capture_format = V4L2_PIX_FMT_NV21,
+		.picture_format = V4L2_PIX_FMT_YUYV,
+		.fimc_is = 0,
+		.focal_length = 3.43f,
+		.horizontal_view_angle = 59.6f,
+		.vertical_view_angle = 46.3f,
+		.metering = METERING_CENTER,
+		.params = {
+			.preview_size_values = "1280x720,1280x1024,1024x768",
+			.preview_size = "1280x720",
+			.preview_video_size = "1280x720",
+			.preview_format_values = "yuv420sp,yuv420p",
+			.preview_format = "yuv420sp",
+			.preview_frame_rate_values = "30,25,15,12,10,7",
+			.preview_frame_rate = 30,
+			.preview_fps_range_values = "(7000,30000)",
+			.preview_fps_range = "7000,30000",
+
+			.picture_size_values = "2560x1920,2560x1440,2048x1536,2048x1152,1600x1200,1536x864,960x720,640x480",
+			.picture_size = "2560x1920",
+			.picture_format_values = "jpeg",
+			.picture_format = "jpeg",
+			.jpeg_thumbnail_size_values = "160x120,0x0",
+			.jpeg_thumbnail_width = 160,
+			.jpeg_thumbnail_height = 120,
+			.jpeg_thumbnail_quality = 100,
+			.jpeg_quality = 90,
+
+			.video_snapshot_supported = 0,
+			.full_video_snap_supported = 0,
+
+			.recording_size = "1280x720",
+			.recording_size_values = "1280x720,1920x1080,720x480,640x480,352x288,320x240,176x144",
+			.recording_format = "yuv420sp",
+
+			.focus_mode = "auto",
+			.focus_mode_values = "auto,infinity,macro,fixed,continuous-picture,continuous-video",
+			.focus_distances = "0.15,1.20,Infinity",
+			.focus_areas = "(0,0,0,0,0)",
+			.max_num_focus_areas = 1,
+
+			.max_detected_faces = 7,
+
+			.zoom_supported = 1,
+			.smooth_zoom_supported = 0,
+			.zoom_ratios = "100,102,104,109,111,113,119,121,124,131,134,138,146,150,155,159,165,170,182,189,200,213,222,232,243,255,283,300,319,364,400",
+			.zoom = 0,
+			.max_zoom = 30,
+
+			.auto_exposure_lock_supported = 0,
+			.auto_exposure_lock = 0,
+
+			.auto_white_balance_lock_supported = 0,
+			.auto_white_balance_lock = 0,
+
+			.flash_mode = "off",
+			.flash_mode_values = "off,auto,on,torch",
+
+			.exposure_compensation = 0,
+			.exposure_compensation_step = 0.5,
+			.min_exposure_compensation = -4,
+			.max_exposure_compensation = 4,
+
+			.whitebalance = "auto",
+			.whitebalance_values = "auto,fluorescent,daylight,cloudy-daylight",
+
+			.antibanding = "50hz",
+			.antibanding_values = "50hz,off",
+
+			.scene_mode = "auto",
+			.scene_mode_values = "auto,portrait,landscape,night,beach,snow,sunset,fireworks,sports,party,candlelight,dusk-dawn,fall-color,text,back-light",
+
+			.effect = "none",
+			.effect_values = "none,mono,negative,sepia,sketch",
+
+			.iso = "auto",
+			.iso_values = "auto,ISO100,ISO200,ISO400,ISO800",
+
+			.image_stabilization = "off",
+			.image_stabilization_values = "on,off"
+		},
+		.mbus_resolutions = NULL,
+		.mbus_resolutions_count = 0,
+
+		.videosnapshot_resolutions = (struct exynos_camera_videosnapshot_resolution *) &exynos_camera_videosnapshot_resolutions_isx012,
+		.videosnapshot_resolutions_count = 5,
+	},
+#endif
 	{
 		.name = "S5K6A3",
 		.facing = CAMERA_FACING_FRONT,
+#ifdef EXYNOS_S5C73M3
 		.orientation = 270,
+#elif EXYNOS_ISX012
+		.orientation = 0,
+#endif
 		.rotation = 0,
 		.hflip = 0,
 		.vflip = 0,
@@ -519,6 +635,7 @@ int exynos_camera_params_init(struct exynos_camera *exynos_camera, int id)
 		exynos_param_string_set(exynos_camera, "zoom-supported", "false");
 	}
 
+#ifndef EXYNOS_ISX012
 	// AE lock
 
 	if (exynos_camera->config->presets[id].params.auto_exposure_lock_supported == 1) {
@@ -540,6 +657,7 @@ int exynos_camera_params_init(struct exynos_camera *exynos_camera, int id)
 		else
 			exynos_param_string_set(exynos_camera, "auto-whitebalance-lock", "false");
 	}
+#endif
 
 	// Flash
 
@@ -991,6 +1109,7 @@ int exynos_camera_params_apply(struct exynos_camera *exynos_camera, int force)
 
 	}
 
+#ifndef EXYNOS_ISX012
 	// AE lock
 
 	ae_lock_supported_string = exynos_param_string_get(exynos_camera, "auto-exposure-lock-supported");
@@ -1008,6 +1127,7 @@ int exynos_camera_params_apply(struct exynos_camera *exynos_camera, int force)
 		awb_lock = 1;
 	else
 		awb_lock = 0;
+#endif
 
 	// Scene mode
 
@@ -1293,7 +1413,7 @@ int exynos_camera_params_apply(struct exynos_camera *exynos_camera, int force)
 }
 
 // Capture
-
+#ifdef EXYNOS_S5C73M3
 int s5c73m3_interleaved_decode(struct exynos_camera *exynos_camera, void *data, int size,
 	void *yuv_data, int *yuv_size, int yuv_width, int yuv_height,
 	void *jpeg_data, int *jpeg_size, int *decoded, int *auto_focus_result,
@@ -1479,6 +1599,7 @@ int s5c73m3_interleaved_decode(struct exynos_camera *exynos_camera, void *data, 
 
 	return 0;
 }
+#endif
 
 int exynos_camera_capture(struct exynos_camera *exynos_camera)
 {
@@ -1547,6 +1668,7 @@ int exynos_camera_capture(struct exynos_camera *exynos_camera)
 	pointer = (void *) ((unsigned char *) exynos_camera->capture_memory->data + offset);
 
 	// Buffers
+#ifdef EXYNOS_S5C73M3
 
 	if (!exynos_camera->camera_fimc_is) {
 		yuv_length = jpeg_length = 0;
@@ -1655,6 +1777,7 @@ int exynos_camera_capture(struct exynos_camera *exynos_camera)
 			memcpy(buffer, &exynos_camera->picture_yuv_buffer, sizeof(struct exynos_camera_buffer));
 		}
 	} else {
+#endif
 		buffers_count = 1;
 		buffers = (struct exynos_camera_buffer *) calloc(buffers_count, sizeof(struct exynos_camera_buffer));
 
@@ -1671,7 +1794,9 @@ int exynos_camera_capture(struct exynos_camera *exynos_camera)
 			memcpy(&exynos_camera->picture_yuv_buffer, buffer, sizeof(struct exynos_camera_buffer));
 			exynos_camera_picture_thread_start(exynos_camera);
 		}
+#ifdef EXYNOS_S5C73M3
 	}
+#endif
 
 	// Preview
 	if (exynos_camera->preview_enabled) {
