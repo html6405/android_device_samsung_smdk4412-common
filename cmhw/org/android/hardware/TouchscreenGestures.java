@@ -15,11 +15,11 @@
  * limitations under the License.
  */
 
-package org.cyanogenmod.hardware;
+package org.android.hardware;
 
-import org.cyanogenmod.internal.util.FileUtils;
+import org.android.internal.util.FileUtils;
 
-import cyanogenmod.hardware.TouchscreenGesture;
+import android.hardware.TouchscreenGesture;
 
 /**
  * Touchscreen gestures API

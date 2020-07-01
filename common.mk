@@ -165,7 +165,7 @@ PRODUCT_COPY_FILES += \
 
 # Stylus gestures
 PRODUCT_PACKAGES += \
-    com.cyanogenmod.keyhandler
+    com.android.keyhandler
 
 # Graphics
 PRODUCT_PROPERTY_OVERRIDES += \
