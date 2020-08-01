@@ -619,30 +619,6 @@ static void fixupDataCallList(void *response, size_t responselen) {
 		p_cur[i].gateways = p_cur[i].addresses;
 }
 
-static void onCompleteQueryAvailableNetworks(RIL_Token t, RIL_Errno e, void *response, size_t responselen) {
-	/* Response is a char **, pointing to an array of char *'s */
-	size_t numStrings = responselen / sizeof(char *);
-	size_t newResponseLen = (numStrings - (numStrings / 3)) * sizeof(char *);
-
-	void *newResponse = malloc(newResponseLen);
-
-	/* Remove every 5th and 6th strings (qan elements) */
-	char **p_cur = (char **) response;
-	char **p_new = (char **) newResponse;
-	size_t i, j;
-	for (i = 0, j = 0; i < numStrings; i += 6) {
-		p_new[j++] = p_cur[i];
-		p_new[j++] = p_cur[i + 1];
-		p_new[j++] = p_cur[i + 2];
-		p_new[j++] = p_cur[i + 3];
-	}
-
-	/* Send the fixed response to libril */
-	rilEnv->OnRequestComplete(t, e, newResponse, newResponseLen);
-
-	free(newResponse);
-}
-
 #ifndef MDM9X35_MODEM
 static void fixupSignalStrength(void *response) {
 	int gsmSignalStrength;
@@ -752,14 +728,6 @@ static void onRequestCompleteShim(RIL_Token t, RIL_Errno e, void *response, size
 			if (response != NULL && responselen != 0 && (responselen % sizeof(RIL_Data_Call_Response_v6) == 0)) {
 				fixupDataCallList(response, responselen);
 				rilEnv->OnRequestComplete(t, e, response, responselen);
-				return;
-			}
-			break;
-		case RIL_REQUEST_QUERY_AVAILABLE_NETWORKS:
-			/* Remove the extra (unused) elements from the operator info, freaking out the framework.
-			 * Formerly, this is know as the mQANElements override. */
-			if (response != NULL && responselen != 0 && (responselen % sizeof(char *) == 0)) {
-				onCompleteQueryAvailableNetworks(t, e, response, responselen);
 				return;
 			}
 			break;
