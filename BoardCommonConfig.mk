@@ -18,7 +18,7 @@ DEVICE_PATH := device/samsung/smdk4412-common
 
 # Allow duplicate rules to override them
 BUILD_BROKEN_DUP_RULES := true
-BUILD_BROKEN_PHONY_TARGETS := true
+#BUILD_BROKEN_PHONY_TARGETS := true
 
 # This variable is set first, so it can be overridden
 # by BoardConfigVendor.mk
