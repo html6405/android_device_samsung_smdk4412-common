@@ -116,9 +116,6 @@ PRODUCT_PACKAGES += \
     libMali \
     libEGL_mali \
     gCam \
-    android.hardware.camera.provider@2.4-impl-legacy \
-    android.hardware.camera.provider@2.4-service \
-    camera.device@1.0-impl-legacy \
     android.hardware.sensors@1.0-impl \
     android.hardware.gnss@1.0-impl \
     android.hardware.gnss@1.0-service.exynos4 \
