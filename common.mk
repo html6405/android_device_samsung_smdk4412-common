@@ -278,7 +278,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_k.mk)
 $(call inherit-product, vendor/samsung/smdk4412-common/smdk4412-common-vendor.mk)
 
 # Include Lineage sepolicy for Exynos
-$(call inherit-product, device/fluid/sepolicy/exynos/sepolicy.mk)
+#$(call inherit-product, device/fluid/sepolicy/exynos/sepolicy.mk)
 
 
 # Art

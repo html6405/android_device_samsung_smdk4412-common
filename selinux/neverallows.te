@@ -17,7 +17,7 @@ allow radioreset system_file:file execute_no_trans;
 allow installd system_data_file:dir search;
 
 #============= perfprofd ==============
-allow perfprofd system_data_file:dir search;
+#allow perfprofd system_data_file:dir search;
 
 #============= rild ==============
 allow rild system_data_file:dir search;
