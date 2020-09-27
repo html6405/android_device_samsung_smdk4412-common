@@ -18,6 +18,9 @@ DEVICE_PATH := device/samsung/smdk4412-common
 
 # Allow duplicate rules to override them
 BUILD_BROKEN_DUP_RULES := true
+BUILD_BROKEN_USES_BUILD_COPY_HEADERS := true
+BUILD_BROKEN_USES_BUILD_HOST_STATIC_LIBRARY := true
+BUILD_BROKEN_USES_BUILD_HOST_EXECUTABLE := true
 #BUILD_BROKEN_PHONY_TARGETS := true
 
 # This variable is set first, so it can be overridden
