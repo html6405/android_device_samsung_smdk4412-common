@@ -58,6 +58,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
     wifi.supplicant_scan_interval=30 \
     net.tethering.noprovisioning=true
 
+# Disable traced and iorapd
+PRODUCT_PROPERTY_OVERRIDES += \
+	ro.iorapd.enable=false \
+	persist.traced.enable=0
+
 # RIL subscription workaround
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/restart_rild.sh:system/vendor/bin/restart_rild.sh \
