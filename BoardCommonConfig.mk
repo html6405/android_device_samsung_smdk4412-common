@@ -16,12 +16,21 @@
 
 DEVICE_PATH := device/samsung/smdk4412-common
 
-# Allow duplicate rules to override them
+# Misc hacks
 BUILD_BROKEN_DUP_RULES := true
 BUILD_BROKEN_USES_BUILD_COPY_HEADERS := true
 BUILD_BROKEN_USES_BUILD_HOST_STATIC_LIBRARY := true
 BUILD_BROKEN_USES_BUILD_HOST_EXECUTABLE := true
+TEMPORARY_DISABLE_PATH_RESTRICTIONS := true
+TARGET_OTA_ALLOW_NON_AB := true
 #BUILD_BROKEN_PHONY_TARGETS := true
+
+# HIDL
+DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/manifest.xml
+DEVICE_MATRIX_FILE := $(DEVICE_PATH)/compatibility_matrix.xml
+PRODUCT_VENDOR_MOVE_ENABLED := true
+BUILD_BROKEN_VINTF_PRODUCT_COPY_FILES := true
+PRODUCT_ENFORCE_VINTF_MANIFEST_OVERRIDE := true
 
 # This variable is set first, so it can be overridden
 # by BoardConfigVendor.mk

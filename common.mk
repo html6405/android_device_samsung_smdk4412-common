@@ -44,10 +44,6 @@ PRODUCT_COPY_FILES += \
     frameworks/av/services/audiopolicy/config/audio_policy_volumes.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_volumes.xml \
     frameworks/av/services/audiopolicy/config/default_volume_tables.xml:$(TARGET_COPY_OUT_VENDOR)/etc/default_volume_tables.xml
 
-# HIDL
-PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/manifest.xml:system/vendor/manifest.xml
-
 # Camera FW
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/80cfw:system/etc/init.d/80cfw
@@ -83,10 +79,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Trust HAL
 PRODUCT_PACKAGES += \
     vendor.lineage.trust@1.0-service
-
-# SamsungPowerHAL
-PRODUCT_PACKAGES += \
-    android.hardware.power@1.0-service.exynos4
 
 # Battery
 PRODUCT_PROPERTY_OVERRIDES += \
