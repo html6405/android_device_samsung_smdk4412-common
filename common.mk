@@ -133,6 +133,11 @@ PRODUCT_PACKAGES += \
     libsuspend-shim \
     libC
 
+# Health
+PRODUCT_PACKAGES += \
+    android.hardware.health@2.0-impl \
+    android.hardware.health@2.0-service
+
 # USB
 PRODUCT_PACKAGES += \
     android.hardware.usb@1.0-service.basic
