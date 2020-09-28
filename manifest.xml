@@ -156,6 +156,7 @@
             <instance>default</instance>
         </interface>
     </hal>
+<!--
     <hal format="hidl">
         <name>android.hardware.gnss</name>
         <transport>hwbinder</transport>
@@ -165,6 +166,7 @@
             <instance>default</instance>
         </interface>
     </hal>
+-->
     <hal format="hidl">
         <name>android.hardware.drm</name>
         <transport>hwbinder</transport>
