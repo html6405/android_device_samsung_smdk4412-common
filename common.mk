@@ -137,11 +137,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.usb@1.0-service.basic
 
-# Usb
-PRODUCT_PACKAGES += \
-	android.hardware.usb@1.0-impl \
-	android.hardware.usb@1.0-service
-
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/mediaserver.rc:system/etc/init/mediaserver.rc
 
