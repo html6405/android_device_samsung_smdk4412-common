@@ -165,6 +165,7 @@ PRODUCT_PACKAGES += \
     android.hardware.drm@1.0-service
 
 PRODUCT_PROPERTY_OVERRIDES += \
+    media.settings.xml=/system/etc/media_profiles.xml \
     debug.stagefright.ccodec=0 \
     media.stagefright.legacyencoder=true \
     media.stagefright.less-secure=true
