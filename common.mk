@@ -32,32 +32,6 @@ PRODUCT_COPY_FILES := \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/tweaks.rc:system/vendor/etc/init/tweaks.rc
 
-# Audio
-PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/configs/audio_effects.conf:system/etc/audio_effects.conf \
-    $(COMMON_PATH)/audio/silence.wav:system/etc/sound/silence.wav \
-    $(COMMON_PATH)/configs/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml \
-    $(COMMON_PATH)/configs/a2dp_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/a2dp_audio_policy_configuration.xml \
-    $(COMMON_PATH)/configs/usb_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/usb_audio_policy_configuration.xml
-
-PRODUCT_COPY_FILES += \
-    frameworks/av/services/audiopolicy/config/audio_policy_volumes.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_volumes.xml \
-    frameworks/av/services/audiopolicy/config/default_volume_tables.xml:$(TARGET_COPY_OUT_VENDOR)/etc/default_volume_tables.xml
-
-# Camera FW
-PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/configs/80cfw:system/etc/init.d/80cfw
-
-# Wifi
-PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/configs/wpa_supplicant_overlay.conf:system/vendor/etc/wifi/wpa_supplicant_overlay.conf \
-    $(COMMON_PATH)/configs/p2p_supplicant_overlay.conf:system/vendor/etc/wifi/p2p_supplicant_overlay.conf
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    wifi.interface=wlan0 \
-    wifi.supplicant_scan_interval=30 \
-    net.tethering.noprovisioning=true
-
 # Disable traced and iorapd
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.iorapd.enable=false \
@@ -75,7 +49,8 @@ PRODUCT_COPY_FILES += \
 
 # USB
 PRODUCT_PACKAGES += \
-    android.hardware.usb@1.0-service.basic
+    android.hardware.usb@1.0-service.basic \
+    com.android.future.usb.accessory
 
 # Use legacy ADB USB support
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -89,46 +64,80 @@ PRODUCT_PACKAGES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.config.small_battery=true
 
-# Packages
+# Light
 PRODUCT_PACKAGES += \
-    AdvancedDisplay \
-    android.hardware.light@2.0-service.samsung \
-    android.hardware.graphics.allocator@2.0-impl-exynos4 \
-    android.hardware.graphics.mapper@2.0-impl-exynos4 \
-    android.hardware.graphics.composer@2.1-impl \
+    android.hardware.light@2.0-service.samsung
+
+# Audio
+PRODUCT_PACKAGES += \
     android.hardware.audio@6.0-impl \
     android.hardware.audio.effect@6.0-impl \
     audio.a2dp.default \
     audio.primary.smdk4x12 \
     audio.r_submix.default \
     audio.usb.default \
-    android.hardware.keymaster@3.0-impl \
-    android.hardware.authsecret@1.0-service \
+    tinymix
+
+PRODUCT_COPY_FILES += \
+    $(COMMON_PATH)/configs/audio_effects.conf:system/etc/audio_effects.conf \
+    $(COMMON_PATH)/audio/silence.wav:system/etc/sound/silence.wav \
+    $(COMMON_PATH)/configs/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml \
+    $(COMMON_PATH)/configs/a2dp_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/a2dp_audio_policy_configuration.xml \
+    $(COMMON_PATH)/configs/usb_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/usb_audio_policy_configuration.xml
+
+PRODUCT_COPY_FILES += \
+    frameworks/av/services/audiopolicy/config/audio_policy_volumes.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_volumes.xml \
+    frameworks/av/services/audiopolicy/config/default_volume_tables.xml:$(TARGET_COPY_OUT_VENDOR)/etc/default_volume_tables.xml
+
+# Bluetooth
+PRODUCT_PACKAGES += \
     android.hardware.bluetooth@1.0-impl \
-    android.hardware.vibrator@1.0-impl \
-    libbt-vendor \
-    com.android.future.usb.accessory \
+    libbt-vendor
+
+# Graphics
+PRODUCT_PACKAGES += \
+    AdvancedDisplay \
+    android.hardware.graphics.allocator@2.0-impl-exynos4 \
+    android.hardware.graphics.mapper@2.0-impl-exynos4 \
+    android.hardware.graphics.composer@2.1-impl \
     hwcomposer.exynos4 \
     gralloc.exynos4 \
+    libUMP \
     libMali \
     libEGL_mali \
-    gCam \
+    libfimc \
+    libfimg \
+    libhwjpeg
+    libsecion \
+    libsync
+
+# Camera
+PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.5-impl \
     android.hardware.camera.provider@2.5-service \
     camera.device@1.0-impl \
-    android.hardware.sensors@1.0-impl \
-    libfimc \
-    libfimg \
-    libhwconverter \
-    libhwjpeg \
+    gCam
+
+PRODUCT_COPY_FILES += \
+    $(COMMON_PATH)/configs/80cfw:system/etc/init.d/80cfw
+
+# Sensors
+PRODUCT_PACKAGES += \
+    android.hardware.sensors@1.0-impl
+
+# Vibrator
+PRODUCT_PACKAGES += \
+    android.hardware.vibrator@1.0-impl
+
+# Keymaster
+PRODUCT_PACKAGES += \
+    android.hardware.keymaster@3.0-impl \
+    android.hardware.authsecret@1.0-service
+
+# Misc stuff
+PRODUCT_PACKAGES += \
     libnetcmdiface \
-    libsecion \
-    libsync \
-    libUMP \
-    macloader \
-    tinymix \
     libstagefright-shim \
-    libsuspend-shim \
     libC
 
 # Health
@@ -136,12 +145,10 @@ PRODUCT_PACKAGES += \
     android.hardware.health@2.0-impl \
     android.hardware.health@2.0-service
 
-# USB
+# DRM
 PRODUCT_PACKAGES += \
-    android.hardware.usb@1.0-service.basic
-
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/mediaserver.rc:system/etc/init/mediaserver.rc
+    android.hardware.drm@1.0-impl \
+    android.hardware.drm@1.0-service
 
 # MFC API
 PRODUCT_PACKAGES += \
@@ -150,6 +157,7 @@ PRODUCT_PACKAGES += \
 
 # OMX
 PRODUCT_PACKAGES += \
+    libhwconverter \
     libstagefrighthw \
     libSEC_OMX_Resourcemanager \
     libSEC_OMX_Core \
@@ -160,10 +168,8 @@ PRODUCT_PACKAGES += \
     libOMX.SEC.M4V.Encoder
 #   libOMX.SEC.VP8.Decoder
 
-# DRM
-PRODUCT_PACKAGES += \
-    android.hardware.drm@1.0-impl \
-    android.hardware.drm@1.0-service
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/mediaserver.rc:system/etc/init/mediaserver.rc
 
 PRODUCT_PROPERTY_OVERRIDES += \
     media.settings.xml=/system/etc/media_profiles.xml \
@@ -203,17 +209,26 @@ PRODUCT_PACKAGES += \
     VisualizationWallpapers \
     librs_jni
 
-
 # Wifi
 PRODUCT_PACKAGES += \
     android.hardware.wifi@1.0-service \
     android.hardware.wifi.supplicant@1.0 \
+    macloader \
     wificond \
     libwpa_client \
     hostapd \
     dhcpcd.conf \
     wpa_supplicant \
     wpa_supplicant.conf
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    wifi.interface=wlan0 \
+    wifi.supplicant_scan_interval=30 \
+    net.tethering.noprovisioning=true
+
+PRODUCT_COPY_FILES += \
+    $(COMMON_PATH)/configs/wpa_supplicant_overlay.conf:system/vendor/etc/wifi/wpa_supplicant_overlay.conf \
+    $(COMMON_PATH)/configs/p2p_supplicant_overlay.conf:system/vendor/etc/wifi/p2p_supplicant_overlay.conf
 
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
