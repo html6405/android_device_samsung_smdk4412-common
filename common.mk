@@ -107,7 +107,7 @@ PRODUCT_PACKAGES += \
     libEGL_mali \
     libfimc \
     libfimg \
-    libhwjpeg
+    libhwjpeg \
     libsecion \
     libsync
 
