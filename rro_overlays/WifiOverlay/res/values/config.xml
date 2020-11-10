@@ -26,4 +26,7 @@
          since more bands may now be supported (such as 6GHz), the naming dual_band
          is no longer indicative, and a separate config now exists for each band -->
     <bool translatable="false" name="config_wifi5ghzSupport">true</bool>
+
+    <!-- Enable WPA2 to WPA3 auto-upgrade -->
+    <bool translatable="false" name="config_wifiSaeUpgradeEnabled">false</bool>
 </resources>
