@@ -237,7 +237,8 @@ PRODUCT_COPY_FILES += \
 
 # Stylus gestures
 PRODUCT_PACKAGES += \
-    org.lineageos.keyhandler
+    com.lineageos.keyhandler \
+    vendor.lineage.touch@1.0-service.samsung
 
 # Graphics
 PRODUCT_PROPERTY_OVERRIDES += \

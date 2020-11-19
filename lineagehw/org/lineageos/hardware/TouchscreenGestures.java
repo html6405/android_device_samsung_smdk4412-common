@@ -15,11 +15,11 @@
  * limitations under the License.
  */
 
-package org.cyanogenmod.hardware;
+package org.lineageos.hardware;
 
-import org.cyanogenmod.internal.util.FileUtils;
+import org.lineageos.internal.util.FileUtils;
 
-import cyanogenmod.hardware.TouchscreenGesture;
+import lineageos.hardware.TouchscreenGesture;
 
 /**
  * Touchscreen gestures API
@@ -47,6 +47,7 @@ public class TouchscreenGestures {
         new TouchscreenGesture(2, "Swipe left stylus", 0x2f3),
         new TouchscreenGesture(3, "Swipe right stylus", 0x2f4),
         new TouchscreenGesture(4, "Long press stylus", 0x2f5),
+        new TouchscreenGesture(5, "Short press stylus", 0x2f6),
     };
 
     /**
