@@ -9,8 +9,9 @@ allow glgps system_data_file:dir { add_name remove_name write };
 allow glgps system_data_file:fifo_file { create getattr open read setattr unlink };
 #allow glgps system_data_file:file { lock open write };
 allow glgps gps_data_file:file { lock open write };
-allow glgps gps_data_file:fifo_file { getattr open read setattr unlink };
+allow glgps gps_data_file:fifo_file { getattr open read setattr unlink write };
 allow glgps system_file:file { execmod execute_no_trans };
+allow glgps vendor_file:file { entrypoint };
 
 permissive glgps;
 init_daemon_domain(glgps);

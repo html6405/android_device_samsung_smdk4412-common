@@ -1,1 +1,5 @@
 #allow storaged self:capability sys_nice;
+#allow storaged debugfs:file { open read open getattr };
+#allow storaged sysfs_cpuinfo:dir { search };
+#allow storaged sysfs_cpuinfo:file { read open getattr };
+#allow storaged sysfs:file { read open getattr };

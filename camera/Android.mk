@@ -14,8 +14,8 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-
-ifneq ($(filter i9300 i9305 n7100 t0lte t0lteatt t0ltetmo t0ltekor t0ltejpn i605 l900 r950,$(TARGET_DEVICE)),)
+ifneq ($(WITH_VENDOR_CAMERA),true)
+ifneq ($(filter i9300 i9305 n7100 t0lte t0lteatt t0ltetmo t0ltekor t0ltejpn i605 l900 r950 n8000 n8010 n8013 n8020,$(TARGET_DEVICE)),)
 
 LOCAL_PATH := $(call my-dir)
 
@@ -38,6 +38,12 @@ LOCAL_C_INCLUDES := \
 LOCAL_SHARED_LIBRARIES := libutils libcutils liblog libcamera_client libhardware
 LOCAL_PRELINK_MODULE := false
 
+ifneq ($(filter n8000 n8010 n8013 n8020 n80xx,$(TARGET_DEVICE)),)
+	LOCAL_CFLAGS += -DEXYNOS_ISX012
+else
+	LOCAL_CFLAGS += -DEXYNOS_S5C73M3
+endif
+
 ifeq ($(TARGET_SOC),exynos4x12)
 	LOCAL_SHARED_LIBRARIES += libhwjpeg
 	LOCAL_CFLAGS += -DEXYNOS_JPEG_HW
@@ -53,4 +59,5 @@ LOCAL_VENDOR_MODULE := true
 
 include $(BUILD_SHARED_LIBRARY)
 
+endif
 endif

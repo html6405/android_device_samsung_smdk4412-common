@@ -1,0 +1,2 @@
+#allow blank_screen init:binder { call };
+#allow blank_screen sysfs_cpuinfo:dir { search };

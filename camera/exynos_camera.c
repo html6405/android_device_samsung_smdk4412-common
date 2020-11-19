@@ -59,6 +59,7 @@ struct exynos_camera_mbus_resolution exynos_camera_mbus_resolutions_s5k6a3_smdk4
 	{ 320, 320,	1392, 1392 },
 };
 
+#ifdef EXYNOS_S5C73M3
 struct exynos_camera_videosnapshot_resolution exynos_camera_videosnapshot_resolutions_s5c73m3[] = {
 	//Capture Size - Snapshot Size
 	{ 1920, 1080,	3264, 1836 },
@@ -69,8 +70,21 @@ struct exynos_camera_videosnapshot_resolution exynos_camera_videosnapshot_resolu
 	{ 320, 240,	3264, 2488 },
 	{ 176, 144,	3264, 2488 },
 };
+#endif
+
+#ifdef EXYNOS_ISX012
+struct exynos_camera_videosnapshot_resolution exynos_camera_videosnapshot_resolutions_isx012[] = {
+	//Capture Size - Snapshot Size
+	{ 1920, 1080,	2560, 1920 },
+	{ 1280, 720,	2560, 1920 },
+	{ 1024, 768, 	2560, 1920 },
+	{ 640, 480,		2560, 1920 },
+	{ 320, 240,		2560, 1920 },
+};
+#endif
 
 struct exynos_camera_preset exynos_camera_presets_smdk4x12[] = {
+#ifdef EXYNOS_S5C73M3
 	{
 		.name = "S5C73M3",
 		.facing = CAMERA_FACING_BACK,
@@ -88,7 +102,7 @@ struct exynos_camera_preset exynos_camera_presets_smdk4x12[] = {
 		.params = {
 			.preview_size_values = "960x720,1280x720,640x480,352x288,320x240",
 			.preview_size = "960x720",
-                        .preview_video_size = "1280x720",
+			.preview_video_size = "1280x720",
 			.preview_format_values = "yuv420sp,rgb565",
 			.preview_format = "yuv420sp",
 			.preview_frame_rate_values = "30,20,15",
@@ -165,10 +179,112 @@ struct exynos_camera_preset exynos_camera_presets_smdk4x12[] = {
 		.videosnapshot_resolutions = (struct exynos_camera_videosnapshot_resolution *) &exynos_camera_videosnapshot_resolutions_s5c73m3,
 		.videosnapshot_resolutions_count = 7,
 	},
+#endif
+
+#ifdef EXYNOS_ISX012
+	{
+		.name = "ISX012",
+		.facing = CAMERA_FACING_BACK,
+		.orientation = 0,
+		.rotation = 0,
+		.hflip = 0,
+		.vflip = 0,
+		.capture_format = V4L2_PIX_FMT_NV21,
+		.picture_format = V4L2_PIX_FMT_YUYV,
+		.fimc_is = 0,
+		.focal_length = 3.43f,
+		.horizontal_view_angle = 59.6f,
+		.vertical_view_angle = 46.3f,
+		.metering = METERING_CENTER,
+		.params = {
+			.preview_size_values = "1280x720,1280x1024,1024x768",
+			.preview_size = "1280x720",
+			.preview_video_size = "1280x720",
+			.preview_format_values = "yuv420sp,yuv420p",
+			.preview_format = "yuv420sp",
+			.preview_frame_rate_values = "30,25,15,12,10,7",
+			.preview_frame_rate = 30,
+			.preview_fps_range_values = "(7000,30000)",
+			.preview_fps_range = "7000,30000",
+
+			.picture_size_values = "2560x1920,2560x1440,2048x1536,2048x1152,1600x1200,1536x864,960x720,640x480",
+			.picture_size = "2560x1920",
+			.picture_format_values = "jpeg",
+			.picture_format = "jpeg",
+			.jpeg_thumbnail_size_values = "160x120,0x0",
+			.jpeg_thumbnail_width = 160,
+			.jpeg_thumbnail_height = 120,
+			.jpeg_thumbnail_quality = 100,
+			.jpeg_quality = 90,
+
+			.video_snapshot_supported = 0,
+			.full_video_snap_supported = 0,
+
+			.recording_size = "1280x720",
+			.recording_size_values = "1280x720,1920x1080,720x480,640x480,352x288,320x240,176x144",
+			.recording_format = "yuv420sp",
+
+			.focus_mode = "auto",
+			.focus_mode_values = "auto,infinity,macro,fixed,continuous-picture,continuous-video",
+			.focus_distances = "0.15,1.20,Infinity",
+			.focus_areas = "(0,0,0,0,0)",
+			.max_num_focus_areas = 1,
+
+			.max_detected_faces = 7,
+
+            .zoom_supported = 0,
+            //.smooth_zoom_supported = 0,
+            //.zoom_ratios = "100,102,104,109,111,113,119,121,124,131,134,138,146,150,155,159,165,170,182,189,200,213,222,232,243,255,283,300,319,364,400",
+            //.zoom = 0,
+            //.max_zoom = 30,
+
+			.auto_exposure_lock_supported = 0,
+			.auto_exposure_lock = 0,
+
+			.auto_white_balance_lock_supported = 0,
+			.auto_white_balance_lock = 0,
+
+			.flash_mode = "off",
+			.flash_mode_values = "off,auto,on,torch",
+
+			.exposure_compensation = 0,
+			.exposure_compensation_step = 0.5,
+			.min_exposure_compensation = -4,
+			.max_exposure_compensation = 4,
+
+			.whitebalance = "auto",
+			.whitebalance_values = "auto,fluorescent,daylight,cloudy-daylight",
+
+			.antibanding = "50hz",
+			.antibanding_values = "50hz,off",
+
+			.scene_mode = "auto",
+			.scene_mode_values = "auto,portrait,landscape,night,beach,snow,sunset,fireworks,sports,party,candlelight,dusk-dawn,fall-color,text,back-light",
+
+			.effect = "none",
+			.effect_values = "none,mono,negative,sepia,sketch",
+
+			.iso = "auto",
+			.iso_values = "auto,ISO100,ISO200,ISO400,ISO800",
+
+			.image_stabilization = "off",
+			.image_stabilization_values = "on,off"
+		},
+		.mbus_resolutions = NULL,
+		.mbus_resolutions_count = 0,
+
+		.videosnapshot_resolutions = (struct exynos_camera_videosnapshot_resolution *) &exynos_camera_videosnapshot_resolutions_isx012,
+		.videosnapshot_resolutions_count = 5,
+	},
+#endif
 	{
 		.name = "S5K6A3",
 		.facing = CAMERA_FACING_FRONT,
+#ifdef EXYNOS_S5C73M3
 		.orientation = 270,
+#elif EXYNOS_ISX012
+		.orientation = 0,
+#endif
 		.rotation = 0,
 		.hflip = 0,
 		.vflip = 0,
@@ -1293,7 +1409,7 @@ int exynos_camera_params_apply(struct exynos_camera *exynos_camera, int force)
 }
 
 // Capture
-
+#ifdef EXYNOS_S5C73M3
 int s5c73m3_interleaved_decode(struct exynos_camera *exynos_camera, void *data, int size,
 	void *yuv_data, int *yuv_size, int yuv_width, int yuv_height,
 	void *jpeg_data, int *jpeg_size, int *decoded, int *auto_focus_result,
@@ -1479,6 +1595,7 @@ int s5c73m3_interleaved_decode(struct exynos_camera *exynos_camera, void *data, 
 
 	return 0;
 }
+#endif
 
 int exynos_camera_capture(struct exynos_camera *exynos_camera)
 {
@@ -1547,6 +1664,7 @@ int exynos_camera_capture(struct exynos_camera *exynos_camera)
 	pointer = (void *) ((unsigned char *) exynos_camera->capture_memory->data + offset);
 
 	// Buffers
+#ifdef EXYNOS_S5C73M3
 
 	if (!exynos_camera->camera_fimc_is) {
 		yuv_length = jpeg_length = 0;
@@ -1655,6 +1773,7 @@ int exynos_camera_capture(struct exynos_camera *exynos_camera)
 			memcpy(buffer, &exynos_camera->picture_yuv_buffer, sizeof(struct exynos_camera_buffer));
 		}
 	} else {
+#endif
 		buffers_count = 1;
 		buffers = (struct exynos_camera_buffer *) calloc(buffers_count, sizeof(struct exynos_camera_buffer));
 
@@ -1671,7 +1790,9 @@ int exynos_camera_capture(struct exynos_camera *exynos_camera)
 			memcpy(&exynos_camera->picture_yuv_buffer, buffer, sizeof(struct exynos_camera_buffer));
 			exynos_camera_picture_thread_start(exynos_camera);
 		}
+#ifdef EXYNOS_S5C73M3
 	}
+#endif
 
 	// Preview
 	if (exynos_camera->preview_enabled) {
@@ -3097,13 +3218,13 @@ void exynos_camera_recording_stop(struct exynos_camera *exynos_camera)
 
 // Auto-focus
 
-
+#ifdef EXYNOS_S5C73M3
 int exynos_camera_auto_focus(struct exynos_camera *exynos_camera, int auto_focus_status)
 {
 	if (exynos_camera == NULL)
 		return -EINVAL;
 
-//	ALOGD("%s()", __func__);
+    ALOGD("%s()", __func__);
 
 	switch (auto_focus_status) {
 		case CAMERA_AF_STATUS_SUCCESS:
@@ -3221,7 +3342,162 @@ void exynos_camera_auto_focus_stop(struct exynos_camera *exynos_camera)
 	}
 
 }
+#else
+int exynos_camera_auto_focus(struct exynos_camera *exynos_camera, int auto_focus_status)
+{
+	if (exynos_camera == NULL)
+		return -EINVAL;
 
+//	ALOGD("%s()", __func__);
+
+	switch (auto_focus_status) {
+	  case ISX012_AUTO_FOCUS_IN_PROGRESS:
+			break;
+
+	  case ISX012_AUTO_FOCUS_SUCCESS:
+			if (EXYNOS_CAMERA_MSG_ENABLED(CAMERA_MSG_FOCUS) && EXYNOS_CAMERA_CALLBACK_DEFINED(notify) && !exynos_camera->callback_lock)
+				exynos_camera->callbacks.notify(CAMERA_MSG_FOCUS, 1, 0, exynos_camera->callbacks.user);
+			break;
+
+	  case ISX012_AUTO_FOCUS_FAIL:
+		default:
+			if (EXYNOS_CAMERA_MSG_ENABLED(CAMERA_MSG_FOCUS) && EXYNOS_CAMERA_CALLBACK_DEFINED(notify) && !exynos_camera->callback_lock)
+				exynos_camera->callbacks.notify(CAMERA_MSG_FOCUS, 0, 0, exynos_camera->callbacks.user);
+			break;
+	}
+
+	return 0;
+}
+
+void *exynos_camera_auto_focus_thread(void *data)
+{
+	struct exynos_camera *exynos_camera;
+	int auto_focus_status = CAMERA_AF_STATUS_FAIL;
+	int auto_focus_completed = 0;
+	int rc;
+
+	if (data == NULL)
+		return NULL;
+
+	exynos_camera = (struct exynos_camera *) data;
+
+	ALOGE("%s: Starting thread", __func__);
+	exynos_camera->auto_focus_started = 1;
+
+	while (exynos_camera->auto_focus_enabled) {
+		pthread_mutex_lock(&exynos_camera->auto_focus_mutex);
+
+		rc = exynos_v4l2_g_ctrl(exynos_camera, 0, V4L2_CID_CAMERA_AUTO_FOCUS_RESULT, &auto_focus_status);
+		if (rc < 0) {
+			ALOGE("%s: Unable to get auto-focus result", __func__);
+			    auto_focus_status = CAMERA_AF_STATUS_FAIL;
+		}
+
+		rc = exynos_camera_auto_focus(exynos_camera, auto_focus_status);
+		if (rc < 0) {
+			ALOGE("%s: Unable to auto-focus", __func__);
+			     auto_focus_status = CAMERA_AF_STATUS_FAIL;
+		}
+		if (auto_focus_status == ISX012_AUTO_FOCUS_IN_PROGRESS || auto_focus_status == CAMERA_AF_STATUS_IN_PROGRESS)
+		        usleep(10000);
+		else
+			auto_focus_completed = 1;
+
+		pthread_mutex_unlock(&exynos_camera->auto_focus_mutex);
+
+		if (auto_focus_completed) {
+			exynos_camera->auto_focus_started = 0;
+			exynos_camera_auto_focus_thread_stop(exynos_camera);
+		}
+	}
+
+	exynos_camera->auto_focus_started = 0;
+	ALOGE("%s: Exiting thread", __func__);
+
+	return NULL;
+}
+
+int exynos_camera_auto_focus_thread_start(struct exynos_camera *exynos_camera)
+{
+	pthread_attr_t thread_attr;
+	int auto_focus;
+	int rc;
+
+	if (exynos_camera == NULL)
+		return -EINVAL;
+
+	ALOGD("%s()", __func__);
+
+	if (exynos_camera->auto_focus_enabled) {
+		ALOGE("Auto-focus thread was already started!");
+		return -1;
+	}
+
+	pthread_mutex_init(&exynos_camera->auto_focus_mutex, NULL);
+
+	rc = exynos_v4l2_s_ctrl(exynos_camera, 0, V4L2_CID_CAMERA_SET_AUTO_FOCUS, AUTO_FOCUS_ON);
+	if (rc < 0) {
+		ALOGE("%s: Unable to set auto-focus on", __func__);
+		goto error;
+	}
+
+	pthread_attr_init(&thread_attr);
+	pthread_attr_setdetachstate(&thread_attr, PTHREAD_CREATE_DETACHED);
+
+	exynos_camera->auto_focus_enabled = 1;
+
+	rc = pthread_create(&exynos_camera->auto_focus_thread, &thread_attr, exynos_camera_auto_focus_thread, (void *) exynos_camera);
+	if (rc < 0) {
+		ALOGE("%s: Unable to create thread", __func__);
+		goto error;
+	}
+
+	rc = 0;
+	goto complete;
+
+error:
+	pthread_mutex_destroy(&exynos_camera->auto_focus_mutex);
+
+	rc = -1;
+
+complete:
+	return rc;
+}
+
+void exynos_camera_auto_focus_thread_stop(struct exynos_camera *exynos_camera)
+{
+	int rc;
+	int i;
+
+	if (exynos_camera == NULL)
+		return;
+
+	ALOGD("%s()", __func__);
+
+	if (!exynos_camera->auto_focus_enabled) {
+		ALOGE("Auto-focus thread was already stopped!");
+		return;
+	}
+
+	exynos_camera->auto_focus_enabled = 0;
+
+	// Wait for the thread to end
+	i = 0;
+	while (exynos_camera->auto_focus_started) {
+		if (i++ > 10000) {
+			ALOGE("Auto-focus thread is taking too long to end, something is going wrong");
+			break;
+		}
+		usleep(100);
+	}
+
+	rc = exynos_v4l2_s_ctrl(exynos_camera, 0, V4L2_CID_CAMERA_SET_AUTO_FOCUS, AUTO_FOCUS_OFF);
+	if (rc < 0)
+		ALOGE("%s: Unable to set auto-focus off", __func__);
+
+	pthread_mutex_destroy(&exynos_camera->auto_focus_mutex);
+}
+#endif
 /*
  * Exynos Camera OPS
  */
@@ -3510,8 +3786,11 @@ int exynos_camera_start_auto_focus(struct camera_device *dev)
 		return -EINVAL;
 
 	exynos_camera = (struct exynos_camera *) dev->priv;
-
+#ifdef EXYNOS_S5C73M3
 	return exynos_camera_auto_focus_start(exynos_camera);
+#else
+	return exynos_camera_auto_focus_thread_start(exynos_camera);
+#endif
 }
 
 int exynos_camera_cancel_auto_focus(struct camera_device *dev)
@@ -3524,9 +3803,11 @@ int exynos_camera_cancel_auto_focus(struct camera_device *dev)
 		return -EINVAL;
 
 	exynos_camera = (struct exynos_camera *) dev->priv;
-
+#ifdef EXYNOS_S5C73M3
 	exynos_camera_auto_focus_stop(exynos_camera);
-
+#else
+	exynos_camera_auto_focus_thread_stop(exynos_camera);
+#endif
 	return 0;
 }
 

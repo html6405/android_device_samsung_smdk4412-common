@@ -1,0 +1,5 @@
+#allow sysinit firmware_exynos:dir { search read open getattr };
+#allow sysinit firmware_exynos:file { setattr getattr read open write };
+#allow sysinit sysfs_cpuinfo:file { read open getattr setattr };
+#allow sysinit sysfs_cpuinfo:dir { search getattr };
+#allow sysinit sysinit:capability { fowner fsetid dac_override chown };
