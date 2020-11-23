@@ -72,7 +72,10 @@ int exynos_ion_alloc(struct exynos_camera *exynos_camera, int size)
 
 	fd = exynos_camera->ion_fd;
 	if (fd < 0)
+	{
+	    ALOGE("%s: exynos_camera->ion_fd invalid!", __func__);
 		return -1;
+	}
 
 	memset(&alloc_data, 0, sizeof(alloc_data));
 	alloc_data.len = size;
@@ -81,21 +84,33 @@ int exynos_ion_alloc(struct exynos_camera *exynos_camera, int size)
 
 	rc = ioctl(fd, ION_IOC_ALLOC, &alloc_data);
 	if (rc < 0)
-		return -1;
+	{
+	    ALOGE("%s: ioctl(fd, ION_IOC_ALLOC,&alloc_data) returned invalid value!", __func__);
+	    return -1;
+	}
+
 
 	memset(&share_data, 0, sizeof(share_data));
 	share_data.handle = alloc_data.handle;
 
 	rc = ioctl(fd, ION_IOC_SHARE, &share_data);
 	if (rc < 0)
-		return -1;
+	{
+	    ALOGE("%s: octl(fd, ION_IOC_SHARE, &share_data) returned invalid value!", __func__);
+	    return -1;
+	}
+
 
 	memset(&free_data, 0, sizeof(free_data));
 	free_data.handle = alloc_data.handle;
 
 	rc = ioctl(fd, ION_IOC_FREE, &free_data);
 	if (rc < 0)
-		return -1;
+	{
+	    ALOGE("%s: ioctl(fd, ION_IOC_FREE, &free_data) returned invalid value!", __func__);
+	    return -1;
+	}
+
 
 	return share_data.fd;
 }
