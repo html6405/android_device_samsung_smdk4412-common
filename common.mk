@@ -84,6 +84,8 @@ PRODUCT_PACKAGES += \
     android.hardware.graphics.composer@2.1-impl \
     android.hardware.audio@2.0-impl \
     android.hardware.audio.effect@2.0-impl \
+    android.hardware.power@1.0-impl \
+    android.hardware.power@1.0-service \
     audio.a2dp.default \
     audio.primary.smdk4x12 \
     audio.r_submix.default \
