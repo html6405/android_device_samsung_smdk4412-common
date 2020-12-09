@@ -17,9 +17,9 @@
 # This variable is set first, so it can be overridden
 # by BoardConfigVendor.mk
 
-#RECOVERY_VARIANT := twrp
-#TW_THEME := landscape_mdpi
-#WITH_TWRP := true
+RECOVERY_VARIANT := twrp
+TW_THEME := landscape_mdpi
+WITH_TWRP := true
 #WITH_BUSYBOX := true
 #WITH_SU := true
 
