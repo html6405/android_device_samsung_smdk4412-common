@@ -29,41 +29,46 @@ public class KeyHandler implements DeviceKeyHandler {
     private static final int KEY_PEN_RTL = 0x2f3;
     private static final int KEY_PEN_LTR = 0x2f4;
     private static final int KEY_PEN_LP = 0x2f5;
+    private static final int KEY_PEN_SP = 0x2f6;
 
     private static final int[] ROTATION_0_MAP = {
-        KEY_PEN_DTU,
-        KEY_PEN_UTD,
-        KEY_PEN_RTL,
-        KEY_PEN_LTR,
-        KEY_PEN_LP,
+            KEY_PEN_DTU,
+            KEY_PEN_UTD,
+            KEY_PEN_RTL,
+            KEY_PEN_LTR,
+            KEY_PEN_LP,
+            KEY_PEN_SP,
     };
     private static final int[] ROTATION_90_MAP = {
-        KEY_PEN_RTL,
-        KEY_PEN_LTR,
-        KEY_PEN_UTD,
-        KEY_PEN_DTU,
-        KEY_PEN_LP,
+            KEY_PEN_RTL,
+            KEY_PEN_LTR,
+            KEY_PEN_UTD,
+            KEY_PEN_DTU,
+            KEY_PEN_LP,
+            KEY_PEN_SP,
     };
     private static final int[] ROTATION_180_MAP = {
-        KEY_PEN_UTD,
-        KEY_PEN_DTU,
-        KEY_PEN_LTR,
-        KEY_PEN_RTL,
-        KEY_PEN_LP,
+            KEY_PEN_UTD,
+            KEY_PEN_DTU,
+            KEY_PEN_LTR,
+            KEY_PEN_RTL,
+            KEY_PEN_LP,
+            KEY_PEN_SP,
     };
     private static final int[] ROTATION_270_MAP = {
-        KEY_PEN_LTR,
-        KEY_PEN_RTL,
-        KEY_PEN_DTU,
-        KEY_PEN_UTD,
-        KEY_PEN_LP,
+            KEY_PEN_LTR,
+            KEY_PEN_RTL,
+            KEY_PEN_DTU,
+            KEY_PEN_UTD,
+            KEY_PEN_LP,
+            KEY_PEN_SP,
     };
 
     private static final int[][] ROTATION_MAP = {
-        ROTATION_0_MAP,
-        ROTATION_90_MAP,
-        ROTATION_180_MAP,
-        ROTATION_270_MAP,
+            ROTATION_0_MAP,
+            ROTATION_90_MAP,
+            ROTATION_180_MAP,
+            ROTATION_270_MAP,
     };
 
     private final Context mContext;
