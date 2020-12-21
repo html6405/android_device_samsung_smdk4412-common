@@ -69,6 +69,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PACKAGES += \
     android.hardware.light@2.0-service.samsung
 
+# LiveDisplay
+PRODUCE_PACKAGES += \
+	vendor.lineage.livedisplay@2.0-service.samsung-exynos
+
 # Audio
 PRODUCT_PACKAGES += \
     android.hardware.audio@6.0-impl \
