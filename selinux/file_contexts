@@ -1,3 +1,7 @@
+# Dock
+/dev/ttySAC2                                                     u:object_r:dock_device:s0
+/system/vendor/bin/sec_keyboard                                         u:object_r:sec_keyboard_exec:s0
+
 # GFX
 /dev/mali                                                        u:object_r:gpu_device:s0
 /dev/ump                                                         u:object_r:gpu_device:s0
