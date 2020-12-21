@@ -43,7 +43,12 @@
 #define EXYNOS_CAMERA_CAPTURE_BUFFERS_COUNT	6
 #define EXYNOS_CAMERA_PREVIEW_BUFFERS_COUNT	6
 #define EXYNOS_CAMERA_RECORDING_BUFFERS_COUNT	6
+
+#ifdef EXYNOS_ISX012
 #define EXYNOS_CAMERA_GRALLOC_BUFFERS_COUNT	3
+#else
+#define EXYNOS_CAMERA_GRALLOC_BUFFERS_COUNT	3
+#endif
 
 #define EXYNOS_CAMERA_PICTURE_OUTPUT_FORMAT	V4L2_PIX_FMT_YUYV
 
@@ -52,6 +57,11 @@
 
 #define EXYNOS_CAMERA_ALIGN(value) ((value + (0x10000 - 1)) & ~(0x10000 - 1))
 
+#define ISX012_AUTO_FOCUS_IN_PROGRESS 0x8
+#define ISX012_AUTO_FOCUS_SUCCESS 0x2
+#define ISX012_AUTO_FOCUS_FAIL 0x1
+#define ISX012_AUTO_FOCUS_CANCELLED 0x04
+#define ISX012_AUTO_FOCUS_UNFOCUSED 0x00
 /*
  * Structures
  */
@@ -367,7 +377,8 @@ struct exynos_camera {
 
 	int auto_focus_enabled;
 	int auto_focus_started;
-
+    pthread_t auto_focus_thread;
+    pthread_mutex_t auto_focus_mutex;
 	// Camera params
 
 	int camera_rotation;
@@ -484,11 +495,15 @@ void exynos_camera_recording_stop(struct exynos_camera *exynos_camera);
 
 // Auto-focus
 int exynos_camera_auto_focus(struct exynos_camera *exynos_camera, int auto_focus_status);
+#ifdef EXYNOS_S5C73M3
 int exynos_camera_continuous_auto_focus(struct exynos_camera *exynos_camera, int auto_focus_status);
 int exynos_camera_auto_focus_start(struct exynos_camera *exynos_camera);
 void exynos_camera_auto_focus_finish(struct exynos_camera *exynos_camera);
 void exynos_camera_auto_focus_stop(struct exynos_camera *exynos_camera);
-
+#else
+int exynos_camera_auto_focus_thread_start(struct exynos_camera *exynos_camera);
+void exynos_camera_auto_focus_thread_stop(struct exynos_camera *exynos_camera);
+#endif
 /*
  * EXIF
  */
