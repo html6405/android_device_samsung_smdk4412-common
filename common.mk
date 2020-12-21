@@ -30,7 +30,8 @@ PRODUCT_COPY_FILES := \
 
 # init.d
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/tweaks.rc:system/vendor/etc/init/tweaks.rc
+    $(LOCAL_PATH)/configs/tweaks.rc:system/vendor/etc/init/tweaks.rc \
+    $(LOCAL_PATH)/configs/MagiskHide:system/vendor/etc/init/MagiskHide.rc
 
 # Disable traced and iorapd
 PRODUCT_PROPERTY_OVERRIDES += \
