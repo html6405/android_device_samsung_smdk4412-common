@@ -6,6 +6,7 @@
 /dev/mali                                                        u:object_r:gpu_device:s0
 /dev/ump                                                         u:object_r:gpu_device:s0
 /dev/fimg2d                                                      u:object_r:gpu_device:s0
+/sys/class/misc/gpu_clock_control(/.*)?                          u:object_r:gpu_device:s0
 
 # RIL
 /dev/link_pm                                                     u:object_r:radio_device:s0
