@@ -18,3 +18,4 @@ type sysfs_mmc, fs_type, sysfs_type;
 type display_vendor_data_file, file_type, data_file_type;
 type sysfs_boeffla, fs_type, sysfs_type;
 type sysfs_sec_touchkey, fs_type, sysfs_type;
+type sysfs_sec_led, fs_type, sysfs_type;

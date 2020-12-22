@@ -139,3 +139,4 @@
 /dev/stune(/.*)?						u:object_r:cgroup:s0
 
 /sys/devices/virtual/sec/sec_touchkey(/.*)?                   u:object_r:sysfs_sec_touchkey:s0
+/sys/devices/virtual/sec/led(/.*)?                            u:object_r:sysfs_sec_led:s0
