@@ -332,6 +332,7 @@ on post-fs-data
 # Thermistor node
     chown radio system /sys/devices/platform/sec-thermistor/temp_adc
     chown radio system /sys/devices/platform/sec-thermistor/temperature
+    chown radio system /sys/devices/platform/s5p-tmu/temperature
 
 # Permissions for touch
     chown system radio /sys/class/sec/tsp/cmd
