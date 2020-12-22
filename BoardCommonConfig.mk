@@ -32,6 +32,10 @@ PRODUCT_VENDOR_MOVE_ENABLED := true
 BUILD_BROKEN_VINTF_PRODUCT_COPY_FILES := true
 PRODUCT_ENFORCE_VINTF_MANIFEST_OVERRIDE := true
 
+
+# Memfd
+TARGET_HAS_MEMFD_BACKPORT := true
+
 # This variable is set first, so it can be overridden
 # by BoardConfigVendor.mk
 USE_CAMERA_STUB := false
