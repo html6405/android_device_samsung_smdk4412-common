@@ -27,8 +27,10 @@ allow init radioreset:process noatsecure;
 allow init app_data_file:dir { add_name getattr setattr write };
 allow init app_data_file:file { getattr open read setattr write };
 allow init mnt_user_file:lnk_file read;
-allow init sdcardfs:dir { add_name search };
+allow init sdcardfs:dir { add_name search write};
 allow init sdcardfs:file { create open write };
 allow init storage_file:lnk_file read;
+allow init kernel:security read_policy;
+allow init socket_device:sock_file { create setattr };
 
 domain_auto_trans(init, rootfs, cpboot-daemon, macloader, tinyplay)
