@@ -97,7 +97,8 @@
 /sys/devices/system/cpu(/.*)?						u:object_r:sysfs_devices_system_cpu:s0
 /sys/power/cpufreq_min_limit						u:object_r:sysfs_devices_system_cpu:s0
 /sys/power/cpufreq_max_limit						u:object_r:sysfs_devices_system_cpu:s0
-/sys/power/cpufreq_table						u:object_r:sysfs_devices_system_cpu:s0
+/sys/power/cpufreq_table						    u:object_r:sysfs_devices_system_cpu:s0
+/sys/devices/platform/s5p-tmu/temperature			u:object_r:sysfs_devices_system_cpu:s0
 
 # lmkd
 /sys/module/lowmemorykiller(/.*)?                                u:object_r:sysfs_lmkd:s0
