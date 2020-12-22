@@ -10,3 +10,4 @@ allow ueventd display_vendor_data_file:lnk_file relabelto;
 allow ueventd firmware_exynos:dir search;
 allow ueventd firmware_exynos:file { open read };
 allow ueventd firmware_exynos:file getattr;
+allow ueventd gpu_device:lnk_file relabelto;
