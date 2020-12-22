@@ -5,13 +5,11 @@ allow init debugfs:dir mounton;
 allow init sysfs_bluetooth_writable:file setattr;
 allow init sysfs_display:file { open setattr read write };
 allow init sysfs_radio:file setattr;
-#allow init system_file:file execute_no_trans;
 allow init proc:file { open write };
 allow init sysfs:file { open read setattr write };
 allow init sysfs_batteryinfo:file setattr;
 allow init su_exec:file { execute getattr open read };
 allow init sysfs_lmkd:file setattr;
-#allow init settings_service:service_manager find;
 allow init self:capability sys_nice;
 allow init sysfs:lnk_file setattr;
 allow init audio_device:chr_file { ioctl write };
@@ -25,4 +23,12 @@ allow init preload_device_file:dir mounton;
 allow init hwservicemanager:binder { call transfer };
 allow init sysfs_mmc:file { open setattr write };
 allow init display_vendor_data_file:lnk_file read;
+allow init radioreset:process noatsecure;
+allow init app_data_file:dir { add_name getattr setattr write };
+allow init app_data_file:file { getattr open read setattr write };
+allow init mnt_user_file:lnk_file read;
+allow init sdcardfs:dir { add_name search };
+allow init sdcardfs:file { create open write };
+allow init storage_file:lnk_file read;
+
 domain_auto_trans(init, rootfs, cpboot-daemon, macloader, tinyplay)
