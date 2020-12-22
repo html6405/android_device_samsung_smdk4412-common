@@ -23,3 +23,4 @@ unix_socket_connect(system_server, gps, gpsd)
 allow system_server gps_device:chr_file rw_file_perms;
 allow system_server init:binder call;
 allow system_server debugfs:file { getattr open read };
+allow system_server init:unix_stream_socket getopt;
