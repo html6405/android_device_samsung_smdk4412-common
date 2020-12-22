@@ -131,3 +131,7 @@
 # Boeffla
 /sys/devices/virtual/misc/boeffla_sound(/.*)?			u:object_r:sysfs_boeffla:s0
 /sys/class/misc/boeffla_sound(/.*)?				u:object_r:sysfs_boeffla:s0
+
+# cgroup
+/dev/cpuset(/.*)?						u:object_r:cgroup:s0
+/dev/stune(/.*)?						u:object_r:cgroup:s0
