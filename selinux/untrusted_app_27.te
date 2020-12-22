@@ -1,1 +1,3 @@
 allow untrusted_app_27 ion_device:chr_file write;
+allow untrusted_app_27 sysfs_boeffla:file { getattr open read write };
+allow untrusted_app_27 sysfs_boeffla:dir search;
