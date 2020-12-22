@@ -34,5 +34,6 @@ allow init sdcardfs:file { create open write };
 allow init storage_file:lnk_file read;
 allow init kernel:security read_policy;
 allow init socket_device:sock_file { create setattr };
+allow init sysfs_sec_touchkey:file setattr;
 
 domain_auto_trans(init, rootfs, cpboot-daemon, macloader, tinyplay)
