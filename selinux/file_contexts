@@ -135,3 +135,5 @@
 # cgroup
 /dev/cpuset(/.*)?						u:object_r:cgroup:s0
 /dev/stune(/.*)?						u:object_r:cgroup:s0
+
+/sys/devices/virtual/sec/sec_touchkey(/.*)?                   u:object_r:sysfs_sec_touchkey:s0
