@@ -60,6 +60,8 @@ LOCAL_SRC_FILES := \
 LOCAL_MODULE := charger_exynos4
 LOCAL_MODULE_TAGS := optional
 LOCAL_FORCE_STATIC_EXECUTABLE := true
+LOCAL_MODULE_PATH := $(TARGET_ROOT_OUT_SBIN)
+LOCAL_UNSTRIPPED_PATH := $(TARGET_ROOT_OUT_SBIN_UNSTRIPPED)
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/include
 
 LOCAL_CFLAGS := -Werror
@@ -72,7 +74,9 @@ CHARGER_STATIC_LIBRARIES := \
     android.hardware.health@2.0 \
     android.hardware.health@1.0 \
     android.hardware.health@1.0-convert \
+    libhidltransport \
     libhidlbase \
+    libhwbinder_noltopgo \
     libhealthstoragedefault \
     libvndksupport \
     libhealthd_charger_exynos4 \
@@ -99,9 +103,10 @@ ifeq ($(strip $(BOARD_CHARGER_ENABLE_SUSPEND)),true)
 LOCAL_STATIC_LIBRARIES += libsuspend
 endif
 
-#LOCAL_STATIC_LIBRARIES += libhealthd
+LOCAL_HAL_STATIC_LIBRARIES := libhealthd
 
 # Symlink /charger to /sbin/charger
-LOCAL_POST_INSTALL_CMD := $(hide) ln -sf /system/bin/charger_exynos4 /system/bin/charger
+LOCAL_POST_INSTALL_CMD := $(hide) mkdir -p $(TARGET_ROOT_OUT) \
+    && ln -sf /sbin/charger_exynos4 $(TARGET_ROOT_OUT)/charger
 
-#include $(BUILD_EXECUTABLE)
+include $(BUILD_EXECUTABLE)
