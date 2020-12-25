@@ -65,6 +65,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.config.small_battery=true
 
+# SamsungPowerHAL
+PRODUCT_PACKAGES += \
+    android.hardware.power@1.0-service.exynos4
+
 # Light
 PRODUCT_PACKAGES += \
     android.hardware.light@2.0-service.samsung
