@@ -46,8 +46,9 @@ static int gsmCid = -1;
 static bool onRequestSpoofUnsupportedRequest(int request, void *data, size_t datalen, RIL_Token t);
 static void onRequestDeviceIdentity(int request, RIL_Token t);
 
+static RIL_Dial dial;
+
 static void onRequestDial(int request, void *data, RIL_Token t) {
-	RIL_Dial dial;
 	RIL_UUS_Info uusInfo;
 
 	dial.address = ((RIL_Dial *) data)->address;
