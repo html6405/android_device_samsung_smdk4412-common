@@ -74,7 +74,7 @@ PRODUCT_PACKAGES += \
     android.hardware.light@2.0-service.samsung
 
 # LiveDisplay
-PRODUCE_PACKAGES += \
+PRODUCT_PACKAGES += \
 	vendor.lineage.livedisplay@2.0-service.samsung-exynos
 
 # Audio
