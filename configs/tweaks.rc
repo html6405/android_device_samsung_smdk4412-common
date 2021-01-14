@@ -102,3 +102,8 @@ on property:sys.boot_completed=1
 
     # Uncomment for a darker config
     #write /sys/devices/platform/s5p-dsim.0/s6e8aa0/backlight/panel/brightness_config 1
+
+    chown system system /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+
+    # CPU Frequency Governor
+        write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor pegasusq
