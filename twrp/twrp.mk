@@ -34,4 +34,3 @@ else
 TW_THEME := portrait_hdpi
 endif
 RECOVERY_GRAPHICS_USE_LINELENGTH := true
-TW_EXCLUDE_SUPERSU := true
