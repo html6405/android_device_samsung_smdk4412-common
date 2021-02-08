@@ -168,7 +168,7 @@ ifeq ($(WITH_TWRP),true)
 -include device/samsung/smdk4412-common/twrp/twrp.mk
 endif
 
-ifneq ($(TARGET_PRODUCT),lineage_n8020)
+ifneq ($(filter TARGET_PRODUCT, lineage_n8020 lineage_n5120),)
 # SELinux
 BOARD_SEPOLICY_DIRS += device/samsung/smdk4412-common/selinux
 endif
