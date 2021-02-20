@@ -71,7 +71,18 @@ struct exynos_camera_videosnapshot_resolution exynos_camera_videosnapshot_resolu
 	{ 176, 144,	3264, 2488 },
 };
 #endif
-
+#ifdef EXYNOS_SR130PC20
+struct exynos_camera_videosnapshot_resolution exynos_camera_videosnapshot_resolutions_sr130pc20[] = {
+	//Capture Size - Snapshot Size
+	{ 1920, 1080,	3264, 1836 },
+	{ 1280, 720,	3264, 1836 },
+	{ 720, 480,	3264, 2176 },
+	{ 640, 480,	3264, 2488 },
+	{ 352, 288,	3264, 2488 },
+	{ 320, 240,	3264, 2488 },
+	{ 176, 144,	3264, 2488 },
+};
+#endif
 #ifdef EXYNOS_ISX012
 struct exynos_camera_videosnapshot_resolution exynos_camera_videosnapshot_resolutions_isx012[] = {
 	//Capture Size - Snapshot Size
@@ -185,7 +196,11 @@ struct exynos_camera_preset exynos_camera_presets_smdk4x12[] = {
 	{
 		.name = "ISX012",
 		.facing = CAMERA_FACING_BACK,
+#ifdef EXYNOS_SR130PC20
+		.orientation = 90,
+#else
 		.orientation = 0,
+#endif
 		.rotation = 0,
 		.hflip = 0,
 		.vflip = 0,
@@ -277,6 +292,84 @@ struct exynos_camera_preset exynos_camera_presets_smdk4x12[] = {
 		.videosnapshot_resolutions_count = 5,
 	},
 #endif
+#ifdef EXYNOS_SR130PC20
+{
+		.name = "SR130PC20",
+		.facing = CAMERA_FACING_FRONT,
+		.orientation = 270,
+		.rotation = 0,
+		.hflip = 0,
+		.vflip = 0,
+		.capture_format = V4L2_PIX_FMT_NV21,
+		.picture_format = V4L2_PIX_FMT_YUYV,
+		.fimc_is = 1,
+		.focal_length = 2.17f,
+		.horizontal_view_angle = 54.7f,
+		.vertical_view_angle = 52.58f,
+		.metering = METERING_CENTER,
+		.params = {
+			.preview_size_values = "640x480,352x288,320x240",
+			.preview_size = "640x480",
+			.preview_format_values = "yuv420sp,yuv420p",
+			.preview_format = "yuv420sp",
+			.preview_frame_rate_values = "30,15",
+			.preview_frame_rate = 30,
+			.preview_fps_range_values = "(15000,30000)",
+			.preview_fps_range = "15000,30000",
+
+			.picture_size_values = "1280x960,640x480",
+			.picture_size = "1280x960",
+			.picture_format_values = "jpeg",
+			.picture_format = "jpeg",
+			.jpeg_thumbnail_size_values = "160x120,160x160,160x90,144x96",
+			.jpeg_thumbnail_width = 160,
+			.jpeg_thumbnail_height = 120,
+			.jpeg_thumbnail_quality = 100,
+			.jpeg_quality = 100,
+
+			.video_snapshot_supported = 0,
+			.full_video_snap_supported = 0,
+
+			.recording_size = "640x480",
+			.recording_size_values = "720x480,640x480",
+			.recording_format = "yuv420sp",
+
+			.focus_mode = "fixed",
+			.focus_mode_values = "infinity,fixed",
+			.focus_distances = "0.20,0.25,Infinity",
+			.focus_areas = NULL,
+			.max_num_focus_areas = 0,
+
+			.zoom_supported = 0,
+
+			.flash_mode = NULL,
+			.flash_mode_values = NULL,
+
+			.exposure_compensation = 0,
+			.exposure_compensation_step = 0.5,
+			.min_exposure_compensation = -4,
+			.max_exposure_compensation = 4,
+
+			.whitebalance = "auto",
+			.whitebalance_values = "auto,fluorescent,daylight,cloudy-daylight",
+
+			.antibanding = "50hz",
+			.antibanding_values = "50hz,off",
+
+			.scene_mode = "auto",
+			.scene_mode_values = "auto,portrait,landscape,night,beach,snow,sunset,fireworks,sports,party,candlelight,dusk-dawn,fall-color,text,back-light",
+
+			.effect = "none",
+			.effect_values = "none,mono,negative,sepia,solarize,sketch,pastel",
+
+			.iso = "auto",
+			.iso_values = "auto,ISO100,ISO200,ISO400,ISO800",
+		},
+		.mbus_resolutions = NULL,
+		.mbus_resolutions_count = 0,
+	},
+#endif
+#ifdef EXYNOS_S5K6A3
 	{
 		.name = "S5K6A3",
 		.facing = CAMERA_FACING_FRONT,
@@ -368,6 +461,7 @@ struct exynos_camera_preset exynos_camera_presets_smdk4x12[] = {
 		.mbus_resolutions = (struct exynos_camera_mbus_resolution *) &exynos_camera_mbus_resolutions_s5k6a3_smdk4x12,
 		.mbus_resolutions_count = 8,
 	},
+#endif
 };
 
 struct exynos_v4l2_node exynos_v4l2_nodes_smdk4x12[] = {
