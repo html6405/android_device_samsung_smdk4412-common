@@ -62,9 +62,6 @@
 /system/bin/tinyplay                                             u:object_r:tinyplay_exec:s0
 /system/bin/glgps                                                u:object_r:glgps_exec:s0
 /system/bin/restart_rild.sh                                      u:object_r:radioreset_exec:s0
-/system/bin/gpsd		                                         u:object_r:gpsd_exec:s0
-/system/bin/orientationd	                                     u:object_r:orientationd_exec:s0
-/system/bin/geomagneticd	                                     u:object_r:geomagneticd_exec:s0
 
 /dev/exynos-mem							 u:object_r:video_device:s0
 /data/ISP_CV							 u:object_r:camera_data_file:s0
