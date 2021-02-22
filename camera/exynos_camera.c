@@ -258,10 +258,14 @@ struct exynos_camera_preset exynos_camera_presets_smdk4x12[] = {
 
 			.auto_white_balance_lock_supported = 0,
 			.auto_white_balance_lock = 0,
+#ifndef EXYNOS_SR130PC20
 
 			.flash_mode = "off",
 			.flash_mode_values = "off,auto,on,torch",
-
+#else
+			.flash_mode = NULL,
+			.flash_mode_values = NULL,
+#endif
 			.exposure_compensation = 0,
 			.exposure_compensation_step = 0.5,
 			.min_exposure_compensation = -4,
