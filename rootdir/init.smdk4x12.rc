@@ -1,4 +1,4 @@
-﻿# Init for devices built on Samsung SMDK4412 platform
+# Init for devices built on Samsung SMDK4412 platform
 
 import /init.target.rc
 import /init.smdk4x12.usb.rc
@@ -590,6 +590,12 @@ service macloader /vendor/bin/macloader
     class late_start
     oneshot
     seclabel u:r:macloader:s0
+
+on property:ro.vendor.build.type=userdebug
+    # Give writes to anyone for the trace folder on userdebug builds.
+    # The folder is used to store method traces.
+    chmod 0773 /data/misc/trace
+    start console
 
 # Workaround for broken incall audio
 service bootsnd /system/bin/tinyplay /system/etc/sound/silence.wav -D 0 -d 0 -p 880
