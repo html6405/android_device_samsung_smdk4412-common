@@ -7,3 +7,4 @@ type mfc_device, dev_type;
 #type storaged, domain;
 type dock_device, dev_type;
 # type blank_screen, domain;
+type gps_device, dev_type;
