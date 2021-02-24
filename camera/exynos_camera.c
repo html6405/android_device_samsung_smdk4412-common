@@ -336,7 +336,7 @@ struct exynos_camera_preset exynos_camera_presets_smdk4x12[] = {
 			.full_video_snap_supported = 0,
 
 			.recording_size = "640x480",
-			.recording_size_values = "720x480,640x480",
+			.recording_size_values = "1280x720,720x480,640x480,352x288,320x320,320x240,176x144",
 			.recording_format = "yuv420sp",
 
 			.focus_mode = "fixed",
