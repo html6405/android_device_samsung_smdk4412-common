@@ -314,6 +314,7 @@ struct exynos_camera_preset exynos_camera_presets_smdk4x12[] = {
 		.params = {
 			.preview_size_values = "640x480,352x288,320x240",
 			.preview_size = "640x480",
+			.preview_video_size = "640x480",
 			.preview_format_values = "yuv420sp,yuv420p",
 			.preview_format = "yuv420sp",
 			.preview_frame_rate_values = "30,15",
