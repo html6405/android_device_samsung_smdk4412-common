@@ -4183,7 +4183,7 @@ int exynos_camera_open(const struct hw_module_t* module, const char *camera_id,
 
 	camera_device = calloc(1, sizeof(struct camera_device));
 	camera_device->common.tag = HARDWARE_DEVICE_TAG;
-	camera_device->common.version = 0;
+	camera_device->common.version = CAMERA_DEVICE_API_VERSION_1_0;
 	camera_device->common.module = (struct hw_module_t *) module;
 	camera_device->common.close = exynos_camera_close;
 
