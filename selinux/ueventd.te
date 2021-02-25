@@ -1,3 +1,6 @@
 allow ueventd sensors_device:chr_file { relabelfrom relabelto };
 allow ueventd sysfs_display:file { open write };
 allow ueventd wifi_firmware_file:file relabelto;
+allow ueventd firmware_exynos:dir search;
+allow ueventd firmware_exynos:file { open read };
+allow ueventd firmware_exynos:file getattr;
