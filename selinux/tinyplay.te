@@ -4,6 +4,7 @@ type tinyplay_exec, exec_type, file_type;
 allow tinyplay audio_device:chr_file { ioctl open read write };
 allow tinyplay sysfs_cpuinfo:dir search;
 allow tinyplay sysfs_cpuinfo:file { getattr open read };
-allow tinyplay audio_device:dir search;
+#allow tinyplay system_file:file entrypoint;
 
 init_daemon_domain(tinyplay);
+

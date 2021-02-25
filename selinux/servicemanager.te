@@ -1,3 +1,0 @@
-allow servicemanager rild:dir search;
-allow servicemanager rild:process getattr;
-allow servicemanager rild:file { open read };

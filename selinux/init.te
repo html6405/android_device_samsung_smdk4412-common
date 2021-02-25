@@ -5,6 +5,7 @@ allow init debugfs:dir mounton;
 allow init sysfs_bluetooth_writable:file setattr;
 allow init sysfs_display:file { open setattr write read };
 allow init sysfs_radio:file setattr;
+#allow init system_file:file execute_no_trans;
 allow init proc:file { open write };
 allow init sysfs:file { open read setattr write };
 allow init sysfs_batteryinfo:file setattr;
@@ -27,12 +28,5 @@ allow init gps_data_file:fifo_file { write };
 allow init hal_lineage_livedisplay_hwservice:hwservice_manager { add };
 allow init hal_light_hwservice:hwservice_manager { add };
 allow init hidl_base_hwservice:hwservice_manager { add };
-allow init radioreset:process noatsecure;
-allow init app_data_file:dir { add_name getattr setattr write };
-allow init app_data_file:file { getattr open read setattr write };
-allow init mnt_user_file:lnk_file read;
-allow init sdcardfs:dir { add_name search };
-allow init sdcardfs:file { create open write };
-allow init storage_file:lnk_file read;
 
 domain_auto_trans(init, rootfs, cpboot-daemon, macloader, tinyplay)
