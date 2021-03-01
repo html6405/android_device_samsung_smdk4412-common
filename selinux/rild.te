@@ -25,3 +25,5 @@ allow rild logdr_socket:sock_file write;
 allow rild system_data_file:dir { add_name open write };
 #allow rild system_data_file:file { append create getattr ioctl lock open read setattr write };
 allow rild system_file:file execute_no_trans;
+allow rild anr_data_file:dir search;
+allow rild anr_data_file:file { open read };
