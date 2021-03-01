@@ -25,3 +25,5 @@ allow system_server zygote:process { getpgid setsched };
 allow system_server proc:file { read open getattr };
 allow system_server gps_data_file:fifo_file { read write open setattr };
 allow system_server init:unix_stream_socket getopt;
+allow system_server radioreset:fd use;
+allow system_server radioreset:fifo_file write;
