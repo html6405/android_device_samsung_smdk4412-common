@@ -201,9 +201,6 @@ ifeq ($(WITH_TWRP),true)
 -include device/samsung/smdk4412-common/twrp/twrp.mk
 endif
 
-# SELinux
-BOARD_SEPOLICY_DIRS += device/samsung/smdk4412-common/selinux
-
 # Charging mode
 BOARD_BATTERY_DEVICE_NAME := "battery"
 BOARD_CHARGER_ENABLE_SUSPEND := true
