@@ -90,6 +90,10 @@
                     <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
                         samplingRates="44100" channelMasks="AUDIO_CHANNEL_OUT_STEREO"/>
                 </devicePort>
+                <devicePort tagName="Analog Dock" type="AUDIO_DEVICE_OUT_ANLG_DOCK_HEADSET" role="sink">
+                    <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
+                        samplingRates="44100" channelMasks="AUDIO_CHANNEL_OUT_STEREO"/>
+                </devicePort>
                 <devicePort tagName="BT SCO" type="AUDIO_DEVICE_OUT_BLUETOOTH_SCO" role="sink">
                     <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
                         samplingRates="8000,16000" channelMasks="AUDIO_CHANNEL_OUT_MONO"/>
@@ -133,6 +137,8 @@
                 <route type="mix" sink="Wired Headset"
                     sources="primary output,BT SCO Headset Mic,Telephony Rx"/>
                 <route type="mix" sink="Wired Headphones"
+                    sources="primary output,BT SCO Headset Mic,Telephony Rx"/>
+                <route type="mix" sink="Analog Dock"
                     sources="primary output,BT SCO Headset Mic,Telephony Rx"/>
                 <route type="mix" sink="primary input"
                     sources="Built-In Mic,Wired Headset Mic,BT SCO Headset Mic"/>
