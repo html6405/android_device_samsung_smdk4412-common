@@ -381,6 +381,7 @@ service p2p_supplicant /system/bin/wpa_supplicant \
     socket wpa_wlan0 dgram 660 wifi wifi
     disabled
     oneshot
+    seclabel u:r:hal_wifi_default:s0
 
 service wpa_supplicant /system/bin/wpa_supplicant \
     -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf \
