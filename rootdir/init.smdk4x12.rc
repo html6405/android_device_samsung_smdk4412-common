@@ -17,6 +17,9 @@ on fs
 
     mount_all /fstab.smdk4x12
 
+# Permissions for PowerHAL
+    chown system system /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+
 on charger
 # CPU Frequency Governor
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor powersave
