@@ -138,8 +138,6 @@
                     sources="primary output,BT SCO Headset Mic,Telephony Rx"/>
                 <route type="mix" sink="Wired Headphones"
                     sources="primary output,BT SCO Headset Mic,Telephony Rx"/>
-                <route type="mix" sink="Analog Dock"
-                    sources="primary output,BT SCO Headset Mic,Telephony Rx"/>
                 <route type="mix" sink="primary input"
                     sources="Built-In Mic,Wired Headset Mic,BT SCO Headset Mic"/>
                 <route type="mix" sink="Telephony Tx"
