@@ -15,7 +15,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-ifneq ($(filter i9300 i9305 n7100 t0lte t0lteatt t0ltetmo t0ltekor t0ltejpn i605 l900 r950 n8000 n8010 n8013 n8020,$(TARGET_DEVICE)),)
+ifneq ($(filter i9300 i9305 n7100 t0lte t0lteatt t0ltetmo t0ltekor t0ltejpn i605 l900 r950 n8000 n8010 n8013 n8020 n5110 n5100 n5120,$(TARGET_DEVICE)),)
 
 LOCAL_PATH := $(call my-dir)
 
@@ -38,10 +38,16 @@ LOCAL_C_INCLUDES := \
 LOCAL_SHARED_LIBRARIES := libutils libcutils liblog libcamera_client libhardware
 LOCAL_PRELINK_MODULE := false
 
-ifneq ($(filter n8000 n8010 n8013 n8020 n80xx,$(TARGET_DEVICE)),)
+ifneq ($(filter n8000 n8010 n8013 n8020 n5110 n5100 n5120,$(TARGET_DEVICE)),)
 	LOCAL_CFLAGS += -DEXYNOS_ISX012
 else
 	LOCAL_CFLAGS += -DEXYNOS_S5C73M3
+endif
+
+ifneq ($(filter n5110 n5100 n5120,$(TARGET_DEVICE)),)
+	LOCAL_CFLAGS += -DEXYNOS_SR130PC20
+else
+	LOCAL_CFLAGS += -DEXYNOS_S5K6A3
 endif
 
 ifeq ($(TARGET_SOC),exynos4x12)
