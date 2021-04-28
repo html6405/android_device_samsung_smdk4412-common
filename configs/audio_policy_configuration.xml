@@ -46,7 +46,8 @@
         <!-- Primary Audio HAL -->
         <module name="primary" halVersion="2.0">
             <attachedDevices>
-				<item>Earpiece</item>
+                <item>Built-In Back Mic</item>
+                <item>Earpiece</item>
                 <item>Speaker</item>
                 <item>Built-In Mic</item>
             </attachedDevices>
@@ -117,6 +118,11 @@
                              samplingRates="8000,11025,12000,16000,22050,24000,32000,44100,48000"
                              channelMasks="AUDIO_CHANNEL_IN_MONO,AUDIO_CHANNEL_IN_STEREO"/>
                 </devicePort>
+                <devicePort tagName="Built-In Back Mic" type="AUDIO_DEVICE_IN_BACK_MIC" role="source">
+                    <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
+                        samplingRates="8000,11025,12000,16000,22050,24000,32000,44100,48000"
+                        channelMasks="AUDIO_CHANNEL_IN_MONO,AUDIO_CHANNEL_IN_STEREO"/>
+                </devicePort>
                 <devicePort tagName="Wired Headset Mic" type="AUDIO_DEVICE_IN_WIRED_HEADSET" role="source">
                     <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
                              samplingRates="8000,11025,12000,16000,22050,24000,32000,44100,48000"
@@ -142,7 +148,7 @@
                 <route type="mix" sink="Wired Headphones"
                        sources="primary output,BT SCO Headset Mic,Telephony Rx"/>
                 <route type="mix" sink="primary input"
-                       sources="Built-In Mic,Wired Headset Mic,BT SCO Headset Mic"/>
+                       sources="Built-In Back Mic,Built-In Mic,Wired Headset Mic,BT SCO Headset Mic"/>
                 <route type="mix" sink="Telephony Tx"
                        sources="Built-In Mic,Wired Headset Mic,BT SCO Headset Mic,voice_tx"/>
                 <route type="mix" sink="voice_rx"
