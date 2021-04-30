@@ -175,6 +175,7 @@ WIFI_DRIVER_FW_PATH_AP           := "/system/etc/wifi/bcmdhd_apsta.bin"
 WIFI_DRIVER_FW_PATH_P2P          := "/system/etc/wifi/bcmdhd_p2p.bin"
 WIFI_BAND                        := 802_11_ABG
 BOARD_HAVE_SAMSUNG_WIFI          := true
+WIFI_HIDL_UNIFIED_SUPPLICANT_SERVICE_RC_ENTRY := true
 
 # Network Routing
 TARGET_NEEDS_NETD_DIRECT_CONNECT_RULE := true
