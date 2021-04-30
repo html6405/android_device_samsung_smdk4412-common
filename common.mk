@@ -69,7 +69,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # SamsungPowerHAL
 PRODUCT_PACKAGES += \
-    android.hardware.power@1.0-service.exynos4
+    android.hardware.power@1.0-service.exynos4412
 
 # Light
 PRODUCT_PACKAGES += \
