@@ -366,8 +366,8 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.lineage.build.vendor_security_patch=2015-11-05
 
-# Build with specific settings for Galaxys2-common
-$(call inherit-product, $(LOCAL_PATH)/go_smdk4412-common.mk)
+# Use go
+$(call inherit-product, $(LOCAL_PATH)/go_defaults.mk)
 
 # Apply Dalvik config for 1G phone
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
