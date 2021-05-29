@@ -262,6 +262,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.qti.sys.fw.trim_cache_percent=100 \
     ro.vendor.qti.sys.fw.empty_app_percent=25
 
+# Reduces GC frequency of foreground apps by 50%
+PRODUCT_PROPERTY_OVERRIDES += \
+    dalvik.vm.foreground-heap-growth-multiplier=2.0
+
 # Filesystem management tools
 PRODUCT_PACKAGES += \
     make_ext4fs \
