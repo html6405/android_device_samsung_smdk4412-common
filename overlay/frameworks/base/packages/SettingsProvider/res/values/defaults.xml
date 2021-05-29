@@ -18,7 +18,5 @@
 -->
 <resources>
     <bool name="def_screen_brightness_automatic_mode">true</bool>
-
-    <!-- Screen timeout default = 30 seconds -->
-    <integer name="def_screen_off_timeout">30000</integer>
+    <integer name="def_screen_off_timeout">90000</integer>
 </resources>
