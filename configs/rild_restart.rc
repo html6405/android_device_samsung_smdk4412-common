@@ -1,4 +1,4 @@
-service radioreset /system/vendor/bin/restart_rild.sh
+service radioreset /vendor/bin/restart_rild.sh
     class main
     oneshot
     disabled

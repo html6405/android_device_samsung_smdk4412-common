@@ -1,6 +1,6 @@
 # Dock
 /dev/ttySAC2                                                     u:object_r:dock_device:s0
-/system/vendor/bin/sec_keyboard                                         u:object_r:sec_keyboard_exec:s0
+/vendor/bin/sec_keyboard                                         u:object_r:sec_keyboard_exec:s0
 
 # GFX
 /dev/mali                                                        u:object_r:gpu_device:s0
@@ -60,7 +60,7 @@
 
 
 # Firmwares
-/system/vendor/firmware/mfc_fw.bin                               u:object_r:firmware_mfc:s0
+/vendor/firmware/mfc_fw.bin                               u:object_r:firmware_mfc:s0
 
 # Display
 /sys/devices/platform/s5p-dsim.0(/.*)?			u:object_r:display_vendor_data_file:s0
@@ -69,16 +69,16 @@
 
 # Executables
 /system/bin/cbd                                                  u:object_r:cpboot-daemon_exec:s0
-/system/vendor/bin/macloader                                     u:object_r:macloader_exec:s0
+/vendor/bin/macloader                                     u:object_r:macloader_exec:s0
 /system/bin/tinyplay                                             u:object_r:tinyplay_exec:s0
-/system/vendor/bin/restart_rild.sh                               u:object_r:radioreset_exec:s0
+/vendor/bin/restart_rild.sh                               u:object_r:radioreset_exec:s0
 
 /dev/exynos-mem							 u:object_r:video_device:s0
 /data/ISP_CV							 u:object_r:camera_data_file:s0
 
 # Firmware
-/system/vendor/firmware(/.*)?					 u:object_r:firmware_exynos:s0
-/system/vendor/firwmare/mfc_fw.bin				 u:object_r:firmware_mfc:s0
+/vendor/firmware(/.*)?					 u:object_r:firmware_exynos:s0
+/vendor/firwmare/mfc_fw.bin				 u:object_r:firmware_mfc:s0
 /data/cfw(/.*)?							 u:object_r:firmware_exynos:s0
 
 # Vendor

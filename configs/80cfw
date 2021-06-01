@@ -3,7 +3,7 @@
 # Copy camera firmware to /data/cfw
 #
 
-cp /system/vendor/firmware/SlimISP_*.bin /data/cfw/
+cp /vendor/firmware/SlimISP_*.bin /data/cfw/
 
 chown system /data/cfw/*
 chgrp media /data/cfw/*

@@ -30,8 +30,8 @@ PRODUCT_COPY_FILES := \
 
 # init.d
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/tweaks.rc:system/vendor/etc/init/tweaks.rc \
-    $(LOCAL_PATH)/configs/MagiskHide:system/vendor/etc/init/MagiskHide.rc
+    $(LOCAL_PATH)/configs/tweaks.rc:vendor/etc/init/tweaks.rc \
+    $(LOCAL_PATH)/configs/MagiskHide:vendor/etc/init/MagiskHide.rc
 
 # Disable traced and iorapd
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -40,8 +40,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # RIL subscription workaround
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/restart_rild.sh:system/vendor/bin/restart_rild.sh \
-    $(LOCAL_PATH)/configs/rild_restart.rc:system/vendor/etc/init/rild_restart.rc
+    $(LOCAL_PATH)/configs/restart_rild.sh:vendor/bin/restart_rild.sh \
+    $(LOCAL_PATH)/configs/rild_restart.rc:vendor/etc/init/rild_restart.rc
 
 ifneq ($(filter TARGET_PRODUCT, lineage_n8020 lineage_n5120),)
 # Gps
@@ -255,8 +255,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     net.tethering.noprovisioning=true
 
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/configs/wpa_supplicant_overlay.conf:system/vendor/etc/wifi/wpa_supplicant_overlay.conf \
-    $(COMMON_PATH)/configs/p2p_supplicant_overlay.conf:system/vendor/etc/wifi/p2p_supplicant_overlay.conf
+    $(COMMON_PATH)/configs/wpa_supplicant_overlay.conf:vendor/etc/wifi/wpa_supplicant_overlay.conf \
+    $(COMMON_PATH)/configs/p2p_supplicant_overlay.conf:vendor/etc/wifi/p2p_supplicant_overlay.conf
 
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
