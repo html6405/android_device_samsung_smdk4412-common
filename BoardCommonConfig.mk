@@ -77,18 +77,18 @@ BOARD_KERNEL_PAGESIZE := 2048
 LZMA_RAMDISK_TARGETS := recovery
 
 TARGET_PROCESS_SDK_VERSION_OVERRIDE += \
-    /system/vendor/bin/hw/rild=19
+    /vendor/bin/hw/rild=19
 
 TARGET_PROCESS_SDK_VERSION_OVERRIDE := \
     /vendor/bin/hw/rild=22 \
-    /system/vendor/lib/libsec-ril.so=22 \
+    /vendor/lib/libsec-ril.so=22 \
     /system/lib/libsecnativefeature.so=22 \
     /system/lib/libomission_avoidance.so=22 \
     /system/lib/libfactoryutil.so=22 \
-    /system/vendor/lib/libakm.so=22 \
-    /system/vendor/lib/libsecril-client.so=22 \
-    /system/vendor/lib/hw/gps.exynos4.vendor.so=22 \
-    /system/vendor/bin/glgps=22
+    /vendor/lib/libakm.so=22 \
+    /vendor/lib/libsecril-client.so=22 \
+    /vendor/lib/hw/gps.exynos4.vendor.so=22 \
+    /vendor/bin/glgps=22
 
 WITH_DEXPREOPT := true
 WITH_DEXPREOPT_BOOT_IMG_AND_SYSTEM_SERVER_ONLY := true
@@ -100,11 +100,15 @@ TARGET_FS_CONFIG_GEN := device/samsung/smdk4412-common/config.fs
 BOARD_BOOTIMAGE_PARTITION_SIZE := 8388608
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 16777216
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1610612736
+BOARD_VENDORIMAGE_PARTITION_SIZE := 587202560
+BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_USES_VENDORIMAGE := true
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 12381585408
 BOARD_FLASH_BLOCK_SIZE := 4096
 BOARD_ROOT_EXTRA_FOLDERS := efs misc preload
 BOARD_ROOT_EXTRA_SYMLINKS := /data/tombstones:/tombstones
 TARGET_USERIMAGES_USE_EXT4 := true
+TARGET_COPY_OUT_VENDOR := vendor
 
 TOP_PATH := $(realpath $(TOP))
 KERNEL_TOOLCHAIN := $(TOP_PATH)/prebuilts/gcc/$(HOST_OS)-x86/arm/arm-linux-androideabi-4.9/bin
@@ -223,3 +227,6 @@ BOARD_CHARGER_SHOW_PERCENTAGE := true
 
 DEXPREOPT_GENERATE_APEX_IMAGE := false
 DEXPREOPT_USE_APEX_IMAGE := false
+
+# Releasetools
+TARGET_RELEASETOOLS_EXTENSIONS := $(DEVICE_PATH)/releasetools
