@@ -206,6 +206,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/mediaserver.rc:system/etc/init/mediaserver.rc
 
+PRODUCT_COPY_FILES += \
+    $(COMMON_PATH)/configs/ld.config.vndk_lite.txt:/system/etc/ld.config.vndk_lite.txt
+
 PRODUCT_PROPERTY_OVERRIDES += \
     media.settings.xml=/system/etc/media_profiles.xml \
     debug.stagefright.ccodec=0 \
