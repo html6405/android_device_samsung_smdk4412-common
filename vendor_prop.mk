@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 PRODUCT_PROPERTY_OVERRIDES += \
-	rild.libpath=/system/lib/libsec-ril.so \
+	rild.libpath=/vendor/lib/libsec-ril.so \
 	rild.libargs="-d /dev/ttyS0" \
 	ro.sf.lcd_density=320 \
 	ro.lcd_min_brightness=20 \
