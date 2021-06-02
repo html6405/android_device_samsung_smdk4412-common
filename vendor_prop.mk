@@ -14,6 +14,7 @@
 # limitations under the License.
 #
 PRODUCT_PROPERTY_OVERRIDES += \
+	ro.treble.enabled=false \
 	rild.libpath=/vendor/lib/libsecril-shim.so \
 	ro.sf.lcd_density=320 \
 	ro.lcd_min_brightness=20 \
