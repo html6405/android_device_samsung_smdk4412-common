@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 PRODUCT_PROPERTY_OVERRIDES += \
-	rild.libpath=/vendor/lib/libsec-ril.so \
+	rild.libpath=/vendor/lib/libsecril-shim.so \
 	ro.sf.lcd_density=320 \
 	ro.lcd_min_brightness=20 \
 	ro.egl.destroy_after_detach=true \
