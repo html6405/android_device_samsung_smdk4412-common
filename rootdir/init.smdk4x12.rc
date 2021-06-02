@@ -564,7 +564,7 @@ service macloader /vendor/bin/macloader
     seclabel u:r:macloader:s0
 
 # Workaround for broken incall audio
-service bootsnd /system/bin/tinyplay /system/etc/sound/silence.wav -D 0 -d 0 -p 880
+service bootsnd /system/bin/tinyplay /vendor/etc/sound/silence.wav -D 0 -d 0 -p 880
     class late_start
     user root
     group audio
