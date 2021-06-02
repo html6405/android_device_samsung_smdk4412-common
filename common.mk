@@ -49,7 +49,7 @@ PRODUCT_COPY_FILES += \
 ifneq ($(filter TARGET_PRODUCT, lineage_n8020 lineage_n5120),)
 # Gps
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/configs/gps.conf:system/etc/gps.conf \
+    $(COMMON_PATH)/configs/gps.conf:vendor/etc/gps.conf \
     $(COMMON_PATH)/configs/gps_debug.conf:$(TARGET_COPY_OUT_SYSTEM)/etc/gps_debug.conf
 endif
 
@@ -98,7 +98,7 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.xml \
-    $(COMMON_PATH)/audio/silence.wav:system/etc/sound/silence.wav \
+    $(COMMON_PATH)/audio/silence.wav:vendor/etc/sound/silence.wav \
     $(COMMON_PATH)/configs/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml \
     $(COMMON_PATH)/configs/a2dp_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/a2dp_audio_policy_configuration.xml \
     $(COMMON_PATH)/configs/usb_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/usb_audio_policy_configuration.xml \
@@ -139,7 +139,7 @@ PRODUCT_PACKAGES += \
     gCam
 
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/configs/80cfw:system/etc/init.d/80cfw
+    $(COMMON_PATH)/configs/80cfw:vendor/etc/init.d/80cfw
 
 # Seccomp Policy
 PRODUCT_COPY_FILES += \
@@ -204,24 +204,24 @@ PRODUCT_PACKAGES += \
     libstdc++.vendor
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/mediaserver.rc:system/etc/init/mediaserver.rc
+    $(LOCAL_PATH)/configs/mediaserver.rc:vendor/etc/init/mediaserver.rc
 
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/configs/ld.config.vndk_lite.txt:/system/etc/ld.config.vndk_lite.txt
+    $(COMMON_PATH)/configs/ld.config.vndk_lite.txt:/vendor/etc/ld.config.vndk_lite.txt
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    media.settings.xml=/system/etc/media_profiles.xml \
+    media.settings.xml=/vendor/etc/media_profiles.xml \
     debug.stagefright.ccodec=0 \
     media.stagefright.legacyencoder=true \
     media.stagefright.less-secure=true
 
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/configs/media_profiles.xml:system/etc/media_profiles.xml \
-    $(COMMON_PATH)/configs/media_profiles.xml:system/etc/media_profiles_V1_0.xml \
-    $(COMMON_PATH)/configs/media_codecs.xml:system/etc/media_codecs.xml \
-    frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
-    frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
-    $(COMMON_PATH)/configs/media_codecs_google_video_le.xml:system/etc/media_codecs_google_video_le.xml
+    $(COMMON_PATH)/configs/media_profiles.xml:vendor/etc/media_profiles.xml \
+    $(COMMON_PATH)/configs/media_profiles.xml:vendor/etc/media_profiles_V1_0.xml \
+    $(COMMON_PATH)/configs/media_codecs.xml:vendor/etc/media_codecs.xml \
+    frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:vendor/etc/media_codecs_google_audio.xml \
+    frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:vendor/etc/media_codecs_google_telephony.xml \
+    $(COMMON_PATH)/configs/media_codecs_google_video_le.xml:vendor/etc/media_codecs_google_video_le.xml
 
 # Memory Optimizations
 PRODUCT_PROPERTY_OVERRIDES += \
