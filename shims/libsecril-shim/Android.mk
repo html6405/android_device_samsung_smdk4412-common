@@ -19,7 +19,10 @@ LOCAL_SHARED_LIBRARIES := \
 	libcutils \
 	libbinder
 
-LOCAL_C_INCLUDES += proto
+LOCAL_C_INCLUDES += \
+	proto	\
+	hardware/ril/include
+
 LOCAL_CFLAGS := -Wall -Werror -DPB_ENABLE_MALLOC -Wno-unused-parameter -DPB_FIELD_16BIT
 
 ifeq ($(BOARD_MODEM_TYPE),mdm9x35)
