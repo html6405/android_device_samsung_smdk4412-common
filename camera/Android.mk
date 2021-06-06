@@ -35,7 +35,7 @@ LOCAL_C_INCLUDES := \
 	system/media/camera/include \
 	hardware/samsung/exynos4/hal/include
 
-LOCAL_SHARED_LIBRARIES := libutils libcutils liblog libcamera_client libhardware
+LOCAL_SHARED_LIBRARIES := libutils libcutils liblog libhardware
 LOCAL_PRELINK_MODULE := false
 
 ifneq ($(filter n8000 n8010 n8013 n8020 n5110 n5100 n5120,$(TARGET_DEVICE)),)
