@@ -16,7 +16,7 @@
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.treble.enabled=true \
 	rild.libpath=/vendor/lib/libsecril-shim.so \
-	ro.sf.lcd_density=320 \
+	ro.sf.lcd_density=160 \
 	ro.lcd_min_brightness=20 \
 	ro.egl.destroy_after_detach=true \
 	debug.hwui.renderer=opengl
