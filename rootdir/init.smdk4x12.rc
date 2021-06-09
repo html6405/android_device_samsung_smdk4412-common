@@ -15,7 +15,7 @@ on fs
     setprop persist.adb.nonblocking_ffs 0
     setprop ro.adb.nonblocking_ffs 0
 
-    mount_all /fstab.smdk4x12
+    mount_all /vendor/etc/fstab.smdk4x12
 
 # Permissions for PowerHAL
     chown system system /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
