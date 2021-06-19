@@ -269,6 +269,9 @@ PRODUCT_COPY_FILES += \
 
 # Memory Optimizations
 PRODUCT_PROPERTY_OVERRIDES += \
+    ro.lmk.use_psi=false \
+    ro.lmk.critical=0 \
+    ro.lmk.low=950 \
     ro.vendor.qti.am.reschedule_service=true \
     ro.vendor.qti.sys.fw.use_trim_settings=true \
     ro.vendor.qti.sys.fw.trim_empty_percent=50 \
