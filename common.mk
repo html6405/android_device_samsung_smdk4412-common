@@ -205,7 +205,7 @@ PRODUCT_PACKAGES += \
     libstdc++.vendor
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/mediaserver.rc:vendor/etc/init/mediaserver.rc
+    $(LOCAL_PATH)/configs/mediaserver.rc:system/etc/init/mediaserver.rc
 
 
 PRODUCT_PROPERTY_OVERRIDES += \
