@@ -37,6 +37,13 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/tweaks.rc:vendor/etc/init/tweaks.rc \
     $(LOCAL_PATH)/configs/MagiskHide:vendor/etc/init/MagiskHide.rc
 
+
+# linkerconfig
+PRODUCT_COPY_FILES += \
+    $(COMMON_PATH)/prebuilt/linkerconfig:vendor/bin/linkerconfig \
+    $(COMMON_PATH)/prebuilt/libc.so:vendor/lib/bionic/libc.so \
+	$(LOCAL_PATH)/configs/fix_gsi.sh:vendor/fixgsi.sh
+
 # Disable traced and iorapd
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.iorapd.enable=false \
