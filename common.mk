@@ -54,6 +54,11 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/restart_rild.sh:vendor/bin/restart_rild.sh \
     $(LOCAL_PATH)/configs/rild_restart.rc:vendor/etc/init/rild_restart.rc
 
+# main route table fix
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/main_route_table.sh:vendor/bin/main_route_table.sh \
+    $(LOCAL_PATH)/configs/main_route_table.rc:vendor/etc/init/main_route_table.rc
+
 ifneq ($(filter TARGET_PRODUCT, lineage_n8020 lineage_n5120),)
 # Gps
 PRODUCT_COPY_FILES += \

@@ -1,0 +1,3 @@
+service main_route_table /vendor/bin/main_route_table.sh
+    class main
+    oneshot
