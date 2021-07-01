@@ -2,6 +2,7 @@
 
 import /vendor/etc/init/hw/init.target.rc
 import /vendor/etc/init/hw/init.smdk4x12.usb.rc
+import /vendor/etc/init/hw/init.trace.rc
 
 on init
 
