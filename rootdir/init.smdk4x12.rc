@@ -508,6 +508,7 @@ on boot
 
     setprop ro.build.product smdk4x12
     setprop ro.product.device smdk4x12
+    setprop rild.libargs "-d /dev/ttyS0"
     setprop wifi.interface wlan0
 
 # Wifi firmware reload path
