@@ -553,6 +553,14 @@ on property:sys.boot_completed=1
 on property:wlan.driver.status=unloaded
 	start macloader
 
+on property:wlan.driver.status=ok
+	start main_route_table
+
+service main_route_table /vendor/bin/main_route_table.sh
+    class main
+    oneshot
+    seclabel u:r:main_route_table:s0
+
 service charger /system/bin/charger
     class charger
     critical
