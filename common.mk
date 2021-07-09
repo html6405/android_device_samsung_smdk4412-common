@@ -344,6 +344,10 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     dalvik.vm.dex2oat-threads=1 \
     dalvik.vm.image-dex2oat-threads=1
 
+# Vendor security patch level
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.lineage.build.vendor_security_patch=2015-11-05
+
 # Build with specific settings for Galaxys2-common
 $(call inherit-product, $(LOCAL_PATH)/go_galaxys2-common.mk)
 
