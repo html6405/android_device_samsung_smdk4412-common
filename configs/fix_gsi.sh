@@ -8,7 +8,7 @@ chmod 755 /system/bin/linkerconfig
 
 chcon -v u:object_r:linkerconfig_exec:s0 /system/bin/linkerconfig
 
-ln -s /vendor/lib/egl egl
+ln -s /vendor/lib/egl /system/lib/egl
 
 rm /system/lib/libc.so
 cp /vendor/lib/bionic/libc.so /system/lib/libc.so
