@@ -44,6 +44,10 @@ PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/prebuilt/libc.so:vendor/lib/bionic/libc.so \
 	$(LOCAL_PATH)/configs/fix_gsi.sh:vendor/fixgsi.sh
 
+# parted binary
+PRODUCT_COPY_FILES += \
+    $(COMMON_PATH)/prebuilt/parted:vendor/bin/parted \
+
 # Disable traced and iorapd
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.iorapd.enable=false \
