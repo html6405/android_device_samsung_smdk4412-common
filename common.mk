@@ -175,8 +175,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.qti.sys.fw.trim_cache_percent=100 \
     ro.vendor.qti.sys.fw.empty_app_percent=25
 
-PRODUCT_PACKAGES += \
-    SamsungDoze
 
 # Filesystem management tools
 PRODUCT_PACKAGES += \
