@@ -62,12 +62,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/main_route_table.sh:vendor/bin/main_route_table.sh
 
-ifneq ($(filter TARGET_PRODUCT, lineage_n8020 lineage_n5120),)
 # Gps
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/configs/gps.conf:vendor/etc/gps.conf \
+    $(COMMON_PATH)/configs/gps.conf:$(TARGET_COPY_OUT_SYSTEM)/etc/gps.conf \
     $(COMMON_PATH)/configs/gps_debug.conf:$(TARGET_COPY_OUT_SYSTEM)/etc/gps_debug.conf
-endif
 
 # USB
 PRODUCT_PACKAGES += \
