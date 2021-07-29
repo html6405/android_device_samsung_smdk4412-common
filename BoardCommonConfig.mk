@@ -238,6 +238,9 @@ SELINUX_IGNORE_NEVERALLOWS := true
 # LPM Battery Percentage
 BOARD_CHARGER_SHOW_PERCENTAGE := true
 
+# Releasetools
+TARGET_RELEASETOOLS_EXTENSIONS := ./device/samsung/smdk4412-common
+
 # inherit from the proprietary version
 -include vendor/samsung/smdk4412-common-treble/BoardConfigVendor.mk
 
