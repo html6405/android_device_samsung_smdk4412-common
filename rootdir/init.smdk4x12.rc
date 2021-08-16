@@ -30,6 +30,9 @@ on charger
 
 on post-fs-data
 
+# Services
+    setprop init.svc.console stopped
+
 # data/log
     mkdir /data/log 0775 system log
     chown system log /data/log
