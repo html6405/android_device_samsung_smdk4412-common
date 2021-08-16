@@ -235,6 +235,10 @@ PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:vendor/etc/media_codecs_google_telephony.xml \
     $(COMMON_PATH)/configs/media_codecs_google_video_le.xml:vendor/etc/media_codecs_google_video_le.xml
 
+# GAPPS
+PRODUCT_COPY_FILES += \
+    $(COMMON_PATH)/configs/google.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sysconfig/google.xml
+
 # Memory Optimizations
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.qti.am.reschedule_service=true \
