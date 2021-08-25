@@ -1,0 +1,3 @@
+service param /vendor/bin/param.sh
+    class main
+    oneshot
