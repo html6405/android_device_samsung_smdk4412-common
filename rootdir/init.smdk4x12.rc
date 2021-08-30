@@ -317,6 +317,9 @@ on post-fs-data
     chown system system /sys/devices/system/cpu/cpufreq/pegasusq/hotplug_rq_3_1
     chown system system /sys/devices/system/cpu/cpufreq/pegasusq/hotplug_rq_4_0
 
+# Permissions for PowerHAL
+    chown system system /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+
 # Audio (Earjack)
     chown system radio /sys/class/audio/earjack/select_jack
     chown system radio /sys/class/audio/earjack/key_state
