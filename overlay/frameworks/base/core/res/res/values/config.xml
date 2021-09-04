@@ -306,6 +306,12 @@
          This should be turned off on low-end devices to improve animation performance. -->
     <bool name="config_supportsRoundedCornersOnWindows">false</bool>
 
+    <!-- Disable rounded corners -->
+    <dimen name="config_dialogCornerRadius">0.0dip</dimen>
+    <dimen name="config_buttonCornerRadius">0.0dip</dimen>
+    <dimen name="rounded_corner_radius">0dp</dimen>
+    <dimen name="config_progressBarCornerRadius">0.0dip</dimen>
+
     <!-- List of file paths for USB host busses to exclude from USB host support.
          For example, if the first USB bus on the device is used to communicate
          with the modem or some other restricted hardware, add "/dev/bus/usb/001/"
