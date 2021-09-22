@@ -154,6 +154,12 @@
                        sources="primary output,low_latency, BT SCO Headset Mic,Telephony Rx"/>
                 <route type="mix" sink="primary input"
                        sources="Built-In Back Mic,Built-In Mic,Wired Headset Mic,BT SCO Headset Mic"/>
+                <route type="mix" sink="BT SCO"
+                    sources="primary output,low_latency"/>
+                <route type="mix" sink="BT SCO Headset"
+                    sources="primary output,low_latency"/>
+                <route type="mix" sink="BT SCO Car Kit"
+                    sources="primary output,low_latency"/>
                 <route type="mix" sink="Telephony Tx"
                        sources="Built-In Mic,Wired Headset Mic,BT SCO Headset Mic,voice_tx"/>
                 <route type="mix" sink="voice_rx"
