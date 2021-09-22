@@ -178,6 +178,13 @@
         <item>0</item>
     </integer-array>
 
+    <!-- True if the device supports at least one form of multi-window.
+      E.g. freeform, split-screen, picture-in-picture. -->
+    <bool name="config_supportsMultiWindow">true</bool>
+
+    <!-- True if the device supports split screen as a form of multi-window. -->
+    <bool name="config_supportsSplitScreenMultiWindow">true</bool>
+
     <!-- Whether UI for multi user should be shown -->
     <bool name="config_enableMultiUserUI">true</bool>
 
