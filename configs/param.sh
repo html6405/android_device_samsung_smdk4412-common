@@ -21,7 +21,7 @@ if [ "$file_exists" = "0" ] ; then
   fi
 
   if [ "$param_file_exists" = "1" ] ; then
-    dd if=/system/vendor/param.lfs of=$PARAM_PATH
+    dd if=/vendor/param.lfs of=$PARAM_PATH
     touch /data/.param.info 0
     touch /data/param_restore.sh 0
     echo "#!/system/bin/sh
