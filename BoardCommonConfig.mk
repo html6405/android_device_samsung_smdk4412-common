@@ -211,7 +211,6 @@ endif
 
 # Charging mode
 BOARD_BATTERY_DEVICE_NAME := "battery"
-BOARD_CHARGER_ENABLE_SUSPEND := true
 WITH_LINEAGE_CHARGER := false
 RED_LED_PATH := /sys/class/leds/led_r/brightness
 GREEN_LED_PATH := /sys/class/leds/led_g/brightness
