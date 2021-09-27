@@ -65,12 +65,10 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/restart_rild.sh:system/vendor/bin/restart_rild.sh \
     $(LOCAL_PATH)/configs/rild_restart.rc:system/vendor/etc/init/rild_restart.rc
 
-ifneq ($(filter TARGET_PRODUCT, lineage_n8020 lineage_n5120),)
 # Gps
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/gps.conf:system/etc/gps.conf \
     $(COMMON_PATH)/configs/gps_debug.conf:$(TARGET_COPY_OUT_SYSTEM)/etc/gps_debug.conf
-endif
 
 # USB
 PRODUCT_PACKAGES += \
