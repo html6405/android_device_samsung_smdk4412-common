@@ -104,3 +104,4 @@
 # t0lte
 /dev/block/mmcblk0p10     0660   system     radio
 /dev/mdm                  0660   system     system
+/dev/alarm                0664   system     radio
