@@ -41,7 +41,7 @@ fi
 setup_vendor "$DEVICE_COMMON" "$VENDOR" "$LINEAGE_ROOT" true
 
 # Copyright headers and common guards
-write_headers "n80xx i9305 n7100 n8000 n8013 n8020 t0lte t0lteatt t0ltetmo t0ltekor t0ltejpn i605 l900 r950 i925 n5100 n5110 n5120"
+write_headers "i605 i925 i9300 i9305 l900 n5100 n5110 n5120 n7100 n8000 n8010 n8013 n8020 n80xx r950 t0lte t0lteatt t0ltejpn t0ltekor t0ltetmo"
 
 write_makefiles "$MY_DIR"/proprietary-files.txt
 
