@@ -96,7 +96,8 @@ TARGET_PROCESS_SDK_VERSION_OVERRIDE := \
     /vendor/bin/gpsd=22
 
 WITH_DEXPREOPT := true
-WITH_DEXPREOPT_BOOT_IMG_AND_SYSTEM_SERVER_ONLY := true
+USE_DEX2OAT_DEBUG := false
+WITH_DEXPREOPT_DEBUG_INFO := false
 
 # Filesystem
 TARGET_FS_CONFIG_GEN := device/samsung/smdk4412-common/config.fs
