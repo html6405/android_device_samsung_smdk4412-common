@@ -16,7 +16,9 @@
 
 COMMON_PATH := device/samsung/smdk4412-common
 
-DEVICE_PACKAGE_OVERLAYS := $(COMMON_PATH)/overlay
+DEVICE_PACKAGE_OVERLAYS := \
+    $(COMMON_PATH)/overlay \
+    $(COMMON_PATH)/overlay-lineage
 
 # Vendor properties
 -include $(LOCAL_PATH)/vendor_prop.mk
