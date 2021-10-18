@@ -249,7 +249,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
     media.settings.xml=/vendor/etc/media_profiles.xml \
     debug.stagefright.ccodec=0 \
     media.stagefright.legacyencoder=true \
-    media.stagefright.less-secure=true
+    media.stagefright.less-secure=true \
+    debug.stagefright.omx_default_rank.sw-audio=1 \
+    debug.stagefright.omx_default_rank=0 \
+    vendor.mediacodec.binder.size=4 \
+    media.stagefright.thumbnail.prefer_hw_codecs=true
 
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/media_profiles.xml:vendor/etc/media_profiles.xml \
