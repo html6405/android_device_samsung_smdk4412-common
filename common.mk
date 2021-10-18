@@ -396,8 +396,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Use go
 $(call inherit-product, $(LOCAL_PATH)/go_defaults.mk)
 
-# Apply Dalvik config for 1G phone
-$(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
+# Setup dalvik vm configs
+$(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
 
 # Include debugging props
 $(call inherit-product, device/samsung/smdk4412-common/system_prop_debug.mk)
