@@ -271,11 +271,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.lmk.critical=0 \
     ro.lmk.low=950 \
     ro.lmk.swap_free_low_percentage=15 \
-    ro.vendor.qti.am.reschedule_service=true \
-    ro.vendor.qti.sys.fw.use_trim_settings=true \
-    ro.vendor.qti.sys.fw.trim_empty_percent=50 \
-    ro.vendor.qti.sys.fw.trim_cache_percent=100 \
-    ro.vendor.qti.sys.fw.empty_app_percent=25 \
+    config.disable_atlas=true \
     ro.config.max_starting_bg=2
 
 # Reduces GC frequency of foreground apps by 50%
