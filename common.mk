@@ -58,11 +58,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/prebuilt/parted:vendor/bin/parted \
 
-# Enable iorapd
+# Disable iorapd
 PRODUCT_PROPERTY_OVERRIDES += \
-	ro.iorapd.enable=true \
-	iorapd.perfetto.enable=true \
-	iorapd.readahead.enable=true
+	ro.iorapd.enable=false
 
 # RIL subscription workaround
 PRODUCT_COPY_FILES += \
