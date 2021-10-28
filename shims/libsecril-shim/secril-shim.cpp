@@ -36,6 +36,8 @@ static int requestForIMEI = 0;
 static int requestForIMEISV = 0;
 
 /* Response data for RIL_REQUEST_GET_CELL_INFO_LIST */
+static int lteTac = -1;
+static int lteCi = -1;
 static int wcdmaLac = -1;
 static int wcdmaCid = -1;
 static int gsmLac = -1;
@@ -96,9 +98,18 @@ static void OnRequestGetCellInfoList(int request, void *data, size_t datalen, RI
 		requestToString(request),
 		data, datalen);
 
+    RIL_CellInfo_v12 CellInfoLte;
 	RIL_CellInfo_v12 cellInfoWCDMA;
 	RIL_CellInfo_v12 cellInfoGSM;
-	RIL_CellInfo_v12 cellInfoList[2];
+	RIL_CellInfo_v12 cellInfoList[3];
+
+	CellInfoLte.cellInfoType = RIL_CELL_INFO_TYPE_LTE;
+	CellInfoLte.CellInfo.lte.cellIdentityLte.mcc = -1;
+	CellInfoLte.CellInfo.lte.cellIdentityLte.mnc = -1;
+	CellInfoLte.CellInfo.lte.cellIdentityLte.ci = -1;
+	CellInfoLte.CellInfo.lte.cellIdentityLte.pci = -1;
+	CellInfoLte.CellInfo.lte.cellIdentityLte.tac = lteTac;
+	CellInfoLte.CellInfo.lte.cellIdentityLte.ci = lteCi;
 
 	cellInfoWCDMA.cellInfoType = RIL_CELL_INFO_TYPE_WCDMA;
 	cellInfoWCDMA.CellInfo.wcdma.cellIdentityWcdma.mcc = -1;
@@ -117,10 +128,16 @@ static void OnRequestGetCellInfoList(int request, void *data, size_t datalen, RI
 	    cellInfoGSM.CellInfo.gsm.cellIdentityGsm.cid > -1) {
 		cellInfoList[0] = cellInfoGSM;
 		cellInfoList[1] = cellInfoWCDMA;
+		cellInfoList[2] = CellInfoLte;
 		rilEnv->OnRequestComplete(t, RIL_E_SUCCESS, &cellInfoList, sizeof(cellInfoList));
-	} else {
+	} else if (cellInfoWCDMA.CellInfo.wcdma.cellIdentityWcdma.lac > -1 &&
+               	    cellInfoWCDMA.CellInfo.wcdma.cellIdentityWcdma.cid > -1)
+        {
 		rilEnv->OnRequestComplete(t, RIL_E_SUCCESS, &cellInfoWCDMA, sizeof(cellInfoWCDMA));
-	}
+	    }
+	else {
+		rilEnv->OnRequestComplete(t, RIL_E_SUCCESS, &CellInfoLte, sizeof(CellInfoLte));
+	    }
 }
 
 static void onRequestVoiceRadioTech(int request, void *data, size_t datalen, RIL_Token t) {
@@ -345,7 +362,7 @@ static bool onRequestGetRadioCapability(RIL_Token t)
 			RIL_RADIO_CAPABILITY_VERSION, /* version */
 			0, /* session */
 			RC_PHASE_CONFIGURED, /* phase */
-			RAF_GSM | RAF_GPRS | RAF_EDGE | RAF_HSUPA | RAF_HSDPA | RAF_HSPA | RAF_HSPAP | RAF_UMTS, /* rat */
+			RAF_GSM | RAF_GPRS | RAF_EDGE | RAF_HSUPA | RAF_HSDPA | RAF_HSPA | RAF_HSPAP | RAF_UMTS | RAF_LTE, /* rat */
 			{ /* logicalModemUuid */
 				0,
 			},
@@ -551,6 +568,20 @@ static void onRequestCompleteDataRegistrationState(RIL_Token t, RIL_Errno e, voi
 				wcdmaCid = atoi(resp[2]);
 				break;
 			}
+			case RIL_CELL_INFO_TYPE_LTE: {
+				RLOGI("%s: RIL_CELL_INFO_TYPE_LTE: tac:%s ci:%s \n",
+					__FUNCTION__,
+					resp[1],
+					resp[2]);
+				gsmLac = -1;
+				gsmCid = -1;
+				wcdmaLac = -1;
+                wcdmaCid = -1;
+				lteTac = atoi(resp[1]);
+				lteCi = atoi(resp[2]);
+
+				break;
+			}
 			default:
 				break;
 		}
@@ -631,16 +662,29 @@ static void fixupSignalStrength(void *response) {
 }
 #else
 static void fixupSignalStrength(void *response) {
-	int *resp;
+    int gsmSignalStrength;
+	int lteSignalStrength;
 
-	resp = reinterpret_cast<int*>(response);
+    RIL_SignalStrength_v10 *p_cur = ((RIL_SignalStrength_v10 *) response);
 
-        //gsm
-        resp[0] &= 0xff;
-        //cdma
-        resp[2] %= 256;
-        resp[4] %= 256;
-        resp[7] &= 0xff;
+    gsmSignalStrength = p_cur->GW_SignalStrength.signalStrength & 0xFF;
+    lteSignalStrength = p_cur->LTE_SignalStrength.signalStrength & 0xFF;
+
+	if (gsmSignalStrength < 0 ||
+		(gsmSignalStrength > 31 && p_cur->GW_SignalStrength.signalStrength != 99)) {
+		gsmSignalStrength = p_cur->CDMA_SignalStrength.dbm;
+	}
+
+    if (lteSignalStrength < 0 ||
+    	(lteSignalStrength > 31 && p_cur->LTE_SignalStrength.signalStrength != 99)) {
+    	lteSignalStrength = p_cur->LTE_SignalStrength.rsrp;
+    }
+
+	/* Fix GSM signal strength */
+	p_cur->GW_SignalStrength.signalStrength = gsmSignalStrength;
+
+    /* Fix LTE signal strength */
+    p_cur->LTE_SignalStrength.signalStrength = lteSignalStrength;
 }
 #endif
 
