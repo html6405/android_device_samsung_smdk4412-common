@@ -362,7 +362,11 @@ static bool onRequestGetRadioCapability(RIL_Token t)
 			RIL_RADIO_CAPABILITY_VERSION, /* version */
 			0, /* session */
 			RC_PHASE_CONFIGURED, /* phase */
+#ifndef MDM9X35_MODEM
+			RAF_GSM | RAF_GPRS | RAF_EDGE | RAF_HSUPA | RAF_HSDPA | RAF_HSPA | RAF_HSPAP | RAF_UMTS, /* rat */
+#else
 			RAF_GSM | RAF_GPRS | RAF_EDGE | RAF_HSUPA | RAF_HSDPA | RAF_HSPA | RAF_HSPAP | RAF_UMTS | RAF_LTE, /* rat */
+#endif
 			{ /* logicalModemUuid */
 				0,
 			},
