@@ -16,6 +16,9 @@
 
 DEVICE_PATH := device/samsung/smdk4412-common
 
+# Wifi
+WIFI_DRIVER_MODULE_PATH :=
+
 # Misc hacks
 BUILD_BROKEN_DUP_RULES := true
 BUILD_BROKEN_USES_BUILD_COPY_HEADERS := true
