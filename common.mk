@@ -75,6 +75,11 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/param.sh:vendor/bin/param.sh \
     $(LOCAL_PATH)/configs/param.rc:vendor/etc/init/param.rc
 
+# navbar switch
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/navbar.sh:vendor/bin/navbar.sh \
+    $(LOCAL_PATH)/configs/navbar.rc:vendor/etc/init/navbar.rc
+
 # Gps
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/gps.conf:$(TARGET_COPY_OUT_SYSTEM)/etc/gps.conf \
