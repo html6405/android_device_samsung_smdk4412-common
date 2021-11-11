@@ -40,25 +40,23 @@ do_reset_radio() {
   fi
 
   if [ "$resetValue" != "1" ] ; then
-    if [ "$simState" != "READY" ] ; then
-      sleep 10
-      stop ril-daemon
-      sleep 5
-      start ril-daemon
-      setprop gsm.resetcount $(( $resetCount + 1 ))
-    fi
-    sleep 10
-    simState=$(getprop gsm.sim_state)
-    if [ "$simState" != "READY" ] ; then
-      stop ril-daemon
-      sleep 5
-      start ril-daemon
-      setprop gsm.resetcount $(( $resetCount + 1 ))
-    fi
+    counter=1
+    while [ $counter -le 3 ]
+    do
+      simState=$(getprop gsm.sim_state)
+      if [ "$simState" != "READY" ] ; then
+        stop ril-daemon
+        sleep 5
+        start ril-daemon
+        sleep 10
+      fi
+      ((counter++))
+    done
+    setprop gsm.resetcount $(( $resetCount + 1 ))
     resetValue=0
   fi
-  setprop gsm.radioreset false
 
+  setprop gsm.radioreset false
 
 }
 
