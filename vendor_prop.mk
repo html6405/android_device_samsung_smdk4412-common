@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 PRODUCT_PROPERTY_OVERRIDES += \
-	ro.treble.enabled=true \
+	ro.treble.enabled=false \
 	ro.sf.lcd_density=160 \
 	ro.lcd_min_brightness=20 \
 	ro.egl.destroy_after_detach=true \
