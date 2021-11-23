@@ -31,9 +31,9 @@ do_reset_radio() {
     sleep 10
     subId=$(getprop gsm.subid)
     if [ "$subId" != "1" ] ; then
-      stop ril-daemon
+      stop vendor.ril-daemon
       sleep 5
-      start ril-daemon
+      start vendor.ril-daemon
       setprop gsm.resetcount $(( $resetCount + 1 ))
       resetValue=1
     fi
@@ -45,9 +45,9 @@ do_reset_radio() {
     do
       simState=$(getprop gsm.sim_state)
       if [ "$simState" != "READY" ] ; then
-        stop ril-daemon
+        stop vendor.ril-daemon
         sleep 5
-        start ril-daemon
+        start vendor.ril-daemon
         sleep 10
       fi
       ((counter++))
