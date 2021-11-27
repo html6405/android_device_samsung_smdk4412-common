@@ -283,6 +283,17 @@ PRODUCT_PACKAGES += \
     make_ext4fs \
     setup_fs
 
+# F2FS Filesystem
+PRODUCT_PACKAGES += \
+    fsck.f2fs \
+    mkfs.f2fs
+
+# NTFS Filesystem
+PRODUCT_PACKAGES += \
+    fsck.ntfs \
+    mkfs.ntfs \
+    mount.ntfs
+
 # Live Wallpapers
 PRODUCT_PACKAGES += \
     Galaxy4 \
