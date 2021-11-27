@@ -294,6 +294,12 @@ PRODUCT_PACKAGES += \
     mkfs.ntfs \
     mount.ntfs
 
+# Exfat Filesystem
+PRODUCT_PACKAGES += \
+    fsck.exfat \
+    mkfs.exfat \
+    mount.exfat
+
 # Live Wallpapers
 PRODUCT_PACKAGES += \
     Galaxy4 \
