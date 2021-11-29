@@ -67,10 +67,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/restart_rild.sh:vendor/bin/restart_rild.sh \
     $(LOCAL_PATH)/configs/rild_restart.rc:vendor/etc/init/rild_restart.rc
 
-# main route table fix
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/main_route_table.sh:vendor/bin/main_route_table.sh
-
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/param.sh:vendor/bin/param.sh \
     $(LOCAL_PATH)/configs/param.rc:vendor/etc/init/param.rc
