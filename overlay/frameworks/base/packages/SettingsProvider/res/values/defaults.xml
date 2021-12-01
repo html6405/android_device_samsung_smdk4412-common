@@ -19,7 +19,9 @@
 <resources>
     <bool name="def_bluetooth_on">false</bool>
     <bool name="def_screen_brightness_automatic_mode">true</bool>
-    <integer name="def_screen_off_timeout">90000</integer>
+
+    <!-- Screen timeout default = 30 seconds -->
+    <integer name="def_screen_off_timeout">30000</integer>
 
     <!-- Set animation disabled by default  -->
     <fraction name="def_window_animation_scale">0%</fraction>
