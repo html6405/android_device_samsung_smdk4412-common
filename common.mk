@@ -164,9 +164,9 @@ PRODUCT_PACKAGES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    android.hardware.camera.provider@2.5-impl \
-    android.hardware.camera.provider@2.5-service \
-    camera.device@1.0-impl \
+    android.hardware.camera.provider@2.4-impl-legacy \
+    android.hardware.camera.provider@2.4-service-lazy \
+    camera.device@1.0-impl-legacy \
     gCam
 
 PRODUCT_COPY_FILES += \
@@ -252,7 +252,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     debug.stagefright.omx_default_rank.sw-audio=1 \
     debug.stagefright.omx_default_rank=0 \
     vendor.mediacodec.binder.size=4 \
-    media.stagefright.thumbnail.prefer_hw_codecs=true
+    media.stagefright.thumbnail.prefer_hw_codecs=true \
+    ro.camera.enableLazyHal=true
 
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/media_profiles.xml:vendor/etc/media_profiles.xml \
