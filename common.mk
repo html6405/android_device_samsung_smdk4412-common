@@ -59,6 +59,11 @@ PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/prebuilt/parted:vendor/bin/parted \
 
 # Disable traced and iorapd
+# prebuild apps
+PRODUCT_PACKAGES += \
+	Via
+
+# Disable iorapd
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.iorapd.enable=false \
 	persist.traced.enable=0
