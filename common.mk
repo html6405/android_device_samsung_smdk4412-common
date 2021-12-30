@@ -398,9 +398,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_k.mk)
 # Include non-opensource parts
 $(call inherit-product, vendor/samsung/smdk4412-common-treble/smdk4412-common-vendor.mk)
 
-# Include Lineage sepolicy for Exynos
-$(call inherit-product, device/lineage/sepolicy/exynos/sepolicy.mk)
-
 # Art
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     dalvik.vm.dex2oat-threads=1 \
