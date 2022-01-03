@@ -18,4 +18,5 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	ro.sf.lcd_density=160 \
 	ro.lcd_min_brightness=20 \
 	ro.egl.destroy_after_detach=true \
-	debug.hwui.renderer=opengl
+	debug.hwui.renderer=opengl \
+	qemu.hw.mainkeys=0
