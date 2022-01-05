@@ -80,6 +80,10 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/navbar.sh:vendor/bin/navbar.sh \
     $(LOCAL_PATH)/configs/navbar.rc:vendor/etc/init/navbar.rc
 
+# VNDK
+PRODUCT_COPY_FILES += \
+    prebuilts/vndk/v29/arm/arch-arm-armv7-a-neon/shared/vndk-sp/libcutils.so:$(TARGET_COPY_OUT_VENDOR)/lib/libcutils-v29.so
+
 # Gps
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/gps.conf:$(TARGET_COPY_OUT_SYSTEM)/etc/gps.conf \
