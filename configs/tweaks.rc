@@ -45,7 +45,7 @@ on property:sys.boot_completed=1
 
     # zRAM
     write /proc/sys/vm/clean_min_kbytes 102400
-    write /proc/sys/vm/swappiness 100
+    write /proc/sys/vm/swappiness 60
 
     write /sys/module/leds_an30259a/parameters/led_switch 1
     setprop sys.power.cpufreq_max_limit 1200000
