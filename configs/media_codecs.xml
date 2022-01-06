@@ -83,9 +83,30 @@ Only the three quirks included above are recognized at this point:
         <Variant name="slow-cpu" enabled="true" />
     </Settings>
     <Decoders>
-        <MediaCodec name="OMX.SEC.MPEG4.Decoder" type="video/mp4v-es" />
-        <MediaCodec name="OMX.SEC.H263.Decoder" type="video/3gpp" />
-        <MediaCodec name="OMX.SEC.AVC.Decoder" type="video/avc" />
+        <MediaCodec name="OMX.SEC.MPEG4.Decoder" type="video/mp4v-es">
+            <!-- profiles and levels:  ProfileSimple : Level3 -->
+            <Limit name="size" min="2x2" max="352x288" />
+            <Limit name="alignment" value="2x2" />
+            <Limit name="block-size" value="16x16" />
+            <Limit name="blocks-per-second" range="12-11880" />
+            <Limit name="bitrate" range="1-384000" />
+        </MediaCodec>
+        <MediaCodec name="OMX.SEC.H263.Decoder" type="video/3gpp">
+            <!-- profiles and levels:  ProfileBaseline : Level30, ProfileBaseline : Level45
+                    ProfileISWV2 : Level30, ProfileISWV2 : Level45 -->
+            <Limit name="size" min="2x2" max="352x288" />
+            <Limit name="alignment" value="2x2" />
+            <Limit name="bitrate" range="1-384000" />
+        </MediaCodec>
+        <MediaCodec name="OMX.SEC.AVC.Decoder" type="video/avc">
+            <!-- profiles and levels:  ProfileHigh : Level51 -->
+            <Limit name="size" min="2x2" max="2048x2048" />
+            <Limit name="alignment" value="2x2" />
+            <Limit name="block-size" value="16x16" />
+            <Limit name="block-count" range="1-16384" />
+            <Limit name="blocks-per-second" range="1-491520" />
+            <Limit name="bitrate" range="1-40000000" />
+        </MediaCodec>
     </Decoders>
 
     <Encoders>
