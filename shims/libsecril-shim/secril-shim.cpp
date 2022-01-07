@@ -13,6 +13,7 @@ static const struct RIL_Env *rilEnv;
 
 /* Response data for RIL_REQUEST_VOICE_REGISTRATION_STATE */
 static const int VOICE_REGSTATE_SIZE = 15 * sizeof(char *);
+static char *voiceRegStateResponse[VOICE_REGSTATE_SIZE];
 
 /* Store voice radio technology */
 static int voiceRadioTechnology = -1;
@@ -521,8 +522,7 @@ static void onCompleteRequestGetSimStatus(RIL_Token t, RIL_Errno e, void *respon
 
 static void onRequestCompleteVoiceRegistrationState(RIL_Token t, RIL_Errno e, void *response, size_t responselen) {
 	char **resp = (char **) response;
-	char radioTechUmts = '3';
-	char *voiceRegStateResponse[VOICE_REGSTATE_SIZE];
+    char radioTechUmts = '3';
 	memset(voiceRegStateResponse, 0, VOICE_REGSTATE_SIZE);
 	for (int index = 0; index < (int)responselen; index++) {
 		voiceRegStateResponse[index] = resp[index];
