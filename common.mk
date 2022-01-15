@@ -234,6 +234,14 @@ PRODUCT_PACKAGES += \
     libsecmfcdecapi \
     libsecmfcencapi
 
+# Light
+PRODUCT_PACKAGES += \
+    android.hardware.light-service.samsung
+
+# VNDK
+PRODUCT_COPY_FILES += \
+    prebuilts/vndk/v30/arm/arch-arm-armv7-a-neon/shared/vndk-core/android.hardware.light-V1-ndk_platform.so:$(TARGET_COPY_OUT_VENDOR)/lib/android.hardware.light-V1-ndk_platform.so
+
 # OMX
 PRODUCT_PACKAGES += \
     libhwconverter \
