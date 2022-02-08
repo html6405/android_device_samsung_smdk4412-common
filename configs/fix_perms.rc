@@ -1,0 +1,3 @@
+service fix_perms /vendor/bin/fix_perms.sh
+    class main
+    oneshot
