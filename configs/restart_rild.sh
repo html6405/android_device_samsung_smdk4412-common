@@ -44,11 +44,10 @@ do_reset_radio() {
     while [ $counter -le 3 ]
     do
       simState=$(getprop gsm.sim_state)
-      if [ "$simState" != "READY" ] ; then
-        stop vendor.ril-daemon
-        sleep 5
-        start vendor.ril-daemon
-        sleep 10
+      if [ "$simState" != "LOADED" ] ; then
+      PID=$(ps -A | grep "qmuxd" | awk '{ print $2 }')
+      kill $PID
+      sleep 5
       fi
       ((counter++))
     done
