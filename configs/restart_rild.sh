@@ -44,7 +44,7 @@ do_reset_radio() {
     while [ $counter -le 3 ]
     do
       simState=$(getprop gsm.sim_state)
-      if [ "$simState" != "READY" ] ; then
+      if [ "$simState" != "LOADED" ] ; then
         stop ril-daemon
         sleep 5
         start ril-daemon
