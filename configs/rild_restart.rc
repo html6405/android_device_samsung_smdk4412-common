@@ -5,3 +5,6 @@ service radioreset /vendor/bin/restart_rild.sh
 
 on property:gsm.radioreset=true
     start radioreset
+
+on property:gsm.sim_state="UNKNOWN"
+  start radioreset
