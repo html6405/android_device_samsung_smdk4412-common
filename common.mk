@@ -35,24 +35,23 @@ PRODUCT_COPY_FILES += \
 
 # Init files
 PRODUCT_COPY_FILES := \
-    $(LOCAL_PATH)/rootdir/init.smdk4x12.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.smdk4x12.rc \
-    $(LOCAL_PATH)/rootdir/init.smdk4x12.usb.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.smdk4x12.usb.rc \
+    $(COMMON_PATH)/rootdir/init.smdk4x12.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.smdk4x12.rc \
+    $(COMMON_PATH)/rootdir/init.smdk4x12.usb.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.smdk4x12.usb.rc \
     $(COMMON_PATH)/rootdir/init.trace.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.trace.rc \
-    $(LOCAL_PATH)/rootdir/ueventd.smdk4x12.rc:$(TARGET_COPY_OUT_VENDOR)/ueventd.rc \
-    $(COMMON_PATH)/rootdir/ueventd.smdk4x12.rc:root/ueventd.smdk4x12.rc \
+    $(COMMON_PATH)/rootdir/ueventd.smdk4x12.rc:$(TARGET_COPY_OUT_VENDOR)/etc/ueventd.rc \
     $(COMMON_PATH)/rootdir/ueventd.smdk4x12.rc:recovery/root/ueventd.smdk4x12.rc
 
 # init.d
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/tweaks.rc:vendor/etc/init/tweaks.rc \
-    $(LOCAL_PATH)/configs/MagiskHide:vendor/etc/init/MagiskHide.rc
+    $(COMMON_PATH)/configs/tweaks.rc:vendor/etc/init/tweaks.rc \
+    $(COMMON_PATH)/configs/MagiskHide:vendor/etc/init/MagiskHide.rc
 
 
 # linkerconfig
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/prebuilt/linkerconfig:vendor/bin/linkerconfig \
     $(COMMON_PATH)/prebuilt/libc.so:vendor/lib/bionic/libc.so \
-	$(LOCAL_PATH)/configs/fix_gsi.sh:vendor/fixgsi.sh
+	$(COMMON_PATH)/configs/fix_gsi.sh:vendor/fixgsi.sh
 
 # parted binary
 PRODUCT_COPY_FILES += \
@@ -68,17 +67,17 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # RIL subscription workaround
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/restart_rild.sh:vendor/bin/restart_rild.sh \
-    $(LOCAL_PATH)/configs/rild_restart.rc:vendor/etc/init/rild_restart.rc
+    $(COMMON_PATH)/configs/restart_rild.sh:vendor/bin/restart_rild.sh \
+    $(COMMON_PATH)/configs/rild_restart.rc:vendor/etc/init/rild_restart.rc
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/param.sh:vendor/bin/param.sh \
-    $(LOCAL_PATH)/configs/param.rc:vendor/etc/init/param.rc
+    $(COMMON_PATH)/configs/param.sh:vendor/bin/param.sh \
+    $(COMMON_PATH)/configs/param.rc:vendor/etc/init/param.rc
 
 # navbar switch
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/navbar.sh:vendor/bin/navbar.sh \
-    $(LOCAL_PATH)/configs/navbar.rc:vendor/etc/init/navbar.rc
+    $(COMMON_PATH)/configs/navbar.sh:vendor/bin/navbar.sh \
+    $(COMMON_PATH)/configs/navbar.rc:vendor/etc/init/navbar.rc
 
 # VNDK
 PRODUCT_COPY_FILES += \
