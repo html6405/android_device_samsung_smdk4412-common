@@ -17,7 +17,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	ro.treble.enabled=false \
 	ro.lcd_min_brightness=20 \
 	ro.egl.destroy_after_detach=true \
-	qemu.hw.mainkeys=0 \
 	debug.hwui.renderer=opengl \
 	ro.hardware.egl=mali \
     debug.renderengine.backend=gles
