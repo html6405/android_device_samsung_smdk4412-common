@@ -50,9 +50,6 @@
 /dev/video23              0660   system     system
 /dev/video24              0660   system     system
 /dev/video25              0660   system     camera
-/dev/video26              0666   media      m2m
-/dev/video29              0666   media      m2m
-/dev/video32              0660   media      m2m
 
 /dev/video33              0660   system     system
 /dev/video34              0660   system     system
