@@ -125,6 +125,7 @@ BOARD_ROOT_EXTRA_SYMLINKS := /data/tombstones:/tombstones
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_COPY_OUT_VENDOR := vendor
 BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
+BOARD_NO_RECOVERY_PATCH := true
 
 TOP_PATH := $(realpath $(TOP))
 KERNEL_TOOLCHAIN := $(TOP_PATH)/prebuilts/gcc/$(HOST_OS)-x86/arm/arm-linux-androideabi-4.9/bin
