@@ -36,4 +36,6 @@
 //For TouchscreenGesture
 #define TOUCHSCREEN_GESTURE_NODE "/sys/class/sec/sec_epen/epen_gestures"
 
+#define FORCE_ENABLE 0
+
 #endif  // SAMSUNG_TOUCH_H
