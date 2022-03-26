@@ -41,6 +41,7 @@ do_reset_radio() {
 
   if [ "$resetValue" != "1" ] ; then
     counter=1
+    sleep 10
     while [ $counter -le 3 ]
     do
       simState=$(getprop gsm.sim_state)
