@@ -1,9 +1,5 @@
 # Init for devices built on Samsung SMDK4412 platform
 
-import /vendor/etc/init/hw/init.smdk4x12.usb.rc
-import /vendor/etc/init/hw/init.trace.rc
-import /vendor/etc/init/hw/init.target.rc
-
 on init
     # Support legacy paths
     symlink /sdcard /storage/sdcard0
@@ -601,3 +597,7 @@ service persistentLogging /system/bin/logcat -b all -r 1024 -n 9 -v threadTime -
 
 on property:persist.logcat.enabled=1
 	start persistentLogging
+
+import /vendor/etc/init/hw/init.smdk4x12.usb.rc
+import /vendor/etc/init/hw/init.trace.rc
+import /vendor/etc/init/hw/init.target.rc
