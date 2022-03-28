@@ -67,7 +67,7 @@ on property:sys.boot_completed=1
     #Speakers volume
     #This value increases/decreases volume of internal speakers. First value is left, second value is right channel.
     #-->min:0, max:63, steps:1
-    #write /sys/class/misc/boeffla_sound/speaker_volume "55 55"
+    write /sys/class/misc/boeffla_sound/speaker_volume "63 63"
 
     #Speakers tuning
     #This option enables the speaker tuning feature, which improves sound quality of internal speakers, by changing some equalizer settings (bass boost)
