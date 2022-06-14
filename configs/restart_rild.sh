@@ -27,33 +27,20 @@ do_reset_radio() {
   subId=$(getprop gsm.subid)
   simState=$(getprop gsm.sim_state)
 
-  if [ "$subId" != "1" ] ; then
-    sleep 10
-    subId=$(getprop gsm.subid)
-    if [ "$subId" != "1" ] ; then
-      stop vendor.ril-daemon
-      sleep 5
-      start vendor.ril-daemon
-      setprop gsm.resetcount $(( $resetCount + 1 ))
-      resetValue=1
-    fi
-  fi
-
-  if [ "$resetValue" != "1" ] ; then
-    counter=1
-    sleep 10
-    while [ $counter -le 3 ]
-    do
-      simState=$(getprop gsm.sim_state)
-      if [ "$simState" != "LOADED" ] ; then
-      PID=$(ps -A | grep "qmuxd" | awk '{ print $2 }')
-      kill $PID
-      sleep 5
-      fi
-      ((counter++))
-    done
+  sleep 30
+  simState=$(getprop gsm.sim_state)
+  if [ "$simState" != "LOADED" ] ; then
+    PID=$(ps -A | grep "rild" | awk '{ print $2 }')
+    kill $PID
+    sleep 5
     setprop gsm.resetcount $(( $resetCount + 1 ))
-    resetValue=0
+  fi
+  sleep 5
+  simState=$(getprop gsm.sim_state)
+  if [ "$simState" != "LOADED" ] ; then
+    PIDQ=$(ps -A | grep "qmuxd" | awk '{ print $2 }')
+    kill $PIDQ
+    sleep 5
   fi
 
   setprop gsm.radioreset false
