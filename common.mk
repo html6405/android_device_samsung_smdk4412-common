@@ -120,7 +120,7 @@ PRODUCT_PACKAGES += \
 	vendor.lineage.livedisplay@2.0-service.samsung-exynos
 
 # SamsungDoze
-PRODUCT_PACKAGES += \
+# PRODUCT_PACKAGES += \
     SamsungDoze
 
 # Audio
