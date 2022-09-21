@@ -381,6 +381,11 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.sip.voip.xml:vendor/etc/permissions/android.software.sip.voip.xml \
     frameworks/native/data/etc/android.software.sip.xml:vendor/etc/permissions/android.software.sip.xml
 
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/permissions/privapp-permissions-cellbroadcastappplatform.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/privapp-permissions-cellbroadcastappplatform.xml \
+    $(LOCAL_PATH)/configs/permissions/privapp-permissions-cellbroadcastservice.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-cellbroadcastservice.xml
+
 # Feature live wallpaper
 PRODUCT_COPY_FILES += \
     packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:vendor/etc/permissions/android.software.live_wallpaper.xml
