@@ -272,7 +272,7 @@ PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:vendor/etc/media_codecs_google_telephony.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_video_le.xml:vendor/etc/media_codecs_google_video_le.xml
 
-ifneq ($(PRODUCT_CHARACTERISTICS),tablet)
+ifeq ($(PRODUCT_CHARACTERISTICS),tablet)
 PRODUCT_COPY_FILES += \
 	$(COMMON_PATH)/configs/media_codecs_tablet.xml:vendor/etc/media_codecs.xml
 else
