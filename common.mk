@@ -344,7 +344,8 @@ PRODUCT_PACKAGES += \
     TetheringOverlay \
     wpa_supplicant \
     wpa_supplicant.conf \
-    android.hardware.wifi.supplicant-V1-ndk
+    android.hardware.wifi.supplicant-V1-ndk \
+    android.hardware.wifi.hostapd-V1-ndk
 
 # Bluetooth
 PRODUCT_COPY_FILES += \
