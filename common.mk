@@ -111,10 +111,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PACKAGES += \
     android.hardware.power@1.0-service.exynos4412
 
-# Light
-PRODUCT_PACKAGES += \
-    android.hardware.light@2.0-service.samsung
-
 # LiveDisplay
 PRODUCT_PACKAGES += \
 	vendor.lineage.livedisplay@2.0-service.samsung-exynos
@@ -127,7 +123,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.audio@7.0-impl \
     android.hardware.audio.effect@7.0-impl \
-    android.hardware.audio.effect@2.0-service \
     android.hardware.audio.service.exynos4 \
     android.hardware.bluetooth.audio@2.0-impl \
     audio.bluetooth.default \
@@ -174,7 +169,6 @@ PRODUCT_PACKAGES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    android.hardware.camera.provider@2.5-impl \
     android.hardware.camera.provider@2.5-service \
     camera.device@1.0-impl
 
@@ -208,7 +202,6 @@ PRODUCT_PACKAGES += \
 
 # Misc stuff
 PRODUCT_PACKAGES += \
-    libnetcmdiface \
     libstagefright-shim \
     mediaserver.rc \
     libC
@@ -304,15 +297,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.foreground-heap-growth-multiplier=2.0
 
-# Filesystem management tools
-PRODUCT_PACKAGES += \
-    make_ext4fs \
-    setup_fs
-
 # F2FS Filesystem
 PRODUCT_PACKAGES += \
-    fsck.f2fs \
-    mkfs.f2fs
+    fsck.f2fs
 
 # NTFS Filesystem
 PRODUCT_PACKAGES += \
@@ -323,19 +310,11 @@ PRODUCT_PACKAGES += \
 # Exfat Filesystem
 PRODUCT_PACKAGES += \
     fsck.exfat \
-    mkfs.exfat \
-    mount.exfat
+    mkfs.exfat
 
 # Live Wallpapers
 PRODUCT_PACKAGES += \
-    Galaxy4 \
-    HoloSpiralWallpaper \
-    LiveWallpapers \
     LiveWallpapersPicker \
-    MagicSmokeWallpapers \
-    NoiseField \
-    PhaseBeam \
-    VisualizationWallpapers \
     librs_jni
 
 # Wifi
@@ -346,7 +325,6 @@ PRODUCT_PACKAGES += \
     wificond \
     libwpa_client \
     hostapd \
-    dhcpcd.conf \
     WifiOverlay \
     TetheringOverlay \
     wpa_supplicant \
