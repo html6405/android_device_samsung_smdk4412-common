@@ -47,13 +47,6 @@ PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/tweaks.rc:vendor/etc/init/tweaks.rc \
     $(COMMON_PATH)/configs/MagiskHide:vendor/etc/init/MagiskHide.rc
 
-
-# linkerconfig
-PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/prebuilt/linkerconfig:vendor/bin/linkerconfig \
-    $(COMMON_PATH)/prebuilt/libc.so:vendor/lib/bionic/libc.so \
-	$(COMMON_PATH)/configs/fix_gsi.sh:vendor/fixgsi.sh
-
 # parted binary
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/prebuilt/parted:vendor/bin/parted \
