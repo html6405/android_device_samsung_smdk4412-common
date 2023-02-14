@@ -257,17 +257,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/media_profiles.xml:vendor/etc/media_profiles.xml \
     $(COMMON_PATH)/configs/media_profiles.xml:vendor/etc/media_profiles_V1_0.xml \
+    $(COMMON_PATH)/configs/media_codecs.xml:vendor/etc/media_codecs.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:vendor/etc/media_codecs_google_audio.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:vendor/etc/media_codecs_google_telephony.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_video_le.xml:vendor/etc/media_codecs_google_video_le.xml
-
-ifneq ($(PRODUCT_CHARACTERISTICS),tablet)
-PRODUCT_COPY_FILES += \
-	$(COMMON_PATH)/configs/media_codecs_tablet.xml:vendor/etc/media_codecs.xml
-else
-PRODUCT_COPY_FILES += \
-	$(COMMON_PATH)/configs/media_codecs.xml:vendor/etc/media_codecs.xml
-endif
 
 # GAPPS
 PRODUCT_COPY_FILES += \
