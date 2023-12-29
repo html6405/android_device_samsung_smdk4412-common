@@ -56,8 +56,7 @@ PRODUCT_COPY_FILES += \
 
 # prebuild apps
 PRODUCT_PACKAGES += \
-	AuroraStore \
-	Via
+	AuroraStore
 
 # Disable iorapd
 PRODUCT_PROPERTY_OVERRIDES += \
