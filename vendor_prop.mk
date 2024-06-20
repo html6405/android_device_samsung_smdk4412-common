@@ -36,4 +36,5 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	bluetooth.profile.pan.nap.enabled?=true \
 	bluetooth.profile.pan.panu.enabled?=true \
 	bluetooth.profile.pbap.server.enabled?=true \
-	bluetooth.profile.sap.server.enabled?=true
+	bluetooth.profile.sap.server.enabled?=true \
+	bluetooth.core.le.vendor_capabilities.enabled=false
