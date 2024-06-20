@@ -20,7 +20,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	debug.hwui.renderer=opengl \
 	ro.hardware.egl=mali \
     debug.renderengine.backend=gles \
-    ro.hwui.render_ahead=20
+    ro.hwui.render_ahead=20 \
+    persist.sys.sf.color_saturation=1.0
 
 PRODUCT_PROPERTY_OVERRIDES += \
 	bluetooth.device.class_of_device?=90,2,12 \
