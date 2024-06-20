@@ -19,7 +19,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	ro.egl.destroy_after_detach=true \
 	debug.hwui.renderer=opengl \
 	ro.hardware.egl=mali \
-    debug.renderengine.backend=gles
+    debug.renderengine.backend=gles \
+    ro.hwui.render_ahead=20
 
 PRODUCT_PROPERTY_OVERRIDES += \
 	bluetooth.device.class_of_device?=90,2,12 \
