@@ -3,8 +3,11 @@ service radioreset /vendor/bin/restart_rild.sh
     oneshot
     disabled
 
-on property:gsm.radioreset=true
+on property:gsm.sim.state=ABSENT
     start radioreset
 
-on property:gsm.sim_state="UNKNOWN"
+on property:gsm.sim.state="UNKNOWN"
   start radioreset
+
+on property:persist.radio.airplane_mode_on=1
+    start radioreset
