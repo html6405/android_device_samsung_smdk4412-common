@@ -16,6 +16,7 @@
 
 #define LOG_TAG "audiohalservice"
 
+#include <signal.h>
 #include <string>
 #include <vector>
 
@@ -45,13 +46,16 @@ static bool registerPassthroughServiceImplementations(Iter first, Iter last) {
 }
 
 int main(int /* argc */, char* /* argv */ []) {
-    ::android::ProcessState::initWithDriver("/dev/vndbinder");
-    // start a threadpool for vndbinder interactions
-    ::android::ProcessState::self()->startThreadPool();
+    signal(SIGPIPE, SIG_IGN);
+
+    if (::android::ProcessState::isVndservicemanagerEnabled()) {
+        ::android::ProcessState::initWithDriver("/dev/vndbinder");
+        ::android::ProcessState::self()->startThreadPool();
+    }
 
     const int32_t defaultValue = -1;
     int32_t value =
-        property_get_int32("persist.vendor.audio.service.hwbinder.size_kbyte", defaultValue);
+            property_get_int32("persist.vendor.audio.service.hwbinder.size_kbyte", defaultValue);
     if (value != defaultValue) {
         ALOGD("Configuring hwbinder with mmap size %d KBytes", value);
         ProcessState::initWithMmapSize(static_cast<size_t>(value) * 1024);
@@ -61,40 +65,44 @@ int main(int /* argc */, char* /* argv */ []) {
     // Automatic formatting tries to compact the lines, making them less readable
     // clang-format off
     const std::vector<InterfacesList> mandatoryInterfaces = {
-        {
-            "Audio Core API",
-            "android.hardware.audio@7.0::IDevicesFactory",
-            "android.hardware.audio@6.0::IDevicesFactory",
-            "android.hardware.audio@5.0::IDevicesFactory",
-            "android.hardware.audio@4.0::IDevicesFactory",
-        },
-        {
-            "Audio Effect API",
-            "android.hardware.audio.effect@7.0::IEffectsFactory",
-            "android.hardware.audio.effect@6.0::IEffectsFactory",
-            "android.hardware.audio.effect@5.0::IEffectsFactory",
-            "android.hardware.audio.effect@4.0::IEffectsFactory",
-        }
+            {
+                    "Audio Core API",
+                    "android.hardware.audio@7.1::IDevicesFactory",
+                    "android.hardware.audio@7.0::IDevicesFactory",
+                    "android.hardware.audio@6.0::IDevicesFactory",
+                    "android.hardware.audio@5.0::IDevicesFactory",
+                    "android.hardware.audio@4.0::IDevicesFactory",
+                    "android.hardware.audio@2.0::IDevicesFactory"
+            },
+            {
+                    "Audio Effect API",
+                    "android.hardware.audio.effect@7.0::IEffectsFactory",
+                    "android.hardware.audio.effect@6.0::IEffectsFactory",
+                    "android.hardware.audio.effect@5.0::IEffectsFactory",
+                    "android.hardware.audio.effect@4.0::IEffectsFactory",
+                    "android.hardware.audio.effect@2.0::IEffectsFactory",
+            }
     };
 
     const std::vector<InterfacesList> optionalInterfaces = {
-        {
-            "Soundtrigger API",
-            "android.hardware.soundtrigger@2.3::ISoundTriggerHw",
-            "android.hardware.soundtrigger@2.2::ISoundTriggerHw",
-            "android.hardware.soundtrigger@2.1::ISoundTriggerHw",
-            "android.hardware.soundtrigger@2.0::ISoundTriggerHw",
-        },
-        {
-            "Bluetooth Audio API",
-            "android.hardware.bluetooth.audio@2.1::IBluetoothAudioProvidersFactory",
-            "android.hardware.bluetooth.audio@2.0::IBluetoothAudioProvidersFactory",
-        },
-        // remove the old HIDL when Bluetooth Audio Hal V2 has offloading supported
-        {
-            "Bluetooth Audio Offload API",
-            "android.hardware.bluetooth.a2dp@1.0::IBluetoothAudioOffload"
-        }
+            {
+                    "Soundtrigger API",
+                    "android.hardware.soundtrigger@2.3::ISoundTriggerHw",
+                    "android.hardware.soundtrigger@2.2::ISoundTriggerHw",
+                    "android.hardware.soundtrigger@2.1::ISoundTriggerHw",
+                    "android.hardware.soundtrigger@2.0::ISoundTriggerHw",
+            },
+            {
+                    "Bluetooth Audio API",
+                    "android.hardware.bluetooth.audio@2.2::IBluetoothAudioProvidersFactory",
+                    "android.hardware.bluetooth.audio@2.1::IBluetoothAudioProvidersFactory",
+                    "android.hardware.bluetooth.audio@2.0::IBluetoothAudioProvidersFactory",
+            },
+            // remove the old HIDL when Bluetooth Audio Hal V2 has offloading supported
+            {
+                    "Bluetooth Audio Offload API",
+                    "android.hardware.bluetooth.a2dp@1.0::IBluetoothAudioOffload"
+            }
     };
     // clang-format on
 
