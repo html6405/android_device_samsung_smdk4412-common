@@ -71,11 +71,6 @@ PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/param.sh:vendor/bin/param.sh \
     $(COMMON_PATH)/configs/param.rc:vendor/etc/init/param.rc
 
-# navbar switch
-PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/configs/navbar.sh:vendor/bin/navbar.sh \
-    $(COMMON_PATH)/configs/navbar.rc:vendor/etc/init/navbar.rc
-
 # VNDK
 PRODUCT_COPY_FILES += \
     prebuilts/vndk/v29/arm/arch-arm-armv7-a-neon/shared/vndk-sp/libcutils.so:$(TARGET_COPY_OUT_VENDOR)/lib/libcutils-v29.so
