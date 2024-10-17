@@ -3,7 +3,7 @@
 on init
     # Support legacy paths
     symlink /sdcard /storage/sdcard0
-    setprop ro.kernel.ebpf.supported false
+    setprop bpf.progs_loaded 1
 
 on fs
     mount_all /vendor/etc/fstab.smdk4x12
