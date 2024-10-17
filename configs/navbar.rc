@@ -1,7 +1,0 @@
-service navbar_switch /vendor/bin/navbar.sh
-    class main
-    oneshot
-    disabled
-
-on property:toggle_navbar=true
-    start navbar_switch
