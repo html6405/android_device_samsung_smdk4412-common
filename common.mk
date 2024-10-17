@@ -102,9 +102,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.config.small_battery=true
 
-# SamsungPowerHAL
+# Power HAL
 PRODUCT_PACKAGES += \
-    android.hardware.power@1.0-service.exynos4412
+    android.hardware.power@1.0-impl \
+    android.hardware.power@1.0-service
 
 # LiveDisplay
 PRODUCT_PACKAGES += \
