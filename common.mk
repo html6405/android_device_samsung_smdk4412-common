@@ -63,8 +63,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # RIL subscription workaround
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/configs/restart_rild.sh:vendor/bin/restart_rild.sh \
-    $(COMMON_PATH)/configs/rild_restart.rc:vendor/etc/init/rild_restart.rc
+    $(COMMON_PATH)/radioreset/restart_rild.sh:vendor/bin/restart_rild.sh
 
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/param.sh:vendor/bin/param.sh \
