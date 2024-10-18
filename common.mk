@@ -44,8 +44,7 @@ PRODUCT_COPY_FILES := \
 
 # init.d
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/configs/tweaks.rc:vendor/etc/init/tweaks.rc \
-    $(COMMON_PATH)/configs/MagiskHide:vendor/etc/init/MagiskHide.rc
+    $(COMMON_PATH)/configs/tweaks.rc:vendor/etc/init/tweaks.rc
 
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/tweaks.sh:vendor/bin/tweaks.sh

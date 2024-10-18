@@ -1,7 +1,0 @@
-#!/system/bin/sh
-while [ "$(getprop sys.boot_completed)" == 0 ]
-do
-	sleep 1
-done
-magiskhide disable
-magiskhide enable
