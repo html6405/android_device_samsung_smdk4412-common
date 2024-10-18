@@ -280,6 +280,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.qti.sys.fw.empty_app_percent=25 \
     ro.config.max_starting_bg=2
 
+# Watchdog
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.hw_timeout_multiplier=6
+
 # Reduces GC frequency of foreground apps by 50%
 PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.foreground-heap-growth-multiplier=2.0
