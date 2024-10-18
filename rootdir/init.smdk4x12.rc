@@ -553,11 +553,7 @@ on boot
     chown radio system /sys/class/sec/sec_key/wakeup_keys
     write /sys/class/sec/sec_key/wakeup_keys 116,172
 
-on early-init
-    write /proc/sys/kernel/magisk_workaround 1
-
 on property:sys.boot_completed=1
-        write /proc/sys/kernel/magisk_workaround 1
         write /sys/devices/system/cpu/cpufreq/dynamic/min_cpu_lock 2
         write /sys/devices/system/cpu/cpufreq/pegasusq/min_cpu_lock 2
         setprop sys.usb.config mtp,adb
