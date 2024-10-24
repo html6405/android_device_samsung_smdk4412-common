@@ -404,8 +404,8 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.lineage.build.vendor_security_patch=2015-11-05
 
-# Use go
-$(call inherit-product, $(LOCAL_PATH)/go_defaults.mk)
+# Inherit go defaults configs
+$(call inherit-product, build/make/target/product/go_defaults.mk)
 
 # Apply Dalvik config for 1G phone
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
