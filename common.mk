@@ -323,7 +323,7 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0 \
-    wifi.supplicant_scan_interval=30 \
+    wifi.supplicant_scan_interval=240 \
     net.tethering.noprovisioning=true
 
 PRODUCT_COPY_FILES += \
