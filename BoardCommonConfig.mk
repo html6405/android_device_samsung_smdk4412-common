@@ -245,7 +245,7 @@ BOARD_CHARGER_SHOW_PERCENTAGE := true
 TARGET_RELEASETOOLS_EXTENSIONS := ./device/samsung/smdk4412-common
 
 # inherit from the proprietary version
--include vendor/samsung/smdk4412-common-treble/BoardConfigVendor.mk
+-include vendor/samsung/smdk4412-common/BoardConfigVendor.mk
 
 OVERRIDE_TARGET_FLATTEN_APEX := true
 DEXPREOPT_GENERATE_APEX_IMAGE := false

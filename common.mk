@@ -390,7 +390,7 @@ $(call inherit-product, hardware/samsung/exynos4x12.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_k.mk)
 
 # Include non-opensource parts
-$(call inherit-product, vendor/samsung/smdk4412-common-treble/smdk4412-common-vendor.mk)
+$(call inherit-product, vendor/samsung/smdk4412-common/smdk4412-common-vendor.mk)
 
 # Art
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
