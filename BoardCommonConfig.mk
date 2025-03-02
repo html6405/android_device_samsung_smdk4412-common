@@ -90,8 +90,6 @@ TARGET_KERNEL_ADDITIONAL_FLAGS := \
     HOSTCFLAGS="-fuse-ld=lld -Wno-unused-command-line-argument"
 TARGET_KERNEL_LLVM_BINUTILS := false
 
-TARGET_PROCESS_SDK_VERSION_OVERRIDE += \
-    /vendor/bin/hw/rild=19
 
 TARGET_PROCESS_SDK_VERSION_OVERRIDE := \
     /vendor/bin/hw/rild=22 \
