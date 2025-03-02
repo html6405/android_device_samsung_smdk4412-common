@@ -53,13 +53,13 @@ on post-fs-data
     mkdir /efs/imei 0775 radio system
 
 # icd
-    exec icd_check
-    chown system system /dev/icd
-    chmod 0644 /dev/icd
-    write /dev/icdr 0
-    chown system system /dev/icdr
-    chmod 0644 /dev/icdr
-    chown system system /dev/tzic
+#    exec icd_check
+#    chown system system /dev/icd
+#    chmod 0644 /dev/icd
+#    write /dev/icdr 0
+#    chown system system /dev/icdr
+#    chmod 0644 /dev/icdr
+#    chown system system /dev/tzic
 
 # HDCP 2.x
     mkdir /data/system/hdcp2 0775 system system
