@@ -61,9 +61,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.iorapd.enable=false
 
-# RIL subscription workaround
-PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/radioreset/restart_rild.sh:vendor/bin/restart_rild.sh
 
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/param.sh:vendor/bin/param.sh \
