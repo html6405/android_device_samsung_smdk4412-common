@@ -259,16 +259,11 @@ PRODUCT_COPY_FILES += \
 # Memory Optimizations
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.lmk.use_psi=false \
-    ro.lmk.critical=0 \
-    ro.lmk.low=950 \
+    ro.lmk.critical=200 \
+    ro.lmk.low=650 \
     ro.lmk.swap_free_low_percentage=10 \
     ro.lmk.thrashing_limit=30 \
     ro.lmk.thrashing_limit_decay=50 \
-    ro.vendor.qti.am.reschedule_service=true \
-    ro.vendor.qti.sys.fw.use_trim_settings=true \
-    ro.vendor.qti.sys.fw.trim_empty_percent=50 \
-    ro.vendor.qti.sys.fw.trim_cache_percent=100 \
-    ro.vendor.qti.sys.fw.empty_app_percent=25 \
     ro.config.max_starting_bg=2
 
 # Watchdog
