@@ -1,8 +1,5 @@
 #!/system/bin/sh
 
-echo 1 > /proc/sys/vm/dirty_background_ratio
-echo 300 > /proc/sys/vm/dirty_expire_centisecs
-
 #CPUSETS
 echo 0-1 > /dev/cpuset/background/cpus
 echo 0-1 > /dev/cpuset/system-background/cpus
