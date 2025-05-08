@@ -593,6 +593,8 @@ on property:persist.logcat.enabled=1
 
 on property:debug.tracing.screen_state=1
     start vendor.wifikiller
+    write /proc/sys/vm/compact_memory 1
+    write /proc/sys/vm/drop_caches 3
 
 on property:debug.tracing.screen_state=2
     start vendor.wifienabler
