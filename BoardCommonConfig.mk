@@ -256,3 +256,6 @@ TARGET_RELEASETOOLS_EXTENSIONS := $(DEVICE_PATH)/releasetools
 BOARD_VNDK_VERSION := current
 # BOARD_VNDK_RUNTIME_DISABLE := true
 # PRODUCT_FULL_TREBLE_OVERRIDE := true
+
+# SELinux
+include device/samsung/smdk4412-common/sepolicy/sepolicy.mk

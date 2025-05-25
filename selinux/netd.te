@@ -1,3 +1,0 @@
-allow netd self:capability sys_module;
-allow netd self:capability sys_nice;
-allow netd device:file { open write };

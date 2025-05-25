@@ -1,0 +1,2 @@
+allow drmserver vendor_file:dir r_dir_perms;
+allow drmserver glgps_exec:file r_file_perms;

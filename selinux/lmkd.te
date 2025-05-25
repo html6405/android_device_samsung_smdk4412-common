@@ -1,2 +1,0 @@
-allow lmkd sysfs_lmkd:dir search;
-allow lmkd sysfs_lmkd:file { open write };
