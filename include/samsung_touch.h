@@ -33,8 +33,8 @@
 // For KeyDisabler
 #define KEY_DISABLER_NODE "/sys/class/sec/sec_touchkey/keypad_enable"
 
-//For TouchscreenGesture
-#define TOUCHSCREEN_GESTURE_NODE "/sys/class/sec/sec_epen/epen_gestures"
+// For TouchscreenGesture
+#define EPEN_GESTURE_NODE "/sys/class/sec/sec_epen/epen_gestures"
 
 #define FORCE_ENABLE 0
 
