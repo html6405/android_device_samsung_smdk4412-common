@@ -74,7 +74,7 @@ PRODUCT_COPY_FILES += \
 
 # USB
 PRODUCT_PACKAGES += \
-    android.hardware.usb@1.0-service.basic \
+    android.hardware.usb@1.3-service.basic \
     com.android.future.usb.accessory
 
 # Use legacy ADB USB support
