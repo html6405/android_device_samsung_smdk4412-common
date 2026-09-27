@@ -77,11 +77,6 @@ PRODUCT_PACKAGES += \
     android.hardware.usb@1.3-service.basic \
     com.android.future.usb.accessory
 
-
-# Trust HAL
-PRODUCT_PACKAGES += \
-    vendor.lineage.trust@1.0-service
-
 # Battery
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.config.small_battery=true
