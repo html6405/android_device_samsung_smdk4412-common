@@ -42,7 +42,3 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	bluetooth.profile.pbap.server.enabled?=true \
 	bluetooth.profile.sap.server.enabled?=true \
 	bluetooth.core.le.vendor_capabilities.enabled=false
-
-#MTP
-PRODUCT_PROPERTY_OVERRIDES += \
-	vendor.usb.use_ffs_mtp=0
