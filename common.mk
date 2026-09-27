@@ -77,9 +77,6 @@ PRODUCT_PACKAGES += \
     android.hardware.usb@1.3-service.basic \
     com.android.future.usb.accessory
 
-# Use legacy ADB USB support
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.adb.nonblocking_ffs=false
 
 # Trust HAL
 PRODUCT_PACKAGES += \
