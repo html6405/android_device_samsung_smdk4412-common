@@ -63,10 +63,6 @@ PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/param.sh:vendor/bin/param.sh \
     $(COMMON_PATH)/configs/param.rc:vendor/etc/init/param.rc
 
-# VNDK
-PRODUCT_COPY_FILES += \
-    prebuilts/vndk/v29/arm/arch-arm-armv7-a-neon/shared/vndk-sp/libcutils.so:$(TARGET_COPY_OUT_VENDOR)/lib/libcutils-v29.so
-
 # Gps
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/gps.conf:$(TARGET_COPY_OUT_SYSTEM)/etc/gps.conf \
