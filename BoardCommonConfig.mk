@@ -128,8 +128,7 @@ BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
 BOARD_NO_RECOVERY_PATCH := true
 
 TOP_PATH := $(realpath $(TOP))
-KERNEL_TOOLCHAIN := $(TOP_PATH)/prebuilts/gcc/$(HOST_OS)-x86/arm/arm-linux-androideabi-4.9/bin
-TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-linux-androidkernel-
+TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-none-eabi-
 
 # Hardware tunables
 BOARD_HARDWARE_CLASS := hardware/samsung/lineagehw \
