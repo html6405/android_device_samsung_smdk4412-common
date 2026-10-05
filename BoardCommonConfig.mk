@@ -240,7 +240,7 @@ SELINUX_IGNORE_NEVERALLOWS := true
 BOARD_CHARGER_SHOW_PERCENTAGE := true
 
 # Releasetools
-TARGET_RELEASETOOLS_EXTENSIONS := ./device/samsung/smdk4412-common
+TARGET_RELEASETOOLS_EXTENSIONS := $(COMMON_PATH)
 
 # inherit from the proprietary version
 -include vendor/samsung/smdk4412-common/BoardConfigVendor.mk
