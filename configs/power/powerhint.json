@@ -1,0 +1,196 @@
+{
+  "Nodes": [
+    {
+      "Name": "CpuMinFreq",
+      "Path": "/sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq",
+      "Values": [
+        "1400000",
+        "1200000",
+        "1000000",
+        "800000",
+        "600000",
+        "400000",
+        "200000"
+      ],
+      "DefaultIndex": 6,
+      "ResetOnInit": true
+    },
+    {
+      "Name": "CpuMaxFreq",
+      "Path": "/sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq",
+      "Values": [
+        "1600000",
+        "1400000",
+        "1200000",
+        "1000000",
+        "800000"
+      ],
+      "DefaultIndex": 0,
+      "ResetOnInit": true
+    },
+    {
+      "Name": "CpuDmaLatency",
+      "Path": "/dev/cpu_dma_latency",
+      "Values": [
+        "0",
+        "2",
+        "0xffffffff"
+      ],
+      "DefaultIndex": 2,
+      "ResetOnInit": true,
+      "HoldFd": true
+    }
+  ],
+  "Actions": [
+    {
+      "PowerHint": "INTERACTION",
+      "Node": "CpuMinFreq",
+      "Duration": 0,
+      "Value": "800000"
+    },
+    {
+      "PowerHint": "DISPLAY_UPDATE_IMMINENT",
+      "Node": "CpuMinFreq",
+      "Duration": 0,
+      "Value": "1000000"
+    },
+    {
+      "PowerHint": "LAUNCH",
+      "Node": "CpuMinFreq",
+      "Duration": 0,
+      "Value": "1200000"
+    },
+    {
+      "PowerHint": "LAUNCH",
+      "Node": "CpuMaxFreq",
+      "Duration": 0,
+      "Value": "1600000"
+    },
+    {
+      "PowerHint": "LAUNCH",
+      "Node": "CpuDmaLatency",
+      "Duration": 0,
+      "Value": "0"
+    },
+    {
+      "PowerHint": "SUSTAINED_PERFORMANCE",
+      "Node": "CpuMinFreq",
+      "Duration": 0,
+      "Value": "600000"
+    },
+    {
+      "PowerHint": "SUSTAINED_PERFORMANCE",
+      "Node": "CpuMaxFreq",
+      "Duration": 0,
+      "Value": "1200000"
+    },
+    {
+      "PowerHint": "FIXED_PERFORMANCE",
+      "Node": "CpuMinFreq",
+      "Duration": 0,
+      "Value": "1200000"
+    },
+    {
+      "PowerHint": "FIXED_PERFORMANCE",
+      "Node": "CpuMaxFreq",
+      "Duration": 0,
+      "Value": "1200000"
+    },
+    {
+      "PowerHint": "LOW_POWER",
+      "Node": "CpuMaxFreq",
+      "Duration": 0,
+      "Value": "800000"
+    },
+    {
+      "PowerHint": "EXPENSIVE_RENDERING",
+      "Node": "CpuMinFreq",
+      "Duration": 0,
+      "Value": "1000000"
+    },
+    {
+      "PowerHint": "EXPENSIVE_RENDERING",
+      "Node": "CpuMaxFreq",
+      "Duration": 0,
+      "Value": "1600000"
+    },
+    {
+      "PowerHint": "AUDIO_LAUNCH",
+      "Node": "CpuMinFreq",
+      "Duration": 0,
+      "Value": "800000"
+    },
+    {
+      "PowerHint": "AUDIO_STREAMING_LOW_LATENCY",
+      "Node": "CpuMinFreq",
+      "Duration": 0,
+      "Value": "600000"
+    },
+    {
+      "PowerHint": "CAMERA_LAUNCH",
+      "Node": "CpuMinFreq",
+      "Duration": 0,
+      "Value": "1000000"
+    },
+    {
+      "PowerHint": "CAMERA_SHOT",
+      "Node": "CpuMinFreq",
+      "Duration": 0,
+      "Value": "1200000"
+    },
+    {
+      "PowerHint": "CAMERA_STREAMING_SECURE",
+      "Node": "CpuMinFreq",
+      "Duration": 0,
+      "Value": "800000"
+    },
+    {
+      "PowerHint": "CAMERA_STREAMING_LOW",
+      "Node": "CpuMinFreq",
+      "Duration": 0,
+      "Value": "600000"
+    },
+    {
+      "PowerHint": "CAMERA_STREAMING_MID",
+      "Node": "CpuMinFreq",
+      "Duration": 0,
+      "Value": "800000"
+    },
+    {
+      "PowerHint": "CAMERA_STREAMING_HIGH",
+      "Node": "CpuMinFreq",
+      "Duration": 0,
+      "Value": "1000000"
+    },
+    {
+      "PowerHint": "GAME",
+      "Node": "CpuMinFreq",
+      "Duration": 0,
+      "Value": "800000"
+    },
+    {
+      "PowerHint": "GAME",
+      "Node": "CpuMaxFreq",
+      "Duration": 0,
+      "Value": "1600000"
+    },
+    {
+      "PowerHint": "GAME_LOADING",
+      "Node": "CpuMinFreq",
+      "Duration": 0,
+      "Value": "1200000"
+    },
+    {
+      "PowerHint": "GAME_LOADING",
+      "Node": "CpuMaxFreq",
+      "Duration": 0,
+      "Value": "1600000"
+    },
+    {
+      "PowerHint": "GAME_LOADING",
+      "Node": "CpuDmaLatency",
+      "Duration": 0,
+      "Value": "0"
+    }
+  ]
+}

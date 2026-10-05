@@ -554,6 +554,7 @@ on property:sys.boot_completed=1
         write /sys/devices/system/cpu/cpufreq/dynamic/min_cpu_lock 2
         write /sys/devices/system/cpu/cpufreq/pegasusq/min_cpu_lock 2
         setprop sys.usb.config mtp,adb
+        setprop vendor.powerhal.init 1
 
 # rerun macloader to fix wifi after hotspot
 on property:wlan.driver.status=ok
