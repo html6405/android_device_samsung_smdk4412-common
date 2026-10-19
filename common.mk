@@ -421,7 +421,7 @@ PRODUCT_PACKAGES += \
 $(call inherit-product, build/make/target/product/go_defaults.mk)
 
 # Apply Dalvik config for 1G phone
-$(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
+$(call inherit-product, device/samsung/smdk4412-common/phone-xhdpi-1024-dalvik-heap.mk)
 
 # Include debugging props
 $(call inherit-product, device/samsung/smdk4412-common/system_prop_debug.mk)
