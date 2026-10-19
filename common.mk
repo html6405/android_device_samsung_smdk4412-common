@@ -32,8 +32,6 @@ PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS  += * \
     $(COMMON_PATH)/overlay-lineage/lineage-sdk \
     $(COMMON_PATH)/overlay/hardware
 
-PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
-
 # Component overrides
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/component-overrides.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sysconfig/component-overrides.xml
