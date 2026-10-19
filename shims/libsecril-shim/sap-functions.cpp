@@ -22,12 +22,17 @@ void SapConnect(RIL_Token t, RIL_SIM_SAP_CONNECT_REQ req,
                 void (*connectRsp)(RIL_Token t, RIL_Errno e, RIL_SIM_SAP_CONNECT_RSP rsp),
                 void (*statusInd)(RIL_Token t, RIL_Errno e, RIL_SIM_SAP_STATUS_IND rsp))
 {
-    static SapConnectParam param;
-    param.t = t;
-    param.connectRsp = connectRsp;
-    param.statusInd = statusInd;
-
-    SecSapConnect(&param, SecSapConnectRsp1);
+    SapConnectParam* param = (SapConnectParam*)calloc(1, sizeof(*param));
+    if (param == NULL) {
+        RIL_SIM_SAP_CONNECT_RSP rsp = RIL_SIM_SAP_CONNECT_RSP_init_zero;
+        rsp.response = RIL_SIM_SAP_CONNECT_RSP_Response_RIL_E_SAP_CONNECT_FAILURE;
+        connectRsp(t, RIL_E_NO_MEMORY, rsp);
+        return;
+    }
+    param->t = t;
+    param->connectRsp = connectRsp;
+    param->statusInd = statusInd;
+    SecSapConnect(param, SecSapConnectRsp1);
 }
 
 static void SecSapConnectRsp1(void* param, RIL_Errno e)
@@ -46,6 +51,7 @@ static void SecSapConnectRsp1(void* param, RIL_Errno e)
     {
         SecSapResetSim(param, SecSapConnectRsp2);
     }
+    else free(connectParam);
 }
 
 static void SecSapConnectRsp2(void* param, RIL_Errno e)
@@ -56,6 +62,7 @@ static void SecSapConnectRsp2(void* param, RIL_Errno e)
     rsp.statusChange = RIL_SIM_SAP_STATUS_IND_Status_RIL_SIM_STATUS_CARD_RESET;
 
     connectParam->statusInd(connectParam->t, e, rsp);
+    free(connectParam);
 }
 
 // --------------------------------------------------------------------------
@@ -73,11 +80,15 @@ static void SapDisconnectRsp2(void* param, RIL_Errno e);
 void SapDisconnect(RIL_Token t, RIL_SIM_SAP_DISCONNECT_REQ req,
                    void (*rsp)(RIL_Token t, RIL_Errno e, RIL_SIM_SAP_DISCONNECT_RSP rsp))
 {
-    static SapDisconnectParam param;
-    param.t = t;
-    param.rsp = rsp;
-
-    SecSapResetSim(&param, SapDisconnectRsp1);
+    SapDisconnectParam* param = (SapDisconnectParam*)calloc(1, sizeof(*param));
+    if (param == NULL) {
+        RIL_SIM_SAP_DISCONNECT_RSP response = RIL_SIM_SAP_DISCONNECT_RSP_init_zero;
+        rsp(t, RIL_E_NO_MEMORY, response);
+        return;
+    }
+    param->t = t;
+    param->rsp = rsp;
+    SecSapResetSim(param, SapDisconnectRsp1);
 }
 
 static void SapDisconnectRsp1(void* param, RIL_Errno e)
@@ -93,6 +104,7 @@ static void SapDisconnectRsp2(void* param, RIL_Errno e)
     RIL_SIM_SAP_DISCONNECT_RSP rsp = RIL_SIM_SAP_DISCONNECT_RSP_init_zero;
 
     disconnectParam->rsp(disconnectParam->t, e, rsp);
+    free(disconnectParam);
 }
 
 // --------------------------------------------------------------------------
@@ -109,11 +121,15 @@ static void SapTransferAtrRsp(void* param, RIL_Errno e, int resultCode, void* at
 void SapTransferAtr(RIL_Token t, RIL_SIM_SAP_TRANSFER_ATR_REQ req,
                     void (*rsp)(RIL_Token t, RIL_Errno e, RIL_SIM_SAP_TRANSFER_ATR_RSP rsp))
 {
-    static SapTransferAtrParam param;
-    param.t = t;
-    param.rsp = rsp;
-
-    SecSapTransferAtr(&param, SapTransferAtrRsp);
+    SapTransferAtrParam* param = (SapTransferAtrParam*)calloc(1, sizeof(*param));
+    if (param == NULL) {
+        RIL_SIM_SAP_TRANSFER_ATR_RSP response = RIL_SIM_SAP_TRANSFER_ATR_RSP_init_zero;
+        rsp(t, RIL_E_NO_MEMORY, response);
+        return;
+    }
+    param->t = t;
+    param->rsp = rsp;
+    SecSapTransferAtr(param, SapTransferAtrRsp);
 }
 
 static void SapTransferAtrRsp(void* param, RIL_Errno e, int resultCode, void* atr, size_t atrlen)
@@ -122,13 +138,19 @@ static void SapTransferAtrRsp(void* param, RIL_Errno e, int resultCode, void* at
 
     RIL_SIM_SAP_TRANSFER_ATR_RSP rsp = RIL_SIM_SAP_TRANSFER_ATR_RSP_init_zero;
     rsp.response = (RIL_SIM_SAP_TRANSFER_ATR_RSP_Response)resultCode;
-    rsp.atr = (pb_bytes_array_t*) malloc(PB_BYTES_ARRAY_T_ALLOCSIZE(atrlen));
-    rsp.atr->size = atrlen;
-    memcpy(rsp.atr->bytes, atr, atrlen);
+    if (atr != NULL && atrlen != 0) {
+        rsp.atr = (pb_bytes_array_t*) malloc(PB_BYTES_ARRAY_T_ALLOCSIZE(atrlen));
+        if (rsp.atr == NULL) e = RIL_E_NO_MEMORY;
+        else {
+            rsp.atr->size = atrlen;
+            memcpy(rsp.atr->bytes, atr, atrlen);
+        }
+    }
 
     atrParam->rsp(atrParam->t, e, rsp);
 
     free(rsp.atr);
+    free(atrParam);
 }
 
 // --------------------------------------------------------------------------
@@ -145,11 +167,16 @@ static void SapApduRsp(void* param, RIL_Errno e, int resultCode, void* apdu, siz
 void SapApdu(RIL_Token t, RIL_SIM_SAP_APDU_REQ req,
              void (*rsp)(RIL_Token t, RIL_Errno e, RIL_SIM_SAP_APDU_RSP rsp))
 {
-    static SapApduParam param;
-    param.t = t;
-    param.rsp = rsp;
-
-    SecSapApdu(&param, req.command->bytes, req.command->size, SapApduRsp);
+    SapApduParam* param = (SapApduParam*)calloc(1, sizeof(*param));
+    if (param == NULL || req.command == NULL) {
+        RIL_SIM_SAP_APDU_RSP response = RIL_SIM_SAP_APDU_RSP_init_zero;
+        if (param != NULL) free(param);
+        rsp(t, param == NULL ? RIL_E_NO_MEMORY : RIL_E_INVALID_ARGUMENTS, response);
+        return;
+    }
+    param->t = t;
+    param->rsp = rsp;
+    SecSapApdu(param, req.command->bytes, req.command->size, SapApduRsp);
 }
 
 static void SapApduRsp(void* param, RIL_Errno e, int resultCode, void* apdu, size_t apdulen)
@@ -159,13 +186,19 @@ static void SapApduRsp(void* param, RIL_Errno e, int resultCode, void* apdu, siz
     RIL_SIM_SAP_APDU_RSP rsp = RIL_SIM_SAP_APDU_RSP_init_zero;
     rsp.type = RIL_SIM_SAP_APDU_RSP_Type_RIL_TYPE_APDU;
     rsp.response = (RIL_SIM_SAP_APDU_RSP_Response)resultCode;
-    rsp.apduResponse = (pb_bytes_array_t*) malloc(PB_BYTES_ARRAY_T_ALLOCSIZE(apdulen));
-    rsp.apduResponse->size = apdulen;
-    memcpy(rsp.apduResponse->bytes, apdu, apdulen);
+    if (apdu != NULL && apdulen != 0) {
+        rsp.apduResponse = (pb_bytes_array_t*) malloc(PB_BYTES_ARRAY_T_ALLOCSIZE(apdulen));
+        if (rsp.apduResponse == NULL) e = RIL_E_NO_MEMORY;
+        else {
+            rsp.apduResponse->size = apdulen;
+            memcpy(rsp.apduResponse->bytes, apdu, apdulen);
+        }
+    }
 
     apduParam->rsp(apduParam->t, e, rsp);
 
     free(rsp.apduResponse);
+    free(apduParam);
 }
 
 // --------------------------------------------------------------------------
@@ -182,11 +215,15 @@ static void SapSimPowerRsp(void* param, RIL_Errno e);
 void SapSimPower(RIL_Token t, RIL_SIM_SAP_POWER_REQ req,
                  void (*rsp)(RIL_Token t, RIL_Errno e, RIL_SIM_SAP_POWER_RSP rsp))
 {
-    static SapSimPowerParam param;
-    param.t = t;
-    param.rsp = rsp;
-
-    SecSapSimPower(&param, req.state, SapSimPowerRsp);
+    SapSimPowerParam* param = (SapSimPowerParam*)calloc(1, sizeof(*param));
+    if (param == NULL) {
+        RIL_SIM_SAP_POWER_RSP response = RIL_SIM_SAP_POWER_RSP_init_zero;
+        rsp(t, RIL_E_NO_MEMORY, response);
+        return;
+    }
+    param->t = t;
+    param->rsp = rsp;
+    SecSapSimPower(param, req.state, SapSimPowerRsp);
 }
 
 static void SapSimPowerRsp(void* param, RIL_Errno e)
@@ -194,9 +231,12 @@ static void SapSimPowerRsp(void* param, RIL_Errno e)
     SapSimPowerParam* simPowerParam = (SapSimPowerParam*)param;
 
     RIL_SIM_SAP_POWER_RSP rsp = RIL_SIM_SAP_POWER_RSP_init_zero;
-    rsp.response = RIL_SIM_SAP_POWER_RSP_Response_RIL_E_SUCCESS;
+    rsp.response = e == RIL_E_SUCCESS
+            ? RIL_SIM_SAP_POWER_RSP_Response_RIL_E_SUCCESS
+            : RIL_SIM_SAP_POWER_RSP_Response_RIL_E_GENERIC_FAILURE;
 
     simPowerParam->rsp(simPowerParam->t, e, rsp);
+    free(simPowerParam);
 }
 
 // --------------------------------------------------------------------------
@@ -213,11 +253,15 @@ static void SapResetSimRsp(void* param, RIL_Errno e);
 void SapResetSim(RIL_Token t, RIL_SIM_SAP_RESET_SIM_REQ req,
                  void (*rsp)(RIL_Token t, RIL_Errno e, RIL_SIM_SAP_RESET_SIM_RSP rsp))
 {
-    static SapResetSimParam param;
-    param.t = t;
-    param.rsp = rsp;
-
-    SecSapResetSim(&param, SapResetSimRsp);
+    SapResetSimParam* param = (SapResetSimParam*)calloc(1, sizeof(*param));
+    if (param == NULL) {
+        RIL_SIM_SAP_RESET_SIM_RSP response = RIL_SIM_SAP_RESET_SIM_RSP_init_zero;
+        rsp(t, RIL_E_NO_MEMORY, response);
+        return;
+    }
+    param->t = t;
+    param->rsp = rsp;
+    SecSapResetSim(param, SapResetSimRsp);
 }
 
 static void SapResetSimRsp(void* param, RIL_Errno e)
@@ -225,7 +269,10 @@ static void SapResetSimRsp(void* param, RIL_Errno e)
     SapResetSimParam* resetSimParam = (SapResetSimParam*)param;
 
     RIL_SIM_SAP_RESET_SIM_RSP rsp = RIL_SIM_SAP_RESET_SIM_RSP_init_zero;
-    rsp.response = RIL_SIM_SAP_RESET_SIM_RSP_Response_RIL_E_SUCCESS;
+    rsp.response = e == RIL_E_SUCCESS
+            ? RIL_SIM_SAP_RESET_SIM_RSP_Response_RIL_E_SUCCESS
+            : RIL_SIM_SAP_RESET_SIM_RSP_Response_RIL_E_GENERIC_FAILURE;
 
     resetSimParam->rsp(resetSimParam->t, e, rsp);
+    free(resetSimParam);
 }
