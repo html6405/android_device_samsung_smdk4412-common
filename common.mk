@@ -58,6 +58,9 @@ PRODUCT_COPY_FILES += \
 # prebuild apps
 PRODUCT_PACKAGES += \
 	AuroraStore
+# Include Go Package
+PRODUCT_PACKAGES += \
+    SystemUIGo
 
 # Disable iorapd
 PRODUCT_PROPERTY_OVERRIDES += \
