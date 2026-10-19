@@ -68,6 +68,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # ConfigStore
 PRODUCT_PACKAGES += \
     disable_configstore
+
+# Disable multiuser feature
+PRODUCT_PROPERTY_OVERRIDES += \
+    fw.max_users=1
+
 # Disable iorapd
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.iorapd.enable=false
