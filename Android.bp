@@ -5,3 +5,8 @@ subdirs = [
     "shims",
 ]
 
+cc_library_headers {
+    name: "samsung_legacy_ril_headers",
+    vendor_available: true,
+    export_include_dirs: ["include"],
+}

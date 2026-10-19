@@ -1,0 +1,73 @@
+package {
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+cc_library_shared {
+    name: "libsecril-shim",
+    vendor: true,
+    srcs: [
+        "proto/pb_common.cpp",
+        "proto/pb_decode.cpp",
+        "proto/pb_encode.cpp",
+        "proto/sap-api.pb.cpp",
+        "sap-functions.cpp",
+        "sec-sap.cpp",
+        "secril-sap.cpp",
+        "secril-shim.cpp",
+    ],
+    local_include_dirs: ["proto"],
+    // The Samsung blob is a legacy RIL (v7 on n80xx). Keep the shim and
+    // libril on the exact same primary ril.h ABI. ril_headers is also needed
+    // for the split-out ril_cdma_sms.h, ril_nv_items.h and ril_msim.h headers;
+    // the legacy include directory remains first and therefore supplies ril.h.
+    header_libs: [
+        "samsung_legacy_ril_headers",
+        "ril_headers",
+    ],
+    shared_libs: [
+        "libbinder",
+        "libc",
+        "libcutils",
+        "liblog",
+        "libril",
+        // libsec-ril.so is loaded with dlopen() and directly needs
+        // libsqlite.so. Keep the vendor variant in the same namespace.
+        "libsqlite",
+    ],
+    cflags: [
+        "-DPB_ENABLE_MALLOC",
+        "-DPB_FIELD_16BIT",
+        "-Wall",
+        "-Werror",
+        "-Wno-unused-parameter",
+    ] + select(soong_config_variable("samsung_libril", "samsung_libril_modem_type"), {
+        "xmm6260": ["-DMODEM_TYPE_XMM6260"],
+        "xmm6262": ["-DMODEM_TYPE_XMM6262"],
+        "xmm6360": ["-DMODEM_TYPE_XMM6360"],
+        "m7450": [
+            "-DMODEM_TYPE_M7450",
+            "-DSAMSUNG_NEXT_GEN_MODEM",
+        ],
+        "mdm9x35": [
+            "-DMODEM_TYPE_MDM9X35",
+            "-DSAMSUNG_NEXT_GEN_MODEM",
+        ],
+        "ss333": [
+            "-DMODEM_TYPE_SS333",
+            "-DSAMSUNG_NEXT_GEN_MODEM",
+        ],
+        "tss310": [
+            "-DMODEM_TYPE_TSS310",
+            "-DSAMSUNG_NEXT_GEN_MODEM",
+        ],
+        "xmm7260": [
+            "-DMODEM_TYPE_XMM7260",
+            "-DSAMSUNG_NEXT_GEN_MODEM",
+        ],
+        "xmm7450": [
+            "-DMODEM_TYPE_XMM7450",
+            "-DSAMSUNG_NEXT_GEN_MODEM",
+        ],
+        default: [],
+    }),
+}
