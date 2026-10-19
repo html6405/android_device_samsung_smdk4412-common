@@ -9,6 +9,7 @@
 
 #include <telephony/ril.h>
 #include <utils/Log.h>
+#include <vector>
 
 // --------------------------------------------------------------------------
 
@@ -84,20 +85,21 @@ static void SapTransferAtrRsp(RIL_Token t, RIL_Errno e, RIL_SIM_SAP_TRANSFER_ATR
 {
     RLOGD("<<<<<    TransferAtrRsp(%p,%d)", t, e);
 
-    unsigned char response[rsp.atr->size + 20];
-    pb_ostream_t stream = pb_ostream_from_buffer(response, sizeof(response));
+    std::vector<unsigned char> response((rsp.atr != NULL ? rsp.atr->size : 0) + 20);
+    pb_ostream_t stream = pb_ostream_from_buffer(response.data(), response.size());
     pb_encode(&stream, RIL_SIM_SAP_TRANSFER_ATR_RSP_fields, &rsp);
-    g_sapEnv->OnRequestComplete(t, e, response, stream.bytes_written);
+    g_sapEnv->OnRequestComplete(t, e, response.data(), stream.bytes_written);
 }
 
 static void SapApduRsp(RIL_Token t, RIL_Errno e, RIL_SIM_SAP_APDU_RSP rsp)
 {
     RLOGD("<<<<<    ApduRsp(%p,%d)", t, e);
 
-    unsigned char response[rsp.apduResponse->size + 20];
-    pb_ostream_t stream = pb_ostream_from_buffer(response, sizeof(response));
+    std::vector<unsigned char> response(
+            (rsp.apduResponse != NULL ? rsp.apduResponse->size : 0) + 20);
+    pb_ostream_t stream = pb_ostream_from_buffer(response.data(), response.size());
     pb_encode(&stream, RIL_SIM_SAP_APDU_RSP_fields, &rsp);
-    g_sapEnv->OnRequestComplete(t, e, response, stream.bytes_written);
+    g_sapEnv->OnRequestComplete(t, e, response.data(), stream.bytes_written);
 }
 
 static void SapSimPowerRsp(RIL_Token t, RIL_Errno e, RIL_SIM_SAP_POWER_RSP rsp)
@@ -122,7 +124,7 @@ static void SapResetSimRsp(RIL_Token t, RIL_Errno e, RIL_SIM_SAP_RESET_SIM_RSP r
 
 static void SapRequestFunc(int request, void *data, size_t datalen, RIL_Token t /*, RIL_SOCKET_ID socket_id*/)
 {
-    RLOGD(">>>>>    SapRequestFunc(%d,%p,%u,%p)", request, data, datalen, t);
+    RLOGD(">>>>>    SapRequestFunc(%d,%p,%zu,%p)", request, data, datalen, t);
 
     pb_byte_t* pData = (pb_byte_t*)data;
     switch (request)
