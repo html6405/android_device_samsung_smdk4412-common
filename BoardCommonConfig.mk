@@ -169,7 +169,7 @@ BOARD_USE_STOREMETADATA := true
 BOARD_USE_METADATABUFFERTYPE := true
 BOARD_USES_MFC_FPS := true
 BOARD_USE_S3D_SUPPORT := true
-BOARD_USE_CSC_FIMC := false
+BOARD_USE_CSC_FIMC := true
 
 # Include an expanded selection of fonts
 EXTENDED_FONT_FOOTPRINT := true
