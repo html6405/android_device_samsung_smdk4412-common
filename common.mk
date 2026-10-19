@@ -76,6 +76,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # APEX
 PRODUCT_COMPRESSED_APEX := false
 
+# ART
+PRODUCT_ENABLE_UFFD_GC := false
+
 # Disable iorapd
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.iorapd.enable=false
