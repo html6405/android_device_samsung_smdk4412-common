@@ -239,7 +239,6 @@ PRODUCT_PACKAGES += \
 
 # VNDK
 PRODUCT_PACKAGES += \
-    vndk_package \
     libstdc++_vendor
 
 PRODUCT_PROPERTY_OVERRIDES += \
