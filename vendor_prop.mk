@@ -44,6 +44,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	bluetooth.profile.sap.server.enabled?=true \
 	bluetooth.core.le.vendor_capabilities.enabled=false
 
-BPF
+#BPF
 PRODUCT_VENDOR_PROPERTIES += \
 		ro.bpf.kver_override=5.4.300
