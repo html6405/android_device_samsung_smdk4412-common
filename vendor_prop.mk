@@ -16,6 +16,7 @@
 PRODUCT_PROPERTY_OVERRIDES += \
     debug.sf.enable_gl_backpressure=1 \
     debug.sf.layer_caching_active_layer_timeout_ms=1000 \
+	debug.hwc.use_new_composition_decision=1 \
 	ro.treble.enabled=false \
 	ro.lcd_min_brightness=20 \
 	ro.egl.destroy_after_detach=true \

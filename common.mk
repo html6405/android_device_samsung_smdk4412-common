@@ -156,10 +156,9 @@ PRODUCT_PACKAGES += \
 # Graphics
 PRODUCT_PACKAGES += \
     AdvancedDisplay \
-    android.hardware.graphics.allocator@2.0-impl-exynos4 \
-    android.hardware.graphics.mapper@2.0-impl-exynos4 \
-    android.hardware.graphics.composer@2.1-impl \
-    hwcomposer.exynos4 \
+    android.hardware.graphics.allocator-service.exynos4 \
+    mapper.exynos4 \
+    android.hardware.graphics.composer3-service.exynos4 \
     gralloc.exynos4 \
     libUMP \
     libMali \
