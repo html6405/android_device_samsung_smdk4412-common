@@ -60,6 +60,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     SystemUIGo
 
+PRODUCT_DEXPREOPT_SPEED_APPS += SystemUIGo \
+                                Settings \
+                                Launcher3Overlay
 # Disable iorapd
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.iorapd.enable=false
