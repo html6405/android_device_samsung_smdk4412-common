@@ -67,7 +67,7 @@
     {
       "PowerHint": "DISPLAY_UPDATE_IMMINENT",
       "Node": "CpuMinFreq",
-      "Duration": 0,
+      "Duration": 60,
       "Value": "1000000"
     },
     {
