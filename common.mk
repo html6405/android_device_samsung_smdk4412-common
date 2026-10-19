@@ -53,9 +53,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/prebuilt/parted:vendor/bin/parted \
 
-# prebuild apps
-PRODUCT_PACKAGES += \
-	AuroraStore
 # Include Go Package
 PRODUCT_PACKAGES += \
     SystemUIGo
