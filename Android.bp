@@ -1,4 +1,5 @@
 subdirs = [
+    "camera3",
     "init",
     "power",
     "shims",

@@ -1,0 +1,97 @@
+cc_defaults {
+    name: "smdk4x12_camera_defaults",
+    defaults: ["samsung_camera3_defaults"],
+    vendor: true,
+    compile_multilib: "32",
+    cpp_std: "gnu++20",
+    cflags: [
+        "-Wall",
+        "-Wextra",
+        "-Werror=return-type",
+        "-Wno-unused-parameter",
+    ],
+    local_include_dirs: ["include"],
+    include_dirs: [
+        "hardware/samsung/exynos4/hal/include",
+        "system/media/camera/include",
+    ],
+    header_libs: ["libhardware_headers.camera3_samsung"],
+}
+
+cc_library_static {
+    name: "libcamera_smdk4x12_pipeline",
+    defaults: ["smdk4x12_camera_defaults"],
+    srcs: [
+        ":smdk4x12_fimc_sources",
+        "pipeline/ExynosPipeline.cpp",
+        "pipeline/StreamProcessor.cpp",
+        "pipeline/V4L2Node.cpp",
+    ],
+    shared_libs: [
+        "libcutils",
+        "libhardware",
+        "liblog",
+        "libsync",
+        "libui",
+        "libutils",
+    ],
+}
+
+cc_library_static {
+    name: "libcamera_smdk4x12_sensors",
+    defaults: ["smdk4x12_camera_defaults"],
+    srcs: [
+        "sensors/InterleavedDecoder.cpp",
+        "sensors/SensorController.cpp",
+        "sensors/SensorProfiles.cpp",
+    ],
+    shared_libs: [
+        "libbase",
+        "libcamera_metadata",
+        "liblog",
+    ],
+}
+
+cc_library_static {
+    name: "libcamera_smdk4x12_jpeg",
+    defaults: ["smdk4x12_camera_defaults"],
+    srcs: [
+        "jpeg/JpegEncoder.cpp",
+        ":smdk4x12_jpeg_hal_sources",
+    ],
+    shared_libs: [
+        "libcutils",
+        "libjpeg",
+        "liblog",
+    ],
+}
+
+cc_library_shared {
+    name: "camera.smdk4x12",
+    stem: "camera.smdk4x12",
+    defaults: ["smdk4x12_camera_defaults"],
+    relative_install_path: "hw",
+    srcs: [
+        "CameraMetadata.cpp",
+        "CameraDevice.cpp",
+        "CameraHal.cpp",
+        "Metadata.cpp",
+        "ThreeA.cpp",
+    ],
+    static_libs: [
+        "libcamera_smdk4x12_pipeline",
+        "libcamera_smdk4x12_sensors",
+        "libcamera_smdk4x12_jpeg",
+    ],
+    shared_libs: [
+        "libbase",
+        "libcamera_metadata",
+        "libcutils",
+        "libhardware",
+        "libjpeg",
+        "liblog",
+        "libsync",
+        "libui",
+        "libutils",
+    ],
+}

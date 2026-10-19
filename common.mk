@@ -128,6 +128,11 @@ PRODUCT_PACKAGES += \
     android.hardware.bluetooth@1.0-service \
     libbt-vendor
 
+# Camera
+PRODUCT_PACKAGES += \
+    android.hardware.camera.provider-service_32.samsung \
+    camera.smdk4x12
+
 # Graphics
 PRODUCT_PACKAGES += \
     AdvancedDisplay \
