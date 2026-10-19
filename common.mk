@@ -67,6 +67,10 @@ PRODUCT_DEXPREOPT_SPEED_APPS += SystemUIGo \
 # Reduce client buffer size for fast audio output tracks
 PRODUCT_PROPERTY_OVERRIDES += \
     af.fast_track_multiplier=1
+
+# ConfigStore
+PRODUCT_PACKAGES += \
+    disable_configstore
 # Disable iorapd
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.iorapd.enable=false
