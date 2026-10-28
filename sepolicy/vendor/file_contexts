@@ -77,7 +77,7 @@
 # Firmware
 /vendor/firmware(/.*)?					 u:object_r:firmware_exynos:s0
 /vendor/firmware/mfc_fw.bin				 u:object_r:firmware_mfc:s0
-/data/cfw(/.*)?							 u:object_r:firmware_exynos:s0
+/data/cfw(/.*)?							 u:object_r:firmware_exynos_data_file:s0
 
 # Vendor
 /vendor/bin/hw/android\.hardware\.graphics\.allocator-service\.exynos4             u:object_r:hal_graphics_allocator_default_exec:s0
