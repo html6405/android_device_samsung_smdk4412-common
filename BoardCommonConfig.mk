@@ -129,7 +129,7 @@ BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
 BOARD_NO_RECOVERY_PATCH := true
 
 TOP_PATH := $(realpath $(TOP))
-TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-none-eabi-
+TARGET_KERNEL_CROSS_COMPILE_PREFIX := $(abspath prebuilts/gcc/linux-x86/arm/arm-gnu-toolchain-12.3.rel1-x86_64-arm-none-eabi/bin/arm-none-eabi-)
 
 # Hardware tunables
 BOARD_HARDWARE_CLASS := hardware/samsung/lineagehw \
