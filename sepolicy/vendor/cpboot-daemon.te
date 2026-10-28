@@ -24,4 +24,3 @@ allow cpboot-daemon cache_block_device:blk_file { open read };
 allow cpboot-daemon sysfs:file rw_file_perms;
 allow cpboot-daemon device:chr_file { create unlink open read write };
 allow cpboot-daemon self:capability { dac_override mknod };
-allow cpboot-daemon vendor_file:file entrypoint;

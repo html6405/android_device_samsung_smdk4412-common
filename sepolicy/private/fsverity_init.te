@@ -1,2 +1,1 @@
-allow fsverity_init glgps_exec:file read;
-allow fsverity_init glgps_exec:file getattr;
+# The legacy fsverity_init domain no longer exists in the platform policy.
