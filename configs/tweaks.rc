@@ -47,8 +47,8 @@ on property:sys.boot_completed=1
     # to hide Magisk & co.
     chmod 440 /proc/net/unix
 
-    echo 1048576 > /proc/sys/kernel/msgmnb
-    echo 64 > /proc/sys/kernel/msgmni
+    write /proc/sys/kernel/msgmnb 1048576
+    write /proc/sys/kernel/msgmni 64
 
     # zRAM
     write /proc/sys/vm/swappiness 80
