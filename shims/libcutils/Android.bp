@@ -13,8 +13,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-cc_library {
-    name: "libcutils_shim",
+cc_library_shared {
+    name: "smdk4412_libcutils_compat",
+    compile_multilib: "32",
+    shared_libs: ["libcutils"],
+    // Re-export current libcutils symbols to the legacy RIL dependency.
+    ldflags: ["-Wl,--no-as-needed"],
     srcs: [
         "strdup16to8.cpp",
         "strdup8to16.cpp",

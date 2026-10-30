@@ -14,5 +14,10 @@ PRODUCT_COPY_FILES := $(filter-out \
     %:system/lib/egl/libGLESv2_mali.so, \
     $(PRODUCT_COPY_FILES))
 
+# These n80xx products use the source-built RIL compatibility module.
+ifneq ($(filter lineage_n8000 lineage_n8010 lineage_n8013,$(TARGET_PRODUCT)),)
+PRODUCT_COPY_FILES := $(filter-out %:vendor/lib/libcutils-v29.so,$(PRODUCT_COPY_FILES))
+endif
+
 LOCAL_PATH := $(_smdk4412_vendor_compat_local_path)
 _smdk4412_vendor_compat_local_path :=
