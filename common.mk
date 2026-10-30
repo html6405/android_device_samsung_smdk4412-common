@@ -427,14 +427,15 @@ PRODUCT_PACKAGES += \
     SystemUIClocks-Metro \
     SystemUIClocks-NumOverlap
 
-# The 2 GiB n80xx and n50xx tablets provide their own heap and tablet configuration.
+# Keep the 2 GiB n80xx and n50xx tablets out of Android Go.
 ifeq ($(filter lineage_n8000 lineage_n8010 lineage_n8013 lineage_n8020 lineage_n5100 lineage_n5110 lineage_n5120,$(TARGET_PRODUCT)),)
 # Inherit go defaults configs
 $(call inherit-product, build/make/target/product/go_defaults.mk)
-
-# Apply Dalvik config for 1G phone
-$(call inherit-product, device/samsung/smdk4412-common/phone-xhdpi-1024-dalvik-heap.mk)
 endif
+
+# Bound the ARM32 heap even on 2 GiB tablets: a 512 MiB heap leaves too
+# little virtual address space for APK resource mappings in system_server.
+$(call inherit-product, device/samsung/smdk4412-common/phone-xhdpi-1024-dalvik-heap.mk)
 
 # Include debugging props
 $(call inherit-product, device/samsung/smdk4412-common/system_prop_debug.mk)
