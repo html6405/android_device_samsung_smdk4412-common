@@ -105,6 +105,7 @@ TARGET_PROCESS_SDK_VERSION_OVERRIDE := \
     /vendor/bin/gpsd=22
 
 $(call soong_config_set,bionic_legacy,allow_text_relocations,$(TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS))
+$(call soong_config_set,bionic_legacy,allow_invalid_pthread,true)
 $(call soong_config_set,bionic_legacy,sdk_version_overrides,$(TARGET_PROCESS_SDK_VERSION_OVERRIDE))
 
 WITH_DEXPREOPT := true
