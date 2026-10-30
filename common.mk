@@ -425,3 +425,7 @@ $(call inherit-product, device/samsung/smdk4412-common/phone-xhdpi-1024-dalvik-h
 
 # Include debugging props
 $(call inherit-product, device/samsung/smdk4412-common/system_prop_debug.mk)
+
+# Legacy FunctionFS transport for the Exynos4412 USB gadget.
+PRODUCT_VENDOR_PROPERTIES += \
+    ro.adb.nonblocking_ffs=false
