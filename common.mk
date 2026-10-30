@@ -420,8 +420,8 @@ PRODUCT_PACKAGES += \
     SystemUIClocks-Metro \
     SystemUIClocks-NumOverlap
 
-# The 2 GiB n80xx tablets provide their own heap and tablet configuration.
-ifeq ($(filter lineage_n8000 lineage_n8010 lineage_n8013 lineage_n8020,$(TARGET_PRODUCT)),)
+# The 2 GiB n80xx and n50xx tablets provide their own heap and tablet configuration.
+ifeq ($(filter lineage_n8000 lineage_n8010 lineage_n8013 lineage_n8020 lineage_n5100 lineage_n5110 lineage_n5120,$(TARGET_PRODUCT)),)
 # Inherit go defaults configs
 $(call inherit-product, build/make/target/product/go_defaults.mk)
 
