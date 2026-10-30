@@ -420,11 +420,14 @@ PRODUCT_PACKAGES += \
     SystemUIClocks-Metro \
     SystemUIClocks-NumOverlap
 
+# The 2 GiB n80xx tablets provide their own heap and tablet configuration.
+ifeq ($(filter lineage_n8000 lineage_n8010 lineage_n8013 lineage_n8020,$(TARGET_PRODUCT)),)
 # Inherit go defaults configs
 $(call inherit-product, build/make/target/product/go_defaults.mk)
 
 # Apply Dalvik config for 1G phone
 $(call inherit-product, device/samsung/smdk4412-common/phone-xhdpi-1024-dalvik-heap.mk)
+endif
 
 # Include debugging props
 $(call inherit-product, device/samsung/smdk4412-common/system_prop_debug.mk)
