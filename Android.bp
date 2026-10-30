@@ -10,3 +10,25 @@ cc_library_headers {
     vendor_available: true,
     export_include_dirs: ["include"],
 }
+
+// Legacy blobs request this SONAME inside the vendor linker namespace.
+install_symlink {
+    name: "smdk4412_libstdc++_compat",
+    vendor: true,
+    installed_location: "lib/libstdc++.so",
+    symlink_target: "libstdc++_vendor.so",
+    required: ["libstdc++_vendor"],
+}
+
+// Mali opens these fixed system paths; resolve them into its vendor namespace.
+install_symlink {
+    name: "smdk4412_mali_gles1_path",
+    installed_location: "lib/egl/libGLESv1_CM_mali.so",
+    symlink_target: "/vendor/lib/egl/libGLESv1_CM_mali.so",
+}
+
+install_symlink {
+    name: "smdk4412_mali_gles2_path",
+    installed_location: "lib/egl/libGLESv2_mali.so",
+    symlink_target: "/vendor/lib/egl/libGLESv2_mali.so",
+}
