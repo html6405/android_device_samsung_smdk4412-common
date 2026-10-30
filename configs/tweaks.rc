@@ -54,10 +54,6 @@ on property:sys.boot_completed=1
     write /proc/sys/vm/swappiness 80
     write /sys/module/lowmemorykiller/parameters/minfree 20480,25600,30720,35840,40960,51200
 
-    # Stop logging
-    setprop logd.logpersistd.enable false
-    stop logd
-
     write /proc/sys/vm/dirty_expire_centisecs 5000
     write /proc/sys/vm/dirty_writeback_centisecs 2000 #500 common
     write /proc/sys/vm/dirty_background_ratio 10
@@ -157,6 +153,11 @@ on property:sys.boot_completed=1
 
     # Uncomment for a darker config
     #write /sys/devices/platform/s5p-dsim.0/s6e8aa0/backlight/panel/brightness_config 1
+
+on property:sys.boot_completed=1 && property:ro.debuggable=0
+    # Keep logging available on debug builds throughout bringup.
+    setprop logd.logpersistd.enable false
+    stop logd
 
 service tweaks /vendor/bin/tweaks.sh
     class main
