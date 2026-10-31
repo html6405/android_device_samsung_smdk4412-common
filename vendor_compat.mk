@@ -14,7 +14,7 @@ PRODUCT_COPY_FILES := $(filter-out \
     %:system/lib/egl/libGLESv2_mali.so, \
     $(PRODUCT_COPY_FILES))
 
-# N8000 uses the source-built replacement; Wi-Fi variants have no RIL.
+# Wi-Fi-only variants do not need the legacy RIL libcutils copy.
 ifneq ($(filter lineage_n8010 lineage_n8013,$(TARGET_PRODUCT)),)
 PRODUCT_COPY_FILES := $(filter-out %:vendor/lib/libcutils-v29.so,$(PRODUCT_COPY_FILES))
 endif
