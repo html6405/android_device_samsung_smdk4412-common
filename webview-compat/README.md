@@ -47,3 +47,17 @@ python3 device/samsung/smdk4412-common/webview-compat/test_patch_webview_gles2.p
 
 The test checks valid output CRCs, unchanged entries and offsets, the exact
 12-byte APK change boundary, and rejection of unknown/already-patched input.
+
+## WebView updates
+
+This transformation runs during the ROM build. It does not intercept or modify
+WebView APKs installed later by an app store, GApps package, or manually. If such
+an update becomes the selected provider, the GLES2 correction must be present in
+that provider as well; otherwise the original rendering failure may return.
+The current ROM selects `com.android.webview`; installing a differently named or
+signed Google provider is not itself an update of that system package.
+
+For a new bundled prebuilt, review the source change against its Chromium
+revision and verify the compiled instruction and complete library hashes again.
+Do not bypass the version guard. A WebView source build carrying the source patch
+is the preferred long-term way to maintain the change across updates.
