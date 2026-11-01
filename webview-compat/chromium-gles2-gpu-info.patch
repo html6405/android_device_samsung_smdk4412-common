@@ -1,0 +1,21 @@
+Subject: [PATCH] gpu: allow ES2 fallback while collecting graphics capabilities
+
+Chromium 156.0.8078.47 (1d17a2e2ee147bb7d6ae2ab6abdb3a2510c17775)
+requests an ES3 context for GPU information and explicitly disables fallback.
+On Mali-400, collection fails before filling GL strings or threaded texture
+mailbox support. AwContents then forces auxiliary bitmap rendering, which
+cannot display the normal HTML video layer.
+
+Keep GLContextAttribs' default allow_es_version_fallback=true so capability
+collection reports the real ES2 implementation. No ES3 capability is faked.
+
+--- a/gpu/config/gpu_info_collector.cc
++++ b/gpu/config/gpu_info_collector.cc
+@@ -91,7 +91,6 @@
+ scoped_refptr<gl::GLContext> InitializeGLContext(gl::GLSurface* surface) {
+   TRACE_EVENT("gpu,startup", "gpu_info_collector::InitializeGLContext");
+   gl::GLContextAttribs attribs;
+-  attribs.allow_es_version_fallback = false;
+   scoped_refptr<gl::GLContext> context(
+       gl::init::CreateGLContext(nullptr, surface, attribs));
+   if (!context.get()) {

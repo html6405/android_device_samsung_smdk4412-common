@@ -56,6 +56,9 @@ PRODUCT_COPY_FILES += \
 # prebuild apps
 PRODUCT_PACKAGES += \
 	AuroraStore
+# Mali-400 needs ES2 fallback during Chromium GPU capability collection.
+PRODUCT_PACKAGES += exynos4_webview_gles2
+
 # Include Go Package
 PRODUCT_PACKAGES += \
     SystemUIGo
