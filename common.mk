@@ -260,12 +260,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     media.stagefright.thumbnail.prefer_hw_codecs=true
 
 # LOS23 no longer builds the legacy OMX software audio codecs. Enable the
-# platform Codec2 audio codecs on n80xx while retaining OMX hardware video ranks.
-ifneq ($(filter lineage_n8000 lineage_n8010 lineage_n8013 lineage_n8020,$(TARGET_PRODUCT)),)
+# platform Codec2 audio codecs for all products inheriting this Exynos4 tree
+# while retaining the existing OMX hardware video ranks.
 PRODUCT_PROPERTY_OVERRIDES += debug.stagefright.ccodec=1
-else
-PRODUCT_PROPERTY_OVERRIDES += debug.stagefright.ccodec=0
-endif
 
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/media_profiles.xml:vendor/etc/media_profiles.xml \
