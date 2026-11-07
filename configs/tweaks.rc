@@ -24,10 +24,12 @@ on post-fs
     write /proc/sys/vm/extra_free_kbytes 4096
 
 on boot
+    # Exynos4412 has four equivalent cores. Keep foreground work unrestricted
+    # and include CPU0 in restricted groups for CPU-hotplug compatibility.
     write /dev/cpuset/background/cpus 0-1
     write /dev/cpuset/system-background/cpus 0-1
-    write /dev/cpuset/restricted/cpus 1
-    write /dev/cpuset/foreground/cpus 0-2
+    write /dev/cpuset/restricted/cpus 0-1
+    write /dev/cpuset/foreground/cpus 0-3
     write /dev/cpuset/top-app/cpus 0-3
 
 on property:sys.boot_completed=1
@@ -52,7 +54,8 @@ on property:sys.boot_completed=1
 
     # zRAM
     write /proc/sys/vm/swappiness 80
-    write /sys/module/lowmemorykiller/parameters/minfree 20480,25600,30720,35840,40960,51200
+    # ActivityManager supplies LMK minfree/adj targets through lmkd.
+    # Do not overwrite its thresholds after boot.
 
     write /proc/sys/vm/dirty_expire_centisecs 5000
     write /proc/sys/vm/dirty_writeback_centisecs 2000 #500 common
