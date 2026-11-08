@@ -15,7 +15,7 @@ PRODUCT_COPY_FILES := $(filter-out \
     $(PRODUCT_COPY_FILES))
 
 # Wi-Fi-only variants do not need the legacy RIL libcutils copy.
-ifneq ($(filter lineage_n8010 lineage_n8013,$(TARGET_PRODUCT)),)
+ifneq ($(filter lineage_n8010 lineage_n8013 lineage_n5110,$(TARGET_PRODUCT)),)
 PRODUCT_COPY_FILES := $(filter-out %:vendor/lib/libcutils-v29.so,$(PRODUCT_COPY_FILES))
 endif
 
