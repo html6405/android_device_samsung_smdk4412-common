@@ -2,7 +2,6 @@
 ro.lcd_min_brightness                                            u:object_r:vendor_default_prop:s0
 ro.ril.telephony.mqanelements                                    u:object_r:vendor_default_prop:s0
 ro.ril.telephony.nstrings                                        u:object_r:vendor_default_prop:s0
-ro.egl.destroy_after_detach                                      u:object_r:vendor_default_prop:s0
 persist.camera.HAL3.enabled                                      u:object_r:vendor_default_prop:s0
 config.disable_atlas                                             u:object_r:vendor_default_prop:s0
 ro.sys.fw.trim_enable_memory                                     u:object_r:vendor_default_prop:s0

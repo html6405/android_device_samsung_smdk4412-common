@@ -1,0 +1,2 @@
+# ColorFade in system_server reads this legacy EGL configuration.
+ro.egl.destroy_after_detach u:object_r:graphics_config_prop:s0 exact bool
