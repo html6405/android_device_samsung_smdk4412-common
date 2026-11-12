@@ -161,7 +161,3 @@ on property:sys.boot_completed=1 && property:ro.debuggable=0
     # Keep logging available on debug builds throughout bringup.
     setprop logd.logpersistd.enable false
     stop logd
-
-service tweaks /vendor/bin/tweaks.sh
-    class main
-    oneshot
