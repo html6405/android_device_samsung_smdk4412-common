@@ -15,3 +15,13 @@ allow glgps sysfs:file { open read write };
 allow glgps port:tcp_socket name_connect;
 
 init_daemon_domain(glgps);
+
+# GPS owns the files and named pipes in its dedicated data directory.
+allow glgps gps_data_file:dir rw_dir_perms;
+allow glgps gps_data_file:file create_file_perms;
+allow glgps gps_data_file:fifo_file create_file_perms;
+
+# SUPL/DNS networking, including netd's access to passed client sockets.
+net_domain(glgps)
+# The legacy resolver reads /system/etc/hosts.
+allow glgps system_file:file { getattr open read };

@@ -52,7 +52,7 @@
 
 # WiFi
 /dev/rfkill                                                      u:object_r:rfkill_device:s0
-/efs/wifi/.mac.info                                              u:object_r:wifi_data_file:s0
+/efs/wifi/\.mac\.info                                              u:object_r:wifi_data_file:s0
 /sys/module/dhd/parameters/firmware_path                         u:object_r:wifi_firmware_path:s0
 /sys/module/dhd/parameters/nvram_path                            u:object_r:wifi_firmware_path:s0
 /efs/wifi(/.*)?                                                  u:object_r:wifi_efs_file:s0
@@ -134,9 +134,25 @@
 /sys/power/wakeup_count						u:object_r:sysfs_power:s0
 /sys/power/state						u:object_r:sysfs_power:s0
 
-# GPS
-/data/gps/\.gpsd.lock                                            u:object_r:gps_data_file:s0
-/data/gps/glgpsctrl                                              u:object_r:gps_data_file:s0
-/data/gps/\.gps\.interface\.pipe\.to_gpsd                        u:object_r:gps_data_file:s0
-/data/gps/\.gps\.interface\.pipe\.to_jni                         u:object_r:gps_data_file:s0
-/data/gps/gldata\.sto                                            u:object_r:gps_data_file:s0
+# GPS data and IPC objects inherit the GPS label when recreated.
+/data/gps(/.*)?    u:object_r:gps_data_file:s0
+
+# AIDL services shared by the Exynos4 device families.
+/(vendor|system/vendor)/bin/hw/android\.hardware\.power-service\.pixel-libperfmgr              u:object_r:hal_power_default_exec:s0
+/(vendor|system/vendor)/bin/hw/android\.hardware\.vibrator-service\.samsung                 u:object_r:hal_vibrator_default_exec:s0
+/(vendor|system/vendor)/bin/hw/vendor\.lineage\.touch-service\.samsung                     u:object_r:hal_lineage_touch_default_exec:s0
+/(vendor|system/vendor)/bin/hw/vendor\.lineage\.livedisplay-service\.samsung-exynos         u:object_r:hal_lineage_livedisplay_exynos_exec:s0
+/vendor/bin/hw/android\.hardware\.camera\.provider-service(_32)?\.samsung    u:object_r:hal_camera_default_exec:s0
+/vendor/bin/hw/android\.hardware\.wifi-service(-lazy)?    u:object_r:hal_wifi_default_exec:s0
+
+# Mapper5 and its in-process Exynos4 dependencies.
+/vendor/lib(64)?/hw/mapper\.exynos4\.so    u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/hw/gralloc\.exynos4\.so    u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/lib(gralloc5|secion|UMP)\.so    u:object_r:same_process_hal_file:s0
+
+# Legacy Broadcom Wi-Fi state files and PM QoS interface.
+/data/\.(cid|mac|wifiver)\.info    u:object_r:wifi_data_file:s0
+/dev/cpu_dma_latency    u:object_r:exynos4_pm_qos_device:s0
+
+# Mapper5 loads libdrm in the client process.
+/vendor/lib(64)?/libdrm\.so    u:object_r:same_process_hal_file:s0

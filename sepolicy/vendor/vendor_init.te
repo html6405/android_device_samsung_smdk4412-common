@@ -16,3 +16,10 @@ allow vendor_init wifi_data_file:file create_file_perms;
 allow vendor_init proc_vm:file rw_file_perms;
 allow vendor_init proc_extra_free_kbytes:file rw_file_perms;
 allow vendor_init proc_drop_caches:file rw_file_perms;
+
+# Label and restore the legacy GPS directory and Wi-Fi state files at boot.
+allow vendor_init gps_data_file:dir create_dir_perms;
+allow vendor_init gps_data_file:dir relabelto;
+allow vendor_init gps_data_file:{ file fifo_file } { getattr relabelto };
+allow vendor_init system_data_file:{ dir file fifo_file } relabelfrom;
+allow vendor_init wifi_data_file:file relabelto;

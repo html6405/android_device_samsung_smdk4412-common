@@ -1,3 +1,10 @@
 allow hal_power_default sysfs_devices_system_cpu:file rw_file_perms;
 allow hal_power_default sysfs_power:dir r_dir_perms;
 allow hal_power_default sysfs_power:file { open write };
+
+# libperfmgr PM QoS and display state queries.
+allow hal_power_default exynos4_pm_qos_device:chr_file { open write };
+allow hal_power_default sysfs_display:dir search;
+allow hal_power_default sysfs_display:lnk_file read;
+# Check whether optional thermal/stats services are declared.
+allow hal_power_default { fwk_stats_service hal_thermal_service }:service_manager find;

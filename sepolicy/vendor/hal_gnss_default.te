@@ -20,3 +20,7 @@ allow hal_gnss_default system_data_root_file:file { create getattr open read wri
 allow hal_gnss_default self:socket create;
 allow hal_gnss_default socket_device:dir { add_name write };
 allow hal_gnss_default socket_device:sock_file { create setattr write };
+
+# The legacy GNSS module creates the response pipe in /data/gps.
+allow hal_gnss_default gps_data_file:dir rw_dir_perms;
+allow hal_gnss_default gps_data_file:fifo_file create_file_perms;

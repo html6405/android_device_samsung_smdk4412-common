@@ -1,2 +1,10 @@
+# Legacy Samsung HAL configuration with existing platform property types.
+ro.camera.req.fmq.size u:object_r:camera_config_prop:s0 exact int
+ro.camera.res.fmq.size u:object_r:camera_config_prop:s0 exact int
+audio_hal.period_size u:object_r:audio_config_prop:s0 exact int
+audio_hal.disable_two_mic u:object_r:audio_config_prop:s0 exact bool
+audio_hal.force_voice_config u:object_r:audio_config_prop:s0 exact string
+media.settings.xml u:object_r:media_config_prop:s0 exact string
+
 # ColorFade in system_server reads this legacy EGL configuration.
 ro.egl.destroy_after_detach u:object_r:graphics_config_prop:s0 exact bool

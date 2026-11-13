@@ -5,6 +5,12 @@ on init
     symlink /sdcard /storage/sdcard0
     write /sys/block/zram0/max_comp_streams 4
 
+    # PowerHAL writes these policy limits without CAP_DAC_OVERRIDE.
+    chown system system /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
+    chmod 0664 /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
+    chown system system /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
+    chmod 0664 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
+
 on fs
     mount_all /vendor/etc/fstab.smdk4x12
     swapon_all /vendor/etc/fstab.smdk4x12
@@ -48,6 +54,9 @@ on post-fs-data
     chmod 0664 /sys/class/sec/gps/GPS_nRST/value
     mkdir /data/gps 771 system system
     chown system system /data/gps
+    restorecon_recursive /data/gps
+    restorecon_recursive /efs/wifi
+    restorecon /data/.cid.info
 
     mkdir /data/misc/radio 0775 radio system
     chmod 0775 /data/misc/radio
@@ -496,11 +505,13 @@ on post-fs-data
 
     # for WIFI Version
     write /data/.wifiver.info 0
+    restorecon /data/.wifiver.info
     chown system root /data/.wifiver.info
     chmod 0666 /data/.wifiver.info
  
     # for WIFI MAC address
     write /data/.mac.info 0
+    restorecon /data/.mac.info
     chown system root /data/.mac.info
     chmod 0664 /data/.mac.info
 

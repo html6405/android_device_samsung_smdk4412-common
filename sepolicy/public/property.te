@@ -1,0 +1,6 @@
+# Vendor configuration read by the in-process mapper and camera clients.
+vendor_public_prop(vendor_exynos4_graphics_prop)
+vendor_public_prop(vendor_exynos4_camera_prop)
+
+# Framework camera clients read the package allowlist, not HAL tuning values.
+vendor_public_prop(vendor_exynos4_camera_app_prop)

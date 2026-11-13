@@ -1,1 +1,3 @@
 allow mediaswcodec glgps_exec:file r_file_perms;
+
+get_prop(mediaswcodec, vendor_exynos4_graphics_prop)

@@ -1,0 +1,2 @@
+# CameraDeviceImpl and SurfaceUtils read this list in camera client processes.
+get_prop(appdomain, vendor_exynos4_camera_app_prop)

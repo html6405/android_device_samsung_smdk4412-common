@@ -1,1 +1,3 @@
 # type vendor_default_prop, property_type;
+
+vendor_internal_prop(vendor_exynos4_audio_prop)
