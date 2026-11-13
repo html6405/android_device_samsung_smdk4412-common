@@ -144,6 +144,9 @@ PRODUCT_PACKAGES += \
     libUMP \
     libMali \
     libEGL_mali \
+    libGLESv2_mali \
+    smdk4412_mali_gles1_path \
+    smdk4412_mali_gles2_path \
     libfimc \
     libfimg \
     libhwjpeg \
@@ -229,7 +232,8 @@ PRODUCT_PACKAGES += \
 # VNDK
 PRODUCT_PACKAGES += \
     vndk_package \
-    libstdc++_vendor
+    libstdc++_vendor \
+    smdk4412_libstdc++_compat
 
 PRODUCT_PROPERTY_OVERRIDES += \
     media.settings.xml=/vendor/etc/media_profiles.xml \
@@ -383,7 +387,7 @@ $(call inherit-product, hardware/samsung/exynos4x12.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_k.mk)
 
 # Include non-opensource parts
-$(call inherit-product, vendor/samsung/smdk4412-common/smdk4412-common-vendor.mk)
+$(call inherit-product, device/samsung/smdk4412-common/vendor_compat.mk)
 
 # Art
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
