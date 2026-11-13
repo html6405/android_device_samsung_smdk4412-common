@@ -228,4 +228,3 @@ allow init hal_graphics_allocator_hwservice:hwservice_manager find;
 allow init logdr_socket:sock_file write;
 allow init self:capability2 mac_admin;
 allow init sysfs_lmkd:file create_file_perms;
-

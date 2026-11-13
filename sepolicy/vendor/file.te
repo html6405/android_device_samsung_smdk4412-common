@@ -1,5 +1,5 @@
 type sysfs_macloader, fs_type, sysfs_type;
-type firmware_mfc, file_type;
+type firmware_mfc, file_type, vendor_file_type;
 type efs_device_file, file_type;
 type wifi_efs_file, file_type;
 type misc_device_file, file_type;
