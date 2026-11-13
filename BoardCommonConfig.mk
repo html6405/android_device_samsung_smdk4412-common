@@ -259,3 +259,5 @@ BOARD_VNDK_VERSION := current
 
 # SELinux
 include device/samsung/smdk4412-common/sepolicy/sepolicy.mk
+# Legacy proprietary ARM32 libraries pass stale pthread handles.
+$(call soong_config_set,bionic_legacy,allow_invalid_pthread,true)
