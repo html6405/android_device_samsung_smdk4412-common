@@ -229,4 +229,3 @@ allow init logdr_socket:sock_file write;
 allow init self:capability2 mac_admin;
 allow init sysfs_lmkd:file create_file_perms;
 
-domain_trans(init, rootfs, cpboot-daemon)

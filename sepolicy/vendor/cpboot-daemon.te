@@ -1,5 +1,5 @@
 type cpboot-daemon, domain;
-type cpboot-daemon_exec, exec_type, file_type;
+type cpboot-daemon_exec, exec_type, file_type, vendor_file_type;
 
 init_daemon_domain(cpboot-daemon);
 
@@ -24,4 +24,3 @@ allow cpboot-daemon cache_block_device:blk_file { open read };
 allow cpboot-daemon sysfs:file rw_file_perms;
 allow cpboot-daemon device:chr_file { create unlink open read write };
 allow cpboot-daemon self:capability { dac_override mknod };
-allow cpboot-daemon vendor_file:file entrypoint;
