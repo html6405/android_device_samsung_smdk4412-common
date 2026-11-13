@@ -394,11 +394,14 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.lineage.build.vendor_security_patch=2015-11-05
 
-# Inherit go defaults configs
+# Preserve tablet features on the 2 GiB n80xx and kona families while
+# bounding their ARM32 heap. Keep the existing phone defaults for other products.
+ifneq ($(filter lineage_n8000 lineage_n8010 lineage_n8013 lineage_n8020 lineage_n5100 lineage_n5110 lineage_n5120,$(TARGET_PRODUCT)),)
+$(call inherit-product, device/samsung/smdk4412-common/tablet-arm32-dalvik-heap.mk)
+else
 $(call inherit-product, build/make/target/product/go_defaults.mk)
-
-# Apply Dalvik config for 1G phone
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
+endif
 
 # Include debugging props
 $(call inherit-product, device/samsung/smdk4412-common/system_prop_debug.mk)
