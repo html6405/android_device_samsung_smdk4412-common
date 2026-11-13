@@ -3,7 +3,7 @@
 on init
     # Support legacy paths
     symlink /sdcard /storage/sdcard0
-    setprop bpf.progs_loaded 1
+    write /sys/block/zram0/max_comp_streams 4
 
 on fs
     mount_all /vendor/etc/fstab.smdk4x12
