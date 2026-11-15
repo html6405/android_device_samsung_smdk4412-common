@@ -13,6 +13,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+# Preserve three framebuffer buffers without the legacy ConfigStore service.
+PRODUCT_VENDOR_PROPERTIES += \
+    ro.surface_flinger.max_frame_buffer_acquired_buffers=3
+
 PRODUCT_PROPERTY_OVERRIDES += \
     debug.sf.enable_gl_backpressure=1 \
     debug.sf.layer_caching_active_layer_timeout_ms=1000 \
