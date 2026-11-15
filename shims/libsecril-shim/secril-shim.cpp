@@ -2,6 +2,7 @@
 #pragma clang diagnostic ignored "-Wformat"
 #include "secril-shim.h"
 #include "secril-sap.h"
+#include "legacy-smsc.h"
 
 #include <algorithm>
 #include <atomic>
@@ -1189,6 +1190,18 @@ static void onRequestCompleteShim(RIL_Token t, RIL_Errno e, void *response, size
 	RLOGD("%s:\t\t\t<<< REQUEST-COMPLETE: %s: response:%p responselen:%d token:%p error:%d\n", __FUNCTION__, requestToString(request), response, responselen, t, e);
 
 	switch (request) {
+		case RIL_REQUEST_GET_SMSC_ADDRESS: {
+#ifndef SAMSUNG_NEXT_GEN_MODEM
+			char address[24];
+			if (e == RIL_E_SUCCESS &&
+					decodeLegacySmscPdu(response, responselen, address, sizeof(address))) {
+				RLOGI("Normalized legacy SMSC PDU to a dialable address");
+				rilEnv->OnRequestComplete(t, e, address, strlen(address));
+				return;
+			}
+#endif
+			break;
+		}
 		case RIL_REQUEST_GET_CURRENT_CALLS:
 #ifndef SAMSUNG_NEXT_GEN_MODEM
 			if (e == RIL_E_SUCCESS)
