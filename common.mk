@@ -236,6 +236,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libhwconverter \
     libstagefrighthw \
+    libstagefright_soft_avcdec \
+    libstagefright_softomx_plugin \
     libSEC_OMX_Resourcemanager \
     libSEC_OMX_Core \
     libOMX.SEC.AVC.Decoder \
