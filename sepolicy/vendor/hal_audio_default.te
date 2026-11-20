@@ -1,5 +1,8 @@
 allow hal_audio_default rild:unix_stream_socket { connectto read write };
 allow hal_audio_default vendor_file:file execmod;
 
+# libhardware_legacy obtains the AIDL suspend service for audio wake locks.
+allow hal_audio_default hal_system_suspend_service:service_manager find;
+
 get_prop(hal_audio_default, audio_config_prop)
 get_prop(hal_audio_default, vendor_exynos4_audio_prop)

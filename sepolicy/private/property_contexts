@@ -4,6 +4,7 @@ ro.camera.res.fmq.size u:object_r:camera_config_prop:s0 exact int
 audio_hal.period_size u:object_r:audio_config_prop:s0 exact int
 audio_hal.disable_two_mic u:object_r:audio_config_prop:s0 exact bool
 audio_hal.force_voice_config u:object_r:audio_config_prop:s0 exact string
+audio.force_wideband u:object_r:audio_config_prop:s0 exact bool
 media.settings.xml u:object_r:media_config_prop:s0 exact string
 
 # ColorFade in system_server reads this legacy EGL configuration.

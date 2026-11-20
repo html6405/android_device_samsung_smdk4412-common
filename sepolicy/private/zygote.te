@@ -1,0 +1,2 @@
+# MediaProfiles is initialized while preloading the media framework.
+get_prop(zygote, media_config_prop)
