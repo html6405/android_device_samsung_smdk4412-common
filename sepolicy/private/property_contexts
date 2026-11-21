@@ -6,3 +6,6 @@ audio_hal.period_size u:object_r:audio_config_prop:s0 exact int
 audio_hal.disable_two_mic u:object_r:audio_config_prop:s0 exact bool
 audio_hal.force_voice_config u:object_r:audio_config_prop:s0 exact string
 audio.force_wideband u:object_r:audio_config_prop:s0 exact bool
+
+# Bluetooth HFP codec selection is configured by the device product.
+bluetooth.hfp.wbs.supported u:object_r:bluetooth_config_prop:s0 exact bool
