@@ -59,9 +59,15 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	ro.iorapd.enable=false
 
 
+ifneq ($(filter lineage_n8000 lineage_n8010 lineage_n8013,$(TARGET_PRODUCT)),)
+PRODUCT_COPY_FILES += \
+    device/samsung/n80xx-common/configs/param.sh:vendor/bin/param.sh \
+    device/samsung/n80xx-common/configs/param.rc:vendor/etc/init/param.rc
+else
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/param.sh:vendor/bin/param.sh \
     $(COMMON_PATH)/configs/param.rc:vendor/etc/init/param.rc
+endif
 
 # VNDK
 PRODUCT_COPY_FILES += \
