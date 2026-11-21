@@ -47,6 +47,7 @@ on post-fs-data
     chmod 0664 /sys/class/sec/gps/GPS_nRST/value
     mkdir /data/gps 771 system system
     chown system system /data/gps
+    restorecon_recursive /data/gps
 
     mkdir /data/misc/radio 0775 radio system
     chmod 0775 /data/misc/radio
@@ -494,9 +495,14 @@ on post-fs-data
     chmod 0660 /data/.psm.info
 
     # for WIFI Version
+    write /data/.cid.info 0
+    chown system system /data/.cid.info
+    chmod 0644 /data/.cid.info
+    restorecon /data/.cid.info
     write /data/.wifiver.info 0
     chown system root /data/.wifiver.info
     chmod 0666 /data/.wifiver.info
+    restorecon /data/.wifiver.info
  
     # for WIFI MAC address
     write /data/.mac.info 0
