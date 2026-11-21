@@ -1,5 +1,4 @@
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    ro.secure=0 \
-    ro.adb.secure=0 \
-    ro.debuggable=1 \
-    persist.service.adb.enable=1
+# The build variant supplies ro.secure, ro.adb.secure and ro.debuggable.
+# USB defaults are platform properties; vendor_init cannot set them.
+PRODUCT_SYSTEM_PROPERTIES += \
+    persist.sys.usb.config=adb
