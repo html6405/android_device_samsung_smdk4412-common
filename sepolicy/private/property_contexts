@@ -1,4 +1,5 @@
 # Legacy Samsung HAL configuration with existing platform property types.
+bluetooth.hfp.wbs.supported u:object_r:bluetooth_config_prop:s0 exact bool
 ro.camera.req.fmq.size u:object_r:camera_config_prop:s0 exact int
 ro.camera.res.fmq.size u:object_r:camera_config_prop:s0 exact int
 audio_hal.period_size u:object_r:audio_config_prop:s0 exact int

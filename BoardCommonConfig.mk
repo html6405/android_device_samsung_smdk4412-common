@@ -227,7 +227,7 @@ TARGET_NEEDS_NETD_DIRECT_CONNECT_RULE := true
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
 BOARD_HAVE_SAMSUNG_BLUETOOTH := true
-BOARD_CUSTOM_BT_CONFIG := device/samsung/smdk4412-common/bluetooth/vnd_smdk4x12.txt
+$(call soong_config_set,brcm_libbt,custom_bt_config,//device/samsung/smdk4412-common:smdk4412_bluetooth_vendor_config)
 PRODUCT_SOONG_NAMESPACES += hardware/broadcom/libbt 
 
 # Vold

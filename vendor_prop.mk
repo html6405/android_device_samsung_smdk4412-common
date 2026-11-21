@@ -17,6 +17,10 @@
 PRODUCT_VENDOR_PROPERTIES += \
     ro.surface_flinger.max_frame_buffer_acquired_buffers=3
 
+# Use the narrowband hardware path on legacy Broadcom controllers.
+PRODUCT_VENDOR_PROPERTIES += \
+    bluetooth.hfp.wbs.supported=false
+
 PRODUCT_PROPERTY_OVERRIDES += \
     debug.sf.enable_gl_backpressure=1 \
     debug.sf.layer_caching_active_layer_timeout_ms=1000 \

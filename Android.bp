@@ -5,6 +5,11 @@ subdirs = [
     "shims",
 ]
 
+filegroup {
+    name: "smdk4412_bluetooth_vendor_config",
+    srcs: ["bluetooth/vnd_smdk4x12.txt"],
+}
+
 cc_library_headers {
     name: "samsung_legacy_ril_headers",
     vendor_available: true,
