@@ -272,7 +272,8 @@ PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/media_codecs.xml:vendor/etc/media_codecs.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:vendor/etc/media_codecs_google_audio.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:vendor/etc/media_codecs_google_telephony.xml \
-    frameworks/av/media/libstagefright/data/media_codecs_google_video_le.xml:vendor/etc/media_codecs_google_video_le.xml
+    $(COMMON_PATH)/configs/media_codecs_google_video_le.xml:vendor/etc/media_codecs_google_video_le.xml \
+    $(COMMON_PATH)/configs/media_codecs_c2.xml:vendor/etc/media_codecs_c2.xml
 
 # GAPPS
 PRODUCT_COPY_FILES += \

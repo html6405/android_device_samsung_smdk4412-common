@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Temporarily omit software HEVC while its playback path is unresolved.
+     Codec2InfoBuilder reads this after the APEX codec declarations. -->
+<MediaCodecs>
+    <Decoders>
+        <MediaCodec name="c2.android.hevc.decoder" type="video/hevc"
+                    update="true" enabled="false" />
+    </Decoders>
+</MediaCodecs>
