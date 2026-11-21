@@ -323,7 +323,7 @@ PRODUCT_COPY_FILES += \
 
 # Bluetooth
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/bluetooth/bt_vendor.conf:system/etc/bluetooth/bt_vendor.conf
+    $(COMMON_PATH)/bluetooth/bt_vendor.conf:vendor/etc/bluetooth/bt_vendor.conf
 
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0 \
