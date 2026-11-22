@@ -2,3 +2,7 @@ allow hal_audio_default rild:unix_stream_socket { connectto read write };
 allow hal_audio_default vendor_file:file execmod;
 get_prop(hal_audio_default, audio_config_prop)
 
+# libhardware_legacy uses framework AIDL for audio wake locks.
+binder_use(hal_audio_default)
+binder_call(hal_audio_default, system_suspend_server)
+allow hal_audio_default hal_system_suspend_service:service_manager find;

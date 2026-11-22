@@ -48,10 +48,10 @@ static bool registerPassthroughServiceImplementations(Iter first, Iter last) {
 int main(int /* argc */, char* /* argv */ []) {
     signal(SIGPIPE, SIG_IGN);
 
-    if (::android::ProcessState::isVndservicemanagerEnabled()) {
-        ::android::ProcessState::initWithDriver("/dev/vndbinder");
-        ::android::ProcessState::self()->startThreadPool();
-    }
+    // The Exynos4 service uses HIDL for audio and framework AIDL for wake locks.
+    // Its ordinary Binder clients must therefore use the system service manager.
+    ::android::ProcessState::initWithDriver("/dev/binder");
+    ::android::ProcessState::self()->startThreadPool();
 
     const int32_t defaultValue = -1;
     int32_t value =
