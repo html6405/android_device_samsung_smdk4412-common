@@ -44,6 +44,7 @@ ro.product.device                                                u:object_r:vend
 sys.power.cpufreq_max_limit                                      u:object_r:vendor_default_prop:s0
 vendor.wifikiller                                                u:object_r:vendor_default_prop:s0
 
+ro.vendor.ion.legacy_heap_mask u:object_r:vendor_exynos4_graphics_prop:s0 exact int
 ro.vendor.exynos4.ion_heap_mask u:object_r:vendor_exynos4_graphics_prop:s0 exact int
 ro.vendor.exynos4.ion_contig_heap_mask u:object_r:vendor_exynos4_graphics_prop:s0 exact int
 ro.vendor.camera.req.fmq.size u:object_r:vendor_exynos4_camera_prop:s0 exact int

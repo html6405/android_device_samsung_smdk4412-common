@@ -1,0 +1,7 @@
+# Codec2 allocates legacy ION buffers in these client processes as well as
+# mediaswcodec. This type covers the three Exynos4 ION heap-mask properties;
+# untrusted_app is a domain shared by apps, not a package-specific exception.
+get_prop(mediaserver, vendor_exynos4_graphics_prop)
+get_prop(system_server, vendor_exynos4_graphics_prop)
+get_prop(platform_app, vendor_exynos4_graphics_prop)
+get_prop(untrusted_app, vendor_exynos4_graphics_prop)
