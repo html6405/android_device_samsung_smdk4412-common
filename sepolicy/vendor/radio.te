@@ -1,3 +1,6 @@
 allow radio method_trace_data_file:file { read unlink execute };
 allow radio init:binder { call transfer };
 allow radio unlabeled:file r_file_perms;
+
+# Legacy gralloc opens ION read-write when Phone renders a hardware-backed UI.
+allow radio ion_device:chr_file write;
