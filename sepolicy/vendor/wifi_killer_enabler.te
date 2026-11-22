@@ -3,3 +3,6 @@ type wifi_killer_enabler, domain;
 type wifi_killer_enabler_exec, exec_type, file_type, vendor_file_type;
 
 init_daemon_domain(wifi_killer_enabler)
+
+# The sleep/wake helpers inspect /system/bin/svc before invoking it.
+allow wifi_killer_enabler system_file:file getattr;
